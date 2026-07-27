@@ -23,6 +23,61 @@ function cssRule(selector) {
   return match[1];
 }
 
+function cssCustomProperty(rule, property) {
+  const match = rule.match(new RegExp(`${property}\\s*:\\s*([^;]+)`));
+  assert.ok(match, `Expected ${property} in CSS rule`);
+  return match[1].trim();
+}
+
+function parseColor(color) {
+  const hex = color.match(/^#([0-9a-f]{6})$/i);
+  if (hex) {
+    return [0, 2, 4].map((offset) =>
+      Number.parseInt(hex[1].slice(offset, offset + 2), 16)
+    );
+  }
+
+  const rgba = color.match(
+    /^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)(?:\s*,\s*([\d.]+))?\s*\)$/i
+  );
+  assert.ok(rgba, `Expected a hex or rgb(a) color, received ${color}`);
+  return [
+    Number(rgba[1]),
+    Number(rgba[2]),
+    Number(rgba[3]),
+    rgba[4] === undefined ? 1 : Number(rgba[4])
+  ];
+}
+
+function composite(foreground, background) {
+  const alpha = foreground[3] ?? 1;
+  return foreground.slice(0, 3).map((channel, index) =>
+    channel * alpha + background[index] * (1 - alpha)
+  );
+}
+
+function contrastRatio(foreground, background) {
+  const luminance = (color) => {
+    const linear = color.slice(0, 3).map((channel) => {
+      const normalized = channel / 255;
+      return normalized <= 0.04045
+        ? normalized / 12.92
+        : ((normalized + 0.055) / 1.055) ** 2.4;
+    });
+    return (
+      0.2126 * linear[0] +
+      0.7152 * linear[1] +
+      0.0722 * linear[2]
+    );
+  };
+  const foregroundLuminance = luminance(foreground);
+  const backgroundLuminance = luminance(background);
+  return (
+    (Math.max(foregroundLuminance, backgroundLuminance) + 0.05) /
+    (Math.min(foregroundLuminance, backgroundLuminance) + 0.05)
+  );
+}
+
 function appearanceOptions() {
   return [...popupMarkup.matchAll(/<label class="mode-option">([\s\S]*?)<\/label>/g)]
     .map(([, option]) => ({
@@ -212,6 +267,31 @@ test("popup chrome follows the operating system appearance", () => {
   assert.doesNotMatch(
     popupStyles,
     /\[data-theme|kickNightModePreference|\.theme-(?:light|dark)/
+  );
+});
+
+test("light secondary labels meet small-text contrast on page and grouped surfaces", () => {
+  const rootRule = cssRule(":root");
+  const secondaryLabel = parseColor(
+    cssCustomProperty(rootRule, "--secondary-label")
+  );
+  const pageBackground = parseColor(
+    cssCustomProperty(rootRule, "--background")
+  );
+  const groupedSurface = parseColor(cssCustomProperty(rootRule, "--surface"));
+  const groupedSurfaceOverPage = composite(groupedSurface, pageBackground);
+
+  assert.ok(
+    contrastRatio(composite(secondaryLabel, pageBackground), pageBackground) >=
+      4.5,
+    "secondary labels must meet 4.5:1 on the light page background"
+  );
+  assert.ok(
+    contrastRatio(
+      composite(secondaryLabel, groupedSurfaceOverPage),
+      groupedSurfaceOverPage
+    ) >= 4.5,
+    "secondary labels must meet 4.5:1 on the light grouped surface"
   );
 });
 
