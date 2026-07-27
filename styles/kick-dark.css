@@ -84,9 +84,19 @@ html[data-kick-night-mode="dark"] [class~="_main-interface_fvouj_1"][class~="_ma
   background-color: var(--kick-night-page) !important;
 }
 
-html[data-kick-night-mode="dark"] [class~="_container_9a976_1"][class~="_borderTop_116yu_17"],
+html[data-kick-night-mode="dark"] [class~="_container_9a976_1"],
 html[data-kick-night-mode="dark"] [class~="_row_4s7es_6"][class~="_headerRow_y765f_21"][class~="_headers_16kq2_68"] {
   background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"] [class~="_kickButton_1hog9_2"][class~="_medium_1hog9_275"][class~="_secondary_1hog9_45"] {
+  color: var(--kick-night-text) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"] [class~="_organizationLink_1oaac_17"] {
+  color: var(--kick-night-text) !important;
+  background-color: var(--kick-night-surface) !important;
 }
 
 html[data-kick-night-mode="dark"] [class~="_flexLayout_mvksx_2"][class~="w-100"][class~="_content_1mxb1_8"],
@@ -96,7 +106,12 @@ html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="entities"],
 html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="team"],
 html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="startDate"],
 html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="actions"],
-html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="filler"] {
+html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="filler"],
+html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="plan"],
+html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="whoPays"],
+html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="dueDate"],
+html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="assignee"],
+html[data-kick-night-mode="dark"] [class~="_cell_16kq2_45"][class~="visibility"] {
   background-color: var(--kick-night-surface) !important;
 }
 

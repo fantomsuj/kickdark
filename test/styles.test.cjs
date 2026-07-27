@@ -359,13 +359,16 @@ test("authenticated Clients surfaces map audited class tokens to dark tiers", ()
   const surfaceTier = [
     /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-surface\)\s*!important/i
   ];
+  const readableText = [
+    /(?:^|;)\s*color\s*:\s*var\(--kick-night-text\)\s*!important/i
+  ];
   const contracts = [
     [
       `${root} [class~="_main-interface_fvouj_1"][class~="_main-interface-with-navigation_fvouj_13"][class~="_navOpen_fvouj_17"]`,
       pageTier
     ],
     [
-      `${root} [class~="_container_9a976_1"][class~="_borderTop_116yu_17"]`,
+      `${root} [class~="_container_9a976_1"]`,
       raisedTier
     ],
     [
@@ -380,7 +383,27 @@ test("authenticated Clients surfaces map audited class tokens to dark tiers", ()
       `${root} [class~="_row_4s7es_6"][class~="_headerRow_y765f_21"][class~="_headers_16kq2_68"]`,
       raisedTier
     ],
-    ...["name", "entities", "team", "startDate", "actions", "filler"].map((semanticName) => [
+    [
+      `${root} [class~="_kickButton_1hog9_2"][class~="_medium_1hog9_275"][class~="_secondary_1hog9_45"]`,
+      [...raisedTier, ...readableText]
+    ],
+    [
+      `${root} [class~="_organizationLink_1oaac_17"]`,
+      [...surfaceTier, ...readableText]
+    ],
+    ...[
+      "name",
+      "entities",
+      "team",
+      "startDate",
+      "actions",
+      "filler",
+      "plan",
+      "whoPays",
+      "dueDate",
+      "assignee",
+      "visibility"
+    ].map((semanticName) => [
       `${root} [class~="_cell_16kq2_45"][class~="${semanticName}"]`,
       surfaceTier
     ])
