@@ -120,3 +120,83 @@ test("printing resets the page to a light color scheme", () => {
   assert.match(printBlock[1], /background\s*:\s*white\s*!important/i);
   assert.match(printBlock[1], /color\s*:\s*black\s*!important/i);
 });
+
+test("semantic surfaces do not rely on broad class-name matching", () => {
+  const stylesheet = readStylesheet();
+  const unsafeFragments = [
+    "card",
+    "panel",
+    "surface",
+    "modal",
+    "popover",
+    "dropdown",
+    "tooltip",
+    "overlay",
+    "toast",
+    "notification",
+    "loading",
+    "success",
+    "warning",
+    "error",
+    "danger",
+    "divider"
+  ];
+
+  for (const fragment of unsafeFragments) {
+    assert.doesNotMatch(
+      stylesheet,
+      new RegExp(`\\[class\\*=["']${fragment}["'](?:\\s+i)?\\]`, "i"),
+      `broad class-name selector remains for ${fragment}`
+    );
+  }
+
+  assert.doesNotMatch(
+    stylesheet,
+    /button:not\([^{}]*\[class\*=["'](?:primary|brand)["']/i,
+    "generic buttons must not infer intent from primary or brand class names"
+  );
+  assert.doesNotMatch(
+    stylesheet,
+    /\[role=["']button["']\]:not\([^{}]*\[class\*=["'](?:primary|brand)["']/i,
+    "role buttons must not infer intent from primary or brand class names"
+  );
+});
+
+test("semantic surface map covers the complete Kick application shell", () => {
+  const stylesheet = readStylesheet();
+  const requiredCoverage = [
+    ["app shell", /html\[data-kick-night-mode="dark"\]\s+(?:body|#root|#__next)/i],
+    ["page canvas", /html\[data-kick-night-mode="dark"\]\s+(?:main|\[role="main"\])/i],
+    ["side navigation", /html\[data-kick-night-mode="dark"\]\s+\[role="navigation"\]/i],
+    ["header", /html\[data-kick-night-mode="dark"\]\s+(?:header|\[role="banner"\])/i],
+    ["notice", /html\[data-kick-night-mode="dark"\]\s+\[role="(?:note|status)"\]/i],
+    ["table", /html\[data-kick-night-mode="dark"\]\s+table/i],
+    ["table header", /html\[data-kick-night-mode="dark"\]\s+\[role="columnheader"\]/i],
+    ["table row", /html\[data-kick-night-mode="dark"\]\s+\[role="row"\]/i],
+    ["form control", /html\[data-kick-night-mode="dark"\]\s+(?:input|select|textarea)/i],
+    ["button", /html\[data-kick-night-mode="dark"\]\s+(?:button|\[role="button"\])/i],
+    ["secondary button", /\[data-variant="secondary"\]/i],
+    ["badge", /\[data-slot="badge"\]/i],
+    ["menu", /\[role="menu"\]/i],
+    ["listbox", /\[role="listbox"\]/i],
+    ["popover", /\[data-radix-popper-content-wrapper\]/i],
+    ["dialog", /\[role="dialog"\]/i],
+    ["empty state", /\[data-state="empty"\]/i],
+    ["loading state", /\[aria-busy="true"\]/i],
+    ["error state", /\[data-tone="negative"\]/i],
+    ["settings screen", /\[data-page="settings"\]/i],
+    ["settings panel", /\[data-slot="settings-panel"\]/i],
+    ["hover state", /:hover/i],
+    ["selected state", /(?:aria-selected="true"|data-state="selected")/i],
+    ["focus state", /:focus-visible/i],
+    ["white utility repair", /\[class~="bg-white"\]/i],
+    [
+      "inline white repair",
+      /\[style\*="background-color:\s*(?:white|rgb\(255,\s*255,\s*255\))"\]/i
+    ]
+  ];
+
+  for (const [surface, pattern] of requiredCoverage) {
+    assert.match(stylesheet, pattern, `missing semantic coverage for ${surface}`);
+  }
+});
