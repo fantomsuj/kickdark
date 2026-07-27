@@ -65,6 +65,22 @@ function splitSelectors(selectorList) {
   return selectors;
 }
 
+function assertSelectorDeclarations(rules, selector, expectedDeclarations) {
+  const rule = rules.find(({ selector: selectorList }) =>
+    splitSelectors(selectorList).includes(selector)
+  );
+
+  assert.ok(rule, `missing semantic selector: ${selector}`);
+
+  for (const expected of expectedDeclarations) {
+    assert.match(
+      rule.declarations,
+      expected,
+      `${selector} is missing declaration contract ${expected}`
+    );
+  }
+}
+
 test("every visual selector is scoped to the dark-state root", () => {
   const stylesheet = readStylesheet();
   const rules = rulesFrom(stylesheet);
@@ -121,82 +137,212 @@ test("printing resets the page to a light color scheme", () => {
   assert.match(printBlock[1], /color\s*:\s*black\s*!important/i);
 });
 
-test("semantic surfaces do not rely on broad class-name matching", () => {
+test("audited semantic surface map uses narrow selectors and enforced tier declarations", () => {
   const stylesheet = readStylesheet();
-  const unsafeFragments = [
-    "card",
-    "panel",
-    "surface",
-    "modal",
-    "popover",
-    "dropdown",
-    "tooltip",
-    "overlay",
-    "toast",
-    "notification",
-    "loading",
-    "success",
-    "warning",
-    "error",
-    "danger",
-    "divider"
-  ];
-
-  for (const fragment of unsafeFragments) {
-    assert.doesNotMatch(
-      stylesheet,
-      new RegExp(`\\[class\\*=["']${fragment}["'](?:\\s+i)?\\]`, "i"),
-      `broad class-name selector remains for ${fragment}`
-    );
-  }
+  const rules = rulesFrom(stylesheet);
+  const root = 'html[data-kick-night-mode="dark"]';
 
   assert.doesNotMatch(
     stylesheet,
-    /button:not\([^{}]*\[class\*=["'](?:primary|brand)["']/i,
-    "generic buttons must not infer intent from primary or brand class names"
+    /section\s*\[\s*data-slot\s*\]/i,
+    "generic slotted sections must not override the page-canvas tier"
   );
   assert.doesNotMatch(
     stylesheet,
-    /\[role=["']button["']\]:not\([^{}]*\[class\*=["'](?:primary|brand)["']/i,
-    "role buttons must not infer intent from primary or brand class names"
+    /\[\s*class\s*\*=/i,
+    "class substring selectors are too broad for an audited surface map"
   );
-});
 
-test("semantic surface map covers the complete Kick application shell", () => {
-  const stylesheet = readStylesheet();
-  const requiredCoverage = [
-    ["app shell", /html\[data-kick-night-mode="dark"\]\s+(?:body|#root|#__next)/i],
-    ["page canvas", /html\[data-kick-night-mode="dark"\]\s+(?:main|\[role="main"\])/i],
-    ["side navigation", /html\[data-kick-night-mode="dark"\]\s+\[role="navigation"\]/i],
-    ["header", /html\[data-kick-night-mode="dark"\]\s+(?:header|\[role="banner"\])/i],
-    ["notice", /html\[data-kick-night-mode="dark"\]\s+\[role="(?:note|status)"\]/i],
-    ["table", /html\[data-kick-night-mode="dark"\]\s+table/i],
-    ["table header", /html\[data-kick-night-mode="dark"\]\s+\[role="columnheader"\]/i],
-    ["table row", /html\[data-kick-night-mode="dark"\]\s+\[role="row"\]/i],
-    ["form control", /html\[data-kick-night-mode="dark"\]\s+(?:input|select|textarea)/i],
-    ["button", /html\[data-kick-night-mode="dark"\]\s+(?:button|\[role="button"\])/i],
-    ["secondary button", /\[data-variant="secondary"\]/i],
-    ["badge", /\[data-slot="badge"\]/i],
-    ["menu", /\[role="menu"\]/i],
-    ["listbox", /\[role="listbox"\]/i],
-    ["popover", /\[data-radix-popper-content-wrapper\]/i],
-    ["dialog", /\[role="dialog"\]/i],
-    ["empty state", /\[data-state="empty"\]/i],
-    ["loading state", /\[aria-busy="true"\]/i],
-    ["error state", /\[data-tone="negative"\]/i],
-    ["settings screen", /\[data-page="settings"\]/i],
-    ["settings panel", /\[data-slot="settings-panel"\]/i],
-    ["hover state", /:hover/i],
-    ["selected state", /(?:aria-selected="true"|data-state="selected")/i],
-    ["focus state", /:focus-visible/i],
-    ["white utility repair", /\[class~="bg-white"\]/i],
+  const contracts = [
     [
-      "inline white repair",
-      /\[style\*="background-color:\s*(?:white|rgb\(255,\s*255,\s*255\))"\]/i
+      `${root} body`,
+      [
+        /(?:^|;)\s*color\s*:\s*var\(--kick-night-text\)\s*!important/i,
+        /(?:^|;)\s*background\s*:\s*var\(--kick-night-page\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [data-slot="page"]`,
+      [
+        /(?:^|;)\s*color\s*:\s*var\(--kick-night-text\)/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-page\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [role="navigation"]`,
+      [
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-surface\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} header`,
+      [
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-surface\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [role="status"]`,
+      [
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border-strong\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-raised\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [data-slot="card"]`,
+      [
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-surface\)\s*!important/i,
+        /(?:^|;)\s*box-shadow\s*:\s*0 12px 34px rgba\(0,\s*0,\s*0,\s*0\.2\)/i
+      ]
+    ],
+    [
+      `${root} table`,
+      [
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-surface\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [role="columnheader"]`,
+      [
+        /(?:^|;)\s*color\s*:\s*var\(--kick-night-muted\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-raised\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [role="row"]`,
+      [
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*transparent/i
+      ]
+    ],
+    [
+      `${root} [role="row"]:hover`,
+      [
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-hover\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} input`,
+      [
+        /(?:^|;)\s*color\s*:\s*var\(--kick-night-text\)\s*!important/i,
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border-strong\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-page\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} button`,
+      [/(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border-strong\)/i]
+    ],
+    [
+      `${root} button[data-variant="secondary"]`,
+      [
+        /(?:^|;)\s*color\s*:\s*var\(--kick-night-text\)/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-raised\)/i
+      ]
+    ],
+    [
+      `${root} button[data-variant="secondary"]:hover`,
+      [/(?:^|;)\s*background-color\s*:\s*var\(--kick-night-hover\)/i]
+    ],
+    [
+      `${root} [data-slot="badge"]`,
+      [
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border-strong\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-raised\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [role="menu"]`,
+      [
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border-strong\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-raised\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [role="listbox"]`,
+      [
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border-strong\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-raised\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [data-radix-popper-content-wrapper] > *`,
+      [
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-raised\)\s*!important/i,
+        /(?:^|;)\s*box-shadow\s*:\s*0 18px 54px rgba\(0,\s*0,\s*0,\s*0\.34\)/i
+      ]
+    ],
+    [
+      `${root} [role="dialog"]`,
+      [
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border-strong\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-raised\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [data-state="empty"]`,
+      [
+        /(?:^|;)\s*color\s*:\s*var\(--kick-night-muted\)/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-surface\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [aria-busy="true"]`,
+      [
+        /(?:^|;)\s*color\s*:\s*var\(--kick-night-muted\)/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-hover\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [data-tone="negative"]`,
+      [/(?:^|;)\s*color\s*:\s*var\(--kick-night-negative\)\s*!important/i]
+    ],
+    [
+      `${root} [data-page="settings"]`,
+      [
+        /(?:^|;)\s*color\s*:\s*var\(--kick-night-text\)/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-page\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [data-slot="settings-panel"]`,
+      [
+        /(?:^|;)\s*border-color\s*:\s*var\(--kick-night-border\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-surface\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [data-state="selected"]`,
+      [/(?:^|;)\s*background-color\s*:\s*var\(--kick-night-hover\)\s*!important/i]
+    ],
+    [
+      `${root} button:focus-visible`,
+      [/(?:^|;)\s*outline\s*:\s*2px solid var\(--kick-night-accent\)\s*!important/i]
+    ],
+    [
+      `${root} [role="option"][aria-selected="true"]`,
+      [
+        /(?:^|;)\s*color\s*:\s*var\(--kick-night-text\)\s*!important/i,
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-hover\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [class~="bg-white"]`,
+      [
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-surface\)\s*!important/i
+      ]
+    ],
+    [
+      `${root} [style*="background-color: white"]`,
+      [
+        /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-surface\)\s*!important/i
+      ]
     ]
   ];
 
-  for (const [surface, pattern] of requiredCoverage) {
-    assert.match(stylesheet, pattern, `missing semantic coverage for ${surface}`);
+  for (const [selector, declarations] of contracts) {
+    assertSelectorDeclarations(rules, selector, declarations);
   }
 });

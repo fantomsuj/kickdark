@@ -60,7 +60,6 @@ html[data-kick-night-mode="dark"] [data-slot="banner"] {
   background-color: var(--kick-night-raised) !important;
 }
 
-html[data-kick-night-mode="dark"] section[data-slot],
 html[data-kick-night-mode="dark"] [data-slot="card"],
 html[data-kick-night-mode="dark"] [data-slot="panel"],
 html[data-kick-night-mode="dark"] [data-slot="surface"],
