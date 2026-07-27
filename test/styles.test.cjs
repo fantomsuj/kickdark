@@ -346,3 +346,47 @@ test("audited semantic surface map uses narrow selectors and enforced tier decla
     assertSelectorDeclarations(rules, selector, declarations);
   }
 });
+
+test("authenticated Clients surfaces map audited class tokens to dark tiers", () => {
+  const rules = rulesFrom(readStylesheet());
+  const root = 'html[data-kick-night-mode="dark"]';
+  const pageTier = [
+    /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-page\)\s*!important/i
+  ];
+  const raisedTier = [
+    /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-raised\)\s*!important/i
+  ];
+  const surfaceTier = [
+    /(?:^|;)\s*background-color\s*:\s*var\(--kick-night-surface\)\s*!important/i
+  ];
+  const contracts = [
+    [
+      `${root} [class~="_main-interface_fvouj_1"][class~="_main-interface-with-navigation_fvouj_13"][class~="_navOpen_fvouj_17"]`,
+      pageTier
+    ],
+    [
+      `${root} [class~="_container_9a976_1"][class~="_borderTop_116yu_17"]`,
+      raisedTier
+    ],
+    [
+      `${root} [class~="_flexLayout_mvksx_2"][class~="w-100"][class~="_content_1mxb1_8"]`,
+      surfaceTier
+    ],
+    [
+      `${root} [class~="form-group"][class~="form-group--icon"][class~="form-group--icon--left"]`,
+      surfaceTier
+    ],
+    [
+      `${root} [class~="_row_4s7es_6"][class~="_headerRow_y765f_21"][class~="_headers_16kq2_68"]`,
+      raisedTier
+    ],
+    ...["name", "entities", "team", "startDate", "actions", "filler"].map((semanticName) => [
+      `${root} [class~="_cell_16kq2_45"][class~="${semanticName}"]`,
+      surfaceTier
+    ])
+  ];
+
+  for (const [selector, declarations] of contracts) {
+    assertSelectorDeclarations(rules, selector, declarations);
+  }
+});
