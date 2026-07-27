@@ -55,7 +55,6 @@ function setup({ storedMode = "system", systemIsDark = false, getError } = {}) {
   const api = loadContentApi();
   const root = { dataset: {} };
   const mediaQuery = createMediaQuery(systemIsDark);
-  const printMediaQuery = createMediaQuery(false);
   const storageChanges = createStorageChanges();
   const storage = {
     async get() {
@@ -68,12 +67,11 @@ function setup({ storedMode = "system", systemIsDark = false, getError } = {}) {
     core,
     root,
     mediaQuery,
-    printMediaQuery,
     storage,
     storageChanges
   });
 
-  return { controller, root, mediaQuery, printMediaQuery, storageChanges };
+  return { controller, root, mediaQuery, storageChanges };
 }
 
 test("stored dark mode is applied to the root element", async () => {
@@ -140,74 +138,15 @@ test("failed storage reads fall back to system without blocking the page", async
   assert.equal(mediaQuery.listenerCount(), 1);
 });
 
-test("print entry suppresses extension styling until print exit", async () => {
-  const { controller, root, printMediaQuery } = setup({ storedMode: "dark" });
-
-  await controller?.start();
-  assert.equal(printMediaQuery.listenerCount(), 1);
-  assert.equal("kickNightPrinting" in root.dataset, false);
-
-  printMediaQuery.setMatches(true);
-  assert.equal(root.dataset.kickNightPrinting, "");
-
-  printMediaQuery.setMatches(false);
-  assert.equal("kickNightPrinting" in root.dataset, false);
-});
-
-test("system appearance changes during print update the theme without ending print suppression", async () => {
-  const { controller, root, mediaQuery, printMediaQuery } = setup({
-    storedMode: "system",
-    systemIsDark: false
-  });
-
-  await controller?.start();
-  printMediaQuery.setMatches(true);
-  mediaQuery.setMatches(true);
-
-  assert.equal(root.dataset.kickNightMode, "dark");
-  assert.equal(root.dataset.kickNightPrinting, "");
-});
-
 test("stop removes every extension listener", async () => {
-  const { controller, root, mediaQuery, printMediaQuery, storageChanges } = setup({
+  const { controller, mediaQuery, storageChanges } = setup({
     storedMode: "system"
   });
 
   assert.equal(typeof controller?.stop, "function");
   await controller?.start();
-  printMediaQuery.setMatches(true);
   controller?.stop();
 
   assert.equal(mediaQuery.listenerCount(), 0);
-  assert.equal(printMediaQuery.listenerCount(), 0);
   assert.equal(storageChanges.listenerCount(), 0);
-  assert.equal("kickNightPrinting" in root.dataset, false);
-});
-
-test("bootstrap creates both appearance and print media queries", () => {
-  const api = loadContentApi();
-  const mediaQueries = [];
-  const storageChanges = createStorageChanges();
-  const globalObject = {
-    chrome: {
-      storage: {
-        local: {
-          async get() {
-            return { kickNightModePreference: "system" };
-          }
-        },
-        onChanged: storageChanges
-      }
-    },
-    document: { documentElement: { dataset: {} } },
-    KickNightModeCore: core,
-    matchMedia(query) {
-      mediaQueries.push(query);
-      return createMediaQuery(false);
-    }
-  };
-
-  api.bootstrap(globalObject);
-
-  assert.deepEqual(mediaQueries, ["(prefers-color-scheme: dark)", "print"]);
 });
