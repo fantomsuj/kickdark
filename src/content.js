@@ -15,6 +15,7 @@
     core,
     root,
     mediaQuery,
+    printMediaQuery,
     storage,
     storageChanges
   }) {
@@ -28,6 +29,34 @@
 
     function onSystemChange() {
       if (mode === "system") applyTheme();
+    }
+
+    function applyPrintState() {
+      if (printMediaQuery.matches) {
+        root.dataset.kickNightPrinting = "";
+      } else {
+        delete root.dataset.kickNightPrinting;
+      }
+    }
+
+    function onPrintChange() {
+      applyPrintState();
+    }
+
+    function addPrintListener() {
+      if (typeof printMediaQuery.addEventListener === "function") {
+        printMediaQuery.addEventListener("change", onPrintChange);
+      } else {
+        printMediaQuery.addListener(onPrintChange);
+      }
+    }
+
+    function removePrintListener() {
+      if (typeof printMediaQuery.removeEventListener === "function") {
+        printMediaQuery.removeEventListener("change", onPrintChange);
+      } else {
+        printMediaQuery.removeListener(onPrintChange);
+      }
     }
 
     function addSystemListener() {
@@ -76,6 +105,8 @@
       started = true;
 
       storageChanges.addListener(onStorageChange);
+      addPrintListener();
+      applyPrintState();
       setMode("system");
 
       try {
@@ -91,6 +122,8 @@
       started = false;
       storageChanges.removeListener(onStorageChange);
       removeSystemListener();
+      removePrintListener();
+      delete root.dataset.kickNightPrinting;
     }
 
     return Object.freeze({ start, stop });
@@ -114,6 +147,7 @@
       core: globalObject.KickNightModeCore,
       root: documentObject.documentElement,
       mediaQuery: globalObject.matchMedia("(prefers-color-scheme: dark)"),
+      printMediaQuery: globalObject.matchMedia("print"),
       storage: chromeApi.storage.local,
       storageChanges: chromeApi.storage.onChanged
     });
