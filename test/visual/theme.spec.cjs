@@ -10,14 +10,30 @@ const {
 
 const fixtureNames = [
   "tasks",
+  "activity",
+  "categories",
+  "document-categories",
   "documents",
   "transactions",
   "clients",
   "accounts",
   "rules",
+  "accounting",
+  "chart-of-accounts",
+  "reconciliation",
+  "counterparties",
+  "classes",
+  "insights",
   "profit-loss",
+  "balance-sheet",
+  "general-ledger",
+  "trial-balance",
+  "expenses-by-vendor",
+  "cash-flow-statement",
   "invoicing",
   "billing",
+  "team",
+  "organization-billing",
   "tasks-new-task",
   "dialog-menu-form",
   "command-palette",
@@ -236,6 +252,26 @@ test("major surfaces pair a dark background with readable foreground", async ({
   }
 });
 
+test("business profile heading and field labels remain readable", async ({
+  page
+}) => {
+  await loadFixture(page, "form");
+
+  const colors = await page.locator("main h1, main .form-group__label")
+    .evaluateAll((elements) =>
+      elements.map((element) => ({
+        selector: element.matches("h1") ? "h1" : ".form-group__label",
+        color: getComputedStyle(element).color
+      }))
+    );
+
+  expect(colors).toEqual([
+    { selector: "h1", color: "rgb(244, 247, 251)" },
+    { selector: ".form-group__label", color: "rgb(183, 192, 206)" },
+    { selector: ".form-group__label", color: "rgb(183, 192, 206)" }
+  ]);
+});
+
 test("Command-K Home pill and shortcut keycaps use dark surfaces", async ({
   page
 }) => {
@@ -275,18 +311,34 @@ test("Command-K Home pill and shortcut keycaps use dark surfaces", async ({
 
 test("audited route surfaces contain no white glare bands", async ({ page }) => {
   const auditedSurfaces = {
+    tasks: ".sub-navigation-portals > div > div",
+    activity: "main > div > .w-100",
+    categories: "main > div > .w-100",
+    "document-categories": "main > div > .w-100",
     transactions:
       ".sub-navigation-portals > div:first-child > div:first-child, .transactions > div:first-child > div:first-child",
     clients:
-      ".sub-navigation-portals > div:first-child, .billingOwnership, .billingOwnership > div",
+      ".sub-navigation-portals > div > div, .billingOwnership, .billingOwnership > div",
     accounts: ".balance",
-    rules: "main table, main th, main td",
+    rules: "main > div > .w-100, main table, main th, main td",
+    accounting: "main > div > .w-100, main a",
+    "chart-of-accounts": "main > div > .w-100",
+    counterparties:
+      "main > div > .w-100, section:has(.view-table-row) + div",
+    classes: "main > div > .w-100",
+    insights: "main > div > .w-100",
     "profit-loss":
-      "main header:has(h3.font-weight-medium), .has-overflow > section, .has-overflow > section .view-table-row > div",
-    invoicing:
-      ".segment, main .p-0:has(.segment) > div > div > div > div > div",
-    billing:
-      ".segment, main .p-0:has(.segment) > div > div > div > div > div",
+      "main > div > .w-100, main header:has(h3.font-weight-medium), .has-overflow > section, .has-overflow > section .view-table-row > div",
+    "balance-sheet":
+      "main > div > .w-100, .view-table-row .label, .data-table__drill-down",
+    "general-ledger": "main > div > .w-100",
+    "trial-balance": "main > div > .w-100, .title",
+    "expenses-by-vendor": "main > div > .w-100, .view-table-row",
+    "cash-flow-statement":
+      "main > div > .w-100, .view-table-row .label, .data-table__drill-down",
+    invoicing: "main",
+    billing: ".sub-navigation-portals > div > div",
+    "organization-billing": "main > div > div > div",
     "tasks-new-task":
       '[role="dialog"], [role="dialog"] [role="textbox"]',
     "command-palette": '[role="dialog"] kbd',

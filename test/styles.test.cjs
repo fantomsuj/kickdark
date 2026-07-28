@@ -165,14 +165,48 @@ test("selector evidence covers every audited route and interactive state", () =>
     ),
     {
       tasks: { route: "tasks", surface: "application" },
+      activity: { route: "activity", surface: "application" },
+      categories: { route: "categories", surface: "application" },
+      "document-categories": {
+        route: "document-categories",
+        surface: "application"
+      },
       documents: { route: "documents", surface: "application" },
       transactions: { route: "transactions", surface: "application" },
       clients: { route: "clients", surface: "application" },
       accounts: { route: "accounts", surface: "application" },
       rules: { route: "rules", surface: "application" },
+      accounting: { route: "accounting", surface: "application" },
+      "chart-of-accounts": {
+        route: "chart-of-accounts",
+        surface: "application"
+      },
+      reconciliation: {
+        route: "reconciliation",
+        surface: "application"
+      },
+      counterparties: { route: "counterparties", surface: "application" },
+      classes: { route: "classes", surface: "application" },
+      insights: { route: "insights", surface: "application" },
       "profit-loss": { route: "profit-loss", surface: "report" },
+      "balance-sheet": { route: "balance-sheet", surface: "report" },
+      "general-ledger": { route: "general-ledger", surface: "report" },
+      "trial-balance": { route: "trial-balance", surface: "report" },
+      "expenses-by-vendor": {
+        route: "expenses-by-vendor",
+        surface: "report"
+      },
+      "cash-flow-statement": {
+        route: "cash-flow-statement",
+        surface: "report"
+      },
       invoicing: { route: "invoicing", surface: "empty-state" },
       billing: { route: "billing", surface: "empty-state" },
+      team: { route: "team", surface: "application" },
+      "organization-billing": {
+        route: "organization-billing",
+        surface: "application"
+      },
       "tasks-new-task": { route: "tasks-new-task", surface: "overlay" },
       "dialog-menu-form": {
         route: "documents",

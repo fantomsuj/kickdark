@@ -12,16 +12,32 @@ const captureDirectory = path.resolve(
   process.argv[2] || ".context/captures"
 );
 const fixtureDirectory = path.join(repositoryRoot, "test", "fixtures");
-const fixtureNames = [
+const allFixtureNames = [
   "tasks",
+  "activity",
+  "categories",
+  "document-categories",
   "documents",
   "transactions",
   "clients",
   "accounts",
   "rules",
+  "accounting",
+  "chart-of-accounts",
+  "reconciliation",
+  "counterparties",
+  "classes",
+  "insights",
   "profit-loss",
+  "balance-sheet",
+  "general-ledger",
+  "trial-balance",
+  "expenses-by-vendor",
+  "cash-flow-statement",
   "invoicing",
   "billing",
+  "team",
+  "organization-billing",
   "tasks-new-task",
   "dialog-menu-form",
   "command-palette",
@@ -30,6 +46,15 @@ const fixtureNames = [
   "form",
   "empty-state"
 ];
+const requestedFixtureNames = process.argv.slice(3);
+const fixtureNames =
+  requestedFixtureNames.length > 0 ? requestedFixtureNames : allFixtureNames;
+
+for (const fixtureName of fixtureNames) {
+  if (!allFixtureNames.includes(fixtureName)) {
+    throw new Error(`Unknown fixture: ${fixtureName}`);
+  }
+}
 
 function captureFromFile(fixtureName) {
   const capturePath = path.join(captureDirectory, `${fixtureName}.json`);
@@ -50,17 +75,20 @@ function assertSanitized(capture, fixtureName) {
       capture.html
     ) ||
     /https?:|www\.|mailto:|@\w+\.\w+/i.test(capture.html) ||
+    /class="[^"]*(?:\d{4}-\d{2}-\d{2}|\b\d{4,}\b)[^"]*"/i.test(
+      capture.html
+    ) ||
     />[^<\s][^<]*</.test(capture.html)
   ) {
     throw new Error(`${fixtureName} contains unsanitized page content`);
   }
 }
 
-function markSurfaces(source) {
+function markSurfaces(source, fixtureName) {
   let html = source.replace(/\sclass="undefined"/g, "");
   html = html.replace(
     /<body\b/,
-    '<body data-kick-night-test-surface="application"'
+    `<body data-kick-night-test-route="${fixtureName}" data-kick-night-test-surface="application"`
   );
   html = html.replace(
     /<main\b/g,
@@ -103,12 +131,16 @@ function markSurfaces(source) {
 
 fs.mkdirSync(fixtureDirectory, { recursive: true });
 
-const manifest = {
-  version: 1,
-  policy:
-    "Captured inside authenticated Kick pages and sanitized before serialization.",
-  fixtures: {}
-};
+const manifestPath = path.join(fixtureDirectory, "capture-manifest.json");
+const manifest =
+  requestedFixtureNames.length > 0 && fs.existsSync(manifestPath)
+    ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))
+    : {
+        version: 1,
+        policy:
+          "Captured inside authenticated Kick pages and sanitized before serialization.",
+        fixtures: {}
+      };
 
 for (const fixtureName of fixtureNames) {
   const capture = captureFromFile(fixtureName);
@@ -116,7 +148,7 @@ for (const fixtureName of fixtureNames) {
   const fixtureHtml = [
     "<!doctype html>",
     '<html data-kick-night-mode="dark">',
-    markSurfaces(capture.html),
+    markSurfaces(capture.html, fixtureName),
     "</html>",
     ""
   ].join("\n");
@@ -243,6 +275,7 @@ async function buildSelectorInventory() {
     variables: {}
   };
 
+  const entries = [];
   for (const rule of rules) {
     for (const selector of splitSelectors(rule.selectorText)) {
       const exception = exceptionFor(
@@ -251,7 +284,7 @@ async function buildSelectorInventory() {
         rule.inPrint
       );
       if (exception) {
-        inventory.selectors.push({
+        entries.push({
           selector,
           evidence: "documented-exception",
           exception,
@@ -261,17 +294,28 @@ async function buildSelectorInventory() {
         continue;
       }
 
-      const routes = new Set();
-      const surfaces = new Set();
-      const candidate = evidenceSelector(selector);
+      entries.push({
+        selector,
+        evidence: "captured",
+        candidate: evidenceSelector(selector),
+        routes: new Set(),
+        surfaces: new Set()
+      });
+    }
+  }
 
-      for (const fixtureName of fixtureNames) {
-        const fixtureHtml = fs.readFileSync(
-          path.join(fixtureDirectory, `${fixtureName}.html`),
-          "utf8"
-        );
-        await page.setContent(fixtureHtml);
-        const matchedSurfaces = await page.evaluate((query) => {
+  const capturedEntries = entries.filter(
+    ({ evidence }) => evidence === "captured"
+  );
+  for (const fixtureName of allFixtureNames) {
+    const fixtureHtml = fs.readFileSync(
+      path.join(fixtureDirectory, `${fixtureName}.html`),
+      "utf8"
+    );
+    await page.setContent(fixtureHtml);
+    const matchesBySelector = await page.evaluate(
+      (queries) =>
+        queries.map((query) => {
           let matches;
           try {
             matches = Array.from(document.querySelectorAll(query));
@@ -288,22 +332,28 @@ async function buildSelectorInventory() {
               element.localName
             );
           });
-        }, candidate);
+        }),
+      capturedEntries.map(({ candidate }) => candidate)
+    );
 
-        if (matchedSurfaces.length > 0) {
-          routes.add(manifest.fixtures[fixtureName].route);
-          for (const surface of matchedSurfaces) surfaces.add(surface);
-        }
+    matchesBySelector.forEach((matchedSurfaces, index) => {
+      if (matchedSurfaces.length === 0) return;
+      capturedEntries[index].routes.add(manifest.fixtures[fixtureName].route);
+      for (const surface of matchedSurfaces) {
+        capturedEntries[index].surfaces.add(surface);
       }
-
-      inventory.selectors.push({
-        selector,
-        evidence: "captured",
-        routes: Array.from(routes).sort(),
-        surfaces: Array.from(surfaces).sort()
-      });
-    }
+    });
   }
+
+  inventory.selectors = entries.map((entry) => {
+    if (entry.evidence !== "captured") return entry;
+    return {
+      selector: entry.selector,
+      evidence: entry.evidence,
+      routes: Array.from(entry.routes).sort(),
+      surfaces: Array.from(entry.surfaces).sort()
+    };
+  });
 
   const borderVariableSelectors = inventory.selectors.filter(
     ({ selector }) =>

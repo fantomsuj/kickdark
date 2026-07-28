@@ -26,6 +26,8 @@
   const SAFE_CLASS_TOKEN = /^[A-Za-z_-][A-Za-z0-9_:/.-]{0,79}$/;
   const GENERATED_CLASS_TOKEN =
     /(?:^css-|^sc-|^_[a-z0-9-]+_[a-z0-9]{5}_[0-9]+$|(?<!_)_[a-z0-9]{5,}$)/i;
+  const SENSITIVE_CLASS_TOKEN =
+    /(?:\d{4}-\d{2}-\d{2}|\b\d{4,}\b)/;
   const VOID_ELEMENTS = new Set([
     "area",
     "base",
@@ -48,6 +50,7 @@
       (token) =>
         SAFE_CLASS_TOKEN.test(token) &&
         !GENERATED_CLASS_TOKEN.test(token) &&
+        !SENSITIVE_CLASS_TOKEN.test(token) &&
         !/https?:|www\.|@/i.test(token)
     );
   }

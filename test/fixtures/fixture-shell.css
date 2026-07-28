@@ -160,9 +160,110 @@ section:has([role="columnheader"]) > div:first-child {
  * Authenticated route-specific survivors. These model the Kick declarations
  * that previously won on routes missing from the visual suite.
  */
+main h1 {
+  color: #000000;
+}
+
+main .form-group__label {
+  color: #515d71;
+}
+
 .sub-navigation-portals > div:first-child {
   color: #0f1826;
   background: #ffffff;
+}
+
+.sub-navigation-portals > div > div {
+  color: #0f1826;
+  background: #ffffff;
+}
+
+body[data-kick-night-test-route="activity"] main > div > .w-100,
+body[data-kick-night-test-route="categories"] main > div > .w-100,
+body[data-kick-night-test-route="document-categories"] main > div > .w-100,
+body[data-kick-night-test-route="rules"] main > div > .w-100,
+body[data-kick-night-test-route="accounting"] main > div > .w-100,
+body[data-kick-night-test-route="chart-of-accounts"] main > div > .w-100,
+body[data-kick-night-test-route="counterparties"] main > div > .w-100,
+body[data-kick-night-test-route="classes"] main > div > .w-100,
+body[data-kick-night-test-route="insights"] main > div > .w-100,
+body[data-kick-night-test-route="profit-loss"] main > div > .w-100,
+body[data-kick-night-test-route="balance-sheet"] main > div > .w-100,
+body[data-kick-night-test-route="general-ledger"] main > div > .w-100,
+body[data-kick-night-test-route="trial-balance"] main > div > .w-100,
+body[data-kick-night-test-route="expenses-by-vendor"] main > div > .w-100,
+body[data-kick-night-test-route="cash-flow-statement"] main > div > .w-100 {
+  background: #ffffff;
+}
+
+body[data-kick-night-test-route="categories"] .view-table-row .description *,
+body[data-kick-night-test-route="document-categories"]
+  .view-table-row
+  .description
+  * {
+  color: #515d71;
+}
+
+body[data-kick-night-test-route="accounting"] main a {
+  color: #0f1826;
+  background: #ffffff;
+}
+
+body[data-kick-night-test-route="chart-of-accounts"]
+  .view-table-row
+  :is(.name, .source, .entities)
+  *,
+body[data-kick-night-test-route="classes"]
+  .view-table-row
+  .object-icon--rhombus
+  span {
+  color: #0f1826;
+}
+
+body[data-kick-night-test-route="profit-loss"] main .text-grey,
+body[data-kick-night-test-route="balance-sheet"] main .text-grey,
+body[data-kick-night-test-route="general-ledger"] main .text-grey,
+body[data-kick-night-test-route="trial-balance"] main .text-grey,
+body[data-kick-night-test-route="expenses-by-vendor"] main .text-grey,
+body[data-kick-night-test-route="cash-flow-statement"] main .text-grey {
+  color: #515d71;
+}
+
+body[data-kick-night-test-route="balance-sheet"] .view-table-row .label *,
+body[data-kick-night-test-route="balance-sheet"] .data-table__drill-down,
+body[data-kick-night-test-route="expenses-by-vendor"]
+  .view-table-row
+  :is(.vendor, .filler)
+  *,
+body[data-kick-night-test-route="cash-flow-statement"]
+  .view-table-row
+  .label
+  *,
+body[data-kick-night-test-route="cash-flow-statement"]
+  .data-table__drill-down {
+  color: #0f1826;
+}
+
+body[data-kick-night-test-route="trial-balance"] .title {
+  background: #ffffff;
+}
+
+body[data-kick-night-test-route="counterparties"]
+  main
+  section
+  > div
+  > section
+  + div {
+  background: #ffffff;
+}
+
+body[data-kick-night-test-route="organization-billing"]
+  main
+  > div
+  > div
+  > div {
+  color: #0f1826;
+  background: #fafbfc;
 }
 
 body:has(.transactions)

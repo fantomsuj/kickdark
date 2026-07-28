@@ -15,17 +15,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] body",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "application",
@@ -45,19 +61,36 @@
       "selector": "html[data-kick-night-mode=\"dark\"] main",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
+        "main",
         "page"
       ]
     },
@@ -83,17 +116,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "sidebar"
@@ -103,17 +152,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav.navigation-menu",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "sidebar"
@@ -123,17 +188,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] header",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "header"
@@ -143,17 +224,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav:has(nav.navigation-menu) > header button span",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "header"
@@ -163,16 +260,28 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav.navigation-menu a > span > div > div",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
+        "counterparties",
+        "document-categories",
         "documents",
-        "invoicing",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "sidebar"
@@ -182,17 +291,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] header aside > div:first-child > span",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "header"
@@ -202,16 +327,30 @@
       "selector": "html[data-kick-night-mode=\"dark\"] .entities-navigation > div:first-child",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group"
@@ -221,16 +360,30 @@
       "selector": "html[data-kick-night-mode=\"dark\"] .entities-navigation .text-left",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group"
@@ -240,17 +393,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav.navigation-menu > div",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "sidebar"
@@ -261,12 +430,7 @@
       "evidence": "captured",
       "routes": [
         "accounts",
-        "billing",
         "documents",
-        "invoicing",
-        "profit-loss",
-        "rules",
-        "tasks",
         "tasks-new-task",
         "transactions",
         "transactions-filter"
@@ -281,7 +445,6 @@
       "routes": [
         "billing",
         "clients",
-        "invoicing",
         "tasks",
         "tasks-new-task",
         "transactions",
@@ -295,17 +458,32 @@
       "selector": "html[data-kick-night-mode=\"dark\"] section:not(.Toastify)",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group"
@@ -315,11 +493,14 @@
       "selector": "html[data-kick-night-mode=\"dark\"] .transactions",
       "evidence": "captured",
       "routes": [
+        "categories",
+        "classes",
         "transactions",
         "transactions-filter"
       ],
       "surfaces": [
-        "group"
+        "group",
+        "row"
       ]
     },
     {
@@ -338,7 +519,8 @@
       "evidence": "captured",
       "routes": [
         "clients",
-        "documents"
+        "documents",
+        "team"
       ],
       "surfaces": [
         "page"
@@ -349,13 +531,84 @@
       "evidence": "captured",
       "routes": [
         "accounts",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
-        "invoicing",
+        "expenses-by-vendor",
+        "general-ledger",
         "profit-loss",
+        "reconciliation",
         "tasks",
         "tasks-new-task",
+        "team",
+        "transactions",
+        "transactions-filter",
+        "trial-balance"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .sub-navigation-portals > div > div",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "clients",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main > div > .w-100",
+      "evidence": "captured",
+      "routes": [
+        "activity",
+        "balance-sheet",
+        "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
+        "counterparties",
+        "document-categories",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
+        "profit-loss",
+        "trial-balance"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] body:has(section.transactions) .sub-navigation-portals > div:first-child > div:first-child",
+      "evidence": "captured",
+      "routes": [
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .transactions > div:first-child > div:first-child",
+      "evidence": "captured",
+      "routes": [
         "transactions",
         "transactions-filter"
       ],
@@ -368,15 +621,26 @@
       "evidence": "captured",
       "routes": [
         "accounts",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
-        "invoicing",
+        "expenses-by-vendor",
+        "general-ledger",
         "profit-loss",
+        "reconciliation",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group"
@@ -387,15 +651,26 @@
       "evidence": "captured",
       "routes": [
         "accounts",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
-        "invoicing",
+        "expenses-by-vendor",
+        "general-ledger",
         "profit-loss",
+        "reconciliation",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group"
@@ -406,7 +681,14 @@
       "evidence": "captured",
       "routes": [
         "accounts",
+        "balance-sheet",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "document-categories",
+        "expenses-by-vendor",
         "profit-loss",
         "tasks",
         "tasks-new-task"
@@ -420,7 +702,14 @@
       "evidence": "captured",
       "routes": [
         "accounts",
+        "balance-sheet",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "document-categories",
+        "expenses-by-vendor",
         "profit-loss",
         "tasks",
         "tasks-new-task"
@@ -430,11 +719,116 @@
       ]
     },
     {
+      "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row :is(.name, .source, .entities, .vendor, .label, .description)",
+      "evidence": "captured",
+      "routes": [
+        "balance-sheet",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
+        "clients",
+        "document-categories",
+        "expenses-by-vendor",
+        "tasks",
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row :is(.name, .source, .entities, .vendor, .label, .description) *",
+      "evidence": "captured",
+      "routes": [
+        "balance-sheet",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
+        "clients",
+        "document-categories",
+        "expenses-by-vendor",
+        "tasks",
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main:has(header h3.font-weight-medium) .view-table-row > div > div",
+      "evidence": "captured",
+      "routes": [
+        "balance-sheet",
+        "cash-flow-statement",
+        "expenses-by-vendor",
+        "profit-loss"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row .data-table__drill-down",
+      "evidence": "captured",
+      "routes": [
+        "balance-sheet",
+        "cash-flow-statement"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main .view-table-row .entities .object-icon__content",
+      "evidence": "captured",
+      "routes": [
+        "chart-of-accounts",
+        "clients"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main .object-icon--rhombus .object-icon__content",
+      "evidence": "captured",
+      "routes": [
+        "classes"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main:has(> div > .w-100):not(:has(.view-table-row)) .object-icon--interaction .object-icon__content",
+      "evidence": "captured",
+      "routes": [
+        "activity",
+        "billing",
+        "counterparties",
+        "general-ledger",
+        "insights"
+      ],
+      "surfaces": [
+        "group",
+        "page"
+      ]
+    },
+    {
       "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row:hover",
       "evidence": "captured",
       "routes": [
         "accounts",
+        "balance-sheet",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "document-categories",
+        "expenses-by-vendor",
         "profit-loss",
         "tasks",
         "tasks-new-task"
@@ -448,7 +842,14 @@
       "evidence": "captured",
       "routes": [
         "accounts",
+        "balance-sheet",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "document-categories",
+        "expenses-by-vendor",
         "profit-loss",
         "tasks",
         "tasks-new-task"
@@ -461,17 +862,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav a:hover",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",
@@ -482,17 +899,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav a[aria-current=\"page\"]",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",
@@ -503,17 +936,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav .active",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",
@@ -525,7 +974,14 @@
       "evidence": "captured",
       "routes": [
         "accounts",
+        "balance-sheet",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "document-categories",
+        "expenses-by-vendor",
         "profit-loss",
         "tasks",
         "tasks-new-task"
@@ -539,7 +995,14 @@
       "evidence": "captured",
       "routes": [
         "accounts",
+        "balance-sheet",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "document-categories",
+        "expenses-by-vendor",
         "profit-loss",
         "tasks",
         "tasks-new-task"
@@ -552,7 +1015,6 @@
       "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row .actions button:has(> svg + div) > div",
       "evidence": "captured",
       "routes": [
-        "tasks",
         "tasks-new-task"
       ],
       "surfaces": [
@@ -563,17 +1025,24 @@
       "selector": "html[data-kick-night-mode=\"dark\"] .form-group",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "billing",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
-        "invoicing",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
         "transactions-filter"
       ],
       "surfaces": [
+        "div",
         "form",
         "group",
         "overlay",
@@ -585,6 +1054,7 @@
       "evidence": "captured",
       "routes": [
         "billing",
+        "counterparties",
         "documents",
         "tasks",
         "tasks-new-task",
@@ -601,6 +1071,7 @@
       "evidence": "captured",
       "routes": [
         "billing",
+        "counterparties",
         "documents",
         "tasks",
         "tasks-new-task",
@@ -613,23 +1084,62 @@
       ]
     },
     {
-      "selector": "html[data-kick-night-mode=\"dark\"] input",
+      "selector": "html[data-kick-night-mode=\"dark\"] main h1",
       "evidence": "captured",
       "routes": [
-        "billing",
-        "clients",
+        "documents"
+      ],
+      "surfaces": [
+        "h1"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main .form-group__label",
+      "evidence": "captured",
+      "routes": [
         "documents",
-        "invoicing",
-        "profit-loss",
-        "rules",
-        "tasks",
-        "tasks-new-task",
-        "transactions",
         "transactions-filter"
       ],
       "surfaces": [
         "form",
         "group",
+        "label"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] input",
+      "evidence": "captured",
+      "routes": [
+        "accounting",
+        "accounts",
+        "activity",
+        "balance-sheet",
+        "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
+        "clients",
+        "counterparties",
+        "document-categories",
+        "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
+        "profit-loss",
+        "reconciliation",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "team",
+        "transactions",
+        "transactions-filter",
+        "trial-balance"
+      ],
+      "surfaces": [
+        "form",
+        "group",
+        "input",
         "overlay",
         "page",
         "row",
@@ -640,19 +1150,26 @@
       "selector": "html[data-kick-night-mode=\"dark\"] .form-control",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "billing",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
-        "invoicing",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
         "transactions-filter"
       ],
       "surfaces": [
         "form",
         "group",
+        "input",
         "overlay",
         "page"
       ]
@@ -661,16 +1178,29 @@
       "selector": "html[data-kick-night-mode=\"dark\"] [role=\"combobox\"]",
       "evidence": "captured",
       "routes": [
+        "accounting",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
-        "invoicing",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",
@@ -684,20 +1214,36 @@
       "selector": "html[data-kick-night-mode=\"dark\"] input::placeholder",
       "evidence": "captured",
       "routes": [
+        "accounting",
+        "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
-        "invoicing",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "form",
         "group",
+        "input",
         "overlay",
         "page",
         "row",
@@ -708,19 +1254,26 @@
       "selector": "html[data-kick-night-mode=\"dark\"] .form-control::placeholder",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "billing",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
-        "invoicing",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
         "transactions-filter"
       ],
       "surfaces": [
         "form",
         "group",
+        "input",
         "overlay",
         "page"
       ]
@@ -730,6 +1283,7 @@
       "evidence": "captured",
       "routes": [
         "billing",
+        "counterparties",
         "documents",
         "tasks",
         "tasks-new-task",
@@ -746,6 +1300,7 @@
       "evidence": "captured",
       "routes": [
         "billing",
+        "counterparties",
         "documents",
         "tasks",
         "tasks-new-task",
@@ -761,17 +1316,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] button",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "application",
@@ -788,9 +1359,9 @@
       "selector": "html[data-kick-night-mode=\"dark\"] .btn-with-loader",
       "evidence": "captured",
       "routes": [
-        "billing",
+        "counterparties",
         "documents",
-        "invoicing"
+        "general-ledger"
       ],
       "surfaces": [
         "group",
@@ -801,17 +1372,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] button:not([disabled]):hover",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "application",
@@ -828,17 +1415,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] button[aria-expanded=\"true\"]",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "application",
@@ -855,17 +1458,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] button[aria-disabled=\"true\"]",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "application",
@@ -882,10 +1501,14 @@
       "selector": "html[data-kick-night-mode=\"dark\"] button:disabled",
       "evidence": "captured",
       "routes": [
+        "categories",
+        "classes",
+        "document-categories",
         "transactions-filter"
       ],
       "surfaces": [
-        "group"
+        "group",
+        "row"
       ]
     },
     {
@@ -942,17 +1565,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav a",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",
@@ -963,17 +1602,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav a:hover",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",
@@ -984,17 +1639,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav a[aria-current=\"page\"]",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",
@@ -1005,17 +1676,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] nav a.active",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",
@@ -1026,21 +1713,38 @@
       "selector": "html[data-kick-night-mode=\"dark\"] .icon-color-gray-900",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "header",
         "page",
+        "row",
         "toolbar"
       ]
     },
@@ -1048,17 +1752,31 @@
       "selector": "html[data-kick-night-mode=\"dark\"] .icon-color-gray-500",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",
@@ -1070,6 +1788,7 @@
       "selector": "html[data-kick-night-mode=\"dark\"] [role=\"dialog\"]",
       "evidence": "captured",
       "routes": [
+        "accounts",
         "documents",
         "tasks-new-task",
         "transactions-filter"
@@ -1092,8 +1811,14 @@
       "selector": "html[data-kick-night-mode=\"dark\"] [role=\"listbox\"]",
       "evidence": "captured",
       "routes": [
+        "accounting",
+        "accounts",
+        "balance-sheet",
+        "cash-flow-statement",
         "documents",
-        "profit-loss"
+        "expenses-by-vendor",
+        "profit-loss",
+        "trial-balance"
       ],
       "surfaces": [
         "overlay"
@@ -1113,8 +1838,14 @@
       "selector": "html[data-kick-night-mode=\"dark\"] [role=\"option\"]",
       "evidence": "captured",
       "routes": [
+        "accounting",
+        "accounts",
+        "balance-sheet",
+        "cash-flow-statement",
         "documents",
-        "profit-loss"
+        "expenses-by-vendor",
+        "profit-loss",
+        "trial-balance"
       ],
       "surfaces": [
         "overlay"
@@ -1134,8 +1865,14 @@
       "selector": "html[data-kick-night-mode=\"dark\"] [role=\"option\"]:hover",
       "evidence": "captured",
       "routes": [
+        "accounting",
+        "accounts",
+        "balance-sheet",
+        "cash-flow-statement",
         "documents",
-        "profit-loss"
+        "expenses-by-vendor",
+        "profit-loss",
+        "trial-balance"
       ],
       "surfaces": [
         "overlay"
@@ -1145,8 +1882,14 @@
       "selector": "html[data-kick-night-mode=\"dark\"] [role=\"option\"][aria-selected=\"true\"]",
       "evidence": "captured",
       "routes": [
+        "accounting",
+        "accounts",
+        "balance-sheet",
+        "cash-flow-statement",
         "documents",
-        "profit-loss"
+        "expenses-by-vendor",
+        "profit-loss",
+        "trial-balance"
       ],
       "surfaces": [
         "overlay"
@@ -1157,13 +1900,18 @@
       "evidence": "captured",
       "routes": [
         "accounts",
+        "activity",
         "billing",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
         "documents",
-        "invoicing",
+        "general-ledger",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
         "transactions-filter"
       ],
@@ -1188,6 +1936,7 @@
       "selector": "html[data-kick-night-mode=\"dark\"] [role=\"tablist\"]",
       "evidence": "captured",
       "routes": [
+        "reconciliation",
         "rules"
       ],
       "surfaces": [
@@ -1198,17 +1947,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] body footer",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "application",
@@ -1220,6 +1985,7 @@
       "selector": "html[data-kick-night-mode=\"dark\"] [role=\"tab\"]",
       "evidence": "captured",
       "routes": [
+        "reconciliation",
         "rules"
       ],
       "surfaces": [
@@ -1230,6 +1996,7 @@
       "selector": "html[data-kick-night-mode=\"dark\"] [role=\"tab\"][aria-selected=\"true\"]",
       "evidence": "captured",
       "routes": [
+        "reconciliation",
         "rules"
       ],
       "surfaces": [
@@ -1242,7 +2009,6 @@
       "routes": [
         "billing",
         "clients",
-        "invoicing",
         "tasks",
         "tasks-new-task",
         "transactions",
@@ -1299,6 +2065,7 @@
       "selector": "html[data-kick-night-mode=\"dark\"] section:has(.view-table-row) + div",
       "evidence": "captured",
       "routes": [
+        "classes",
         "clients"
       ],
       "surfaces": [
@@ -1312,6 +2079,65 @@
         "clients"
       ],
       "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main:has(.eligible1099) > section > div > div:first-child > div:last-child",
+      "evidence": "captured",
+      "routes": [
+        "counterparties"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main:has(.eligible1099) > section > div > div:first-child > div:last-child span",
+      "evidence": "captured",
+      "routes": [
+        "counterparties"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main:has(> div > div:first-child > div:first-child button):not(:has(.view-table-row)) > div > div > div",
+      "evidence": "captured",
+      "routes": [
+        "accounting",
+        "activity",
+        "billing",
+        "counterparties",
+        "general-ledger",
+        "insights",
+        "organization-billing",
+        "reconciliation",
+        "rules",
+        "trial-balance"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main:has(> div > div:first-child > div:first-child button):not(:has(.view-table-row)) > div > div > div :is(div, span)",
+      "evidence": "captured",
+      "routes": [
+        "accounting",
+        "activity",
+        "billing",
+        "counterparties",
+        "general-ledger",
+        "insights",
+        "organization-billing",
+        "reconciliation",
+        "rules",
+        "trial-balance"
+      ],
+      "surfaces": [
+        "group",
         "page"
       ]
     },
@@ -1449,7 +2275,12 @@
       "selector": "html[data-kick-night-mode=\"dark\"] main header:has(h3.font-weight-medium)",
       "evidence": "captured",
       "routes": [
-        "profit-loss"
+        "balance-sheet",
+        "cash-flow-statement",
+        "expenses-by-vendor",
+        "general-ledger",
+        "profit-loss",
+        "trial-balance"
       ],
       "surfaces": [
         "header"
@@ -1459,7 +2290,12 @@
       "selector": "html[data-kick-night-mode=\"dark\"] main header:has(h3.font-weight-medium) h3",
       "evidence": "captured",
       "routes": [
-        "profit-loss"
+        "balance-sheet",
+        "cash-flow-statement",
+        "expenses-by-vendor",
+        "general-ledger",
+        "profit-loss",
+        "trial-balance"
       ],
       "surfaces": [
         "header"
@@ -1469,17 +2305,27 @@
       "selector": "html[data-kick-night-mode=\"dark\"] main header:has(h3.font-weight-medium) h5",
       "evidence": "captured",
       "routes": [
-        "profit-loss"
+        "balance-sheet",
+        "cash-flow-statement",
+        "expenses-by-vendor",
+        "general-ledger",
+        "profit-loss",
+        "trial-balance"
       ],
       "surfaces": [
         "header"
       ]
     },
     {
-      "selector": "html[data-kick-night-mode=\"dark\"] main header .text-grey",
+      "selector": "html[data-kick-night-mode=\"dark\"] main .text-grey",
       "evidence": "captured",
       "routes": [
-        "profit-loss"
+        "balance-sheet",
+        "cash-flow-statement",
+        "expenses-by-vendor",
+        "general-ledger",
+        "profit-loss",
+        "trial-balance"
       ],
       "surfaces": [
         "header"
@@ -1489,10 +2335,44 @@
       "selector": "html[data-kick-night-mode=\"dark\"] main div:has(> div > .has-overflow) > div:last-child",
       "evidence": "captured",
       "routes": [
-        "profit-loss"
+        "general-ledger",
+        "profit-loss",
+        "trial-balance"
       ],
       "surfaces": [
         "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main > .flex.flex-col.w-100 > div:nth-child(2) > a",
+      "evidence": "captured",
+      "routes": [
+        "accounting"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main > .flex.flex-col.w-100 > div:nth-child(2) > a > *",
+      "evidence": "captured",
+      "routes": [
+        "accounting"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .has-overflow .title",
+      "evidence": "captured",
+      "routes": [
+        "profit-loss",
+        "trial-balance"
+      ],
+      "surfaces": [
+        "group",
+        "row"
       ]
     },
     {
@@ -1500,7 +2380,9 @@
       "evidence": "captured",
       "routes": [
         "documents",
-        "profit-loss"
+        "general-ledger",
+        "profit-loss",
+        "trial-balance"
       ],
       "surfaces": [
         "group"
@@ -1534,61 +2416,6 @@
       ],
       "surfaces": [
         "row"
-      ]
-    },
-    {
-      "selector": "html[data-kick-night-mode=\"dark\"] main .p-0:has(.segment) .segment",
-      "evidence": "captured",
-      "routes": [
-        "billing",
-        "invoicing"
-      ],
-      "surfaces": [
-        "page"
-      ]
-    },
-    {
-      "selector": "html[data-kick-night-mode=\"dark\"] main .p-0:has(.segment) .segment span",
-      "evidence": "captured",
-      "routes": [
-        "billing",
-        "invoicing"
-      ],
-      "surfaces": [
-        "page"
-      ]
-    },
-    {
-      "selector": "html[data-kick-night-mode=\"dark\"] main .p-0:has(.segment) > div > div > div > div > div",
-      "evidence": "captured",
-      "routes": [
-        "billing",
-        "invoicing"
-      ],
-      "surfaces": [
-        "page"
-      ]
-    },
-    {
-      "selector": "html[data-kick-night-mode=\"dark\"] main .p-0:has(.segment) > div > div > div > div > div > div",
-      "evidence": "captured",
-      "routes": [
-        "billing",
-        "invoicing"
-      ],
-      "surfaces": [
-        "page"
-      ]
-    },
-    {
-      "selector": "html[data-kick-night-mode=\"dark\"] main .p-0:has(.segment) > div > div > div > div > div > div:last-child",
-      "evidence": "captured",
-      "routes": [
-        "billing",
-        "invoicing"
-      ],
-      "surfaces": [
-        "page"
       ]
     },
     {
@@ -1637,20 +2464,36 @@
       "selector": "html[data-kick-night-mode=\"dark\"] input:focus",
       "evidence": "captured",
       "routes": [
+        "accounting",
+        "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
-        "invoicing",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "form",
         "group",
+        "input",
         "overlay",
         "page",
         "row",
@@ -1661,17 +2504,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] button:focus-visible",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "application",
@@ -1688,20 +2547,38 @@
       "selector": "html[data-kick-night-mode=\"dark\"] a:focus-visible",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",
+        "page",
+        "row",
         "sidebar",
         "toolbar"
       ]
@@ -1710,17 +2587,33 @@
       "selector": "html[data-kick-night-mode=\"dark\"] [tabindex]:focus-visible",
       "evidence": "captured",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "application",
@@ -1946,17 +2839,33 @@
       "evidence": "authenticated-cssom",
       "purpose": "Kick table and organization-header border contract",
       "routes": [
+        "accounting",
         "accounts",
+        "activity",
+        "balance-sheet",
         "billing",
+        "cash-flow-statement",
+        "categories",
+        "chart-of-accounts",
+        "classes",
         "clients",
+        "counterparties",
+        "document-categories",
         "documents",
+        "expenses-by-vendor",
+        "general-ledger",
+        "insights",
         "invoicing",
+        "organization-billing",
         "profit-loss",
+        "reconciliation",
         "rules",
         "tasks",
         "tasks-new-task",
+        "team",
         "transactions",
-        "transactions-filter"
+        "transactions-filter",
+        "trial-balance"
       ],
       "surfaces": [
         "group",

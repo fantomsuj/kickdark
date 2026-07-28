@@ -24,7 +24,7 @@ test("in-page capture removes private content before serialization", async ({
       <a href="https://example.test/private-ledger">Private document</a>
       <input value="4111111111111111" aria-label="Private bank account">
       <section
-        class="card_abc123 _kickButton_1hog9_2 stable-panel view-table-row form-group__label object-icon__content"
+        class="card_abc123 _kickButton_1hog9_2 stable-panel view-table-row form-group__label object-icon__content period-2026-01-01-2026-07-27 account-4815"
         data-state="open"
         data-account-id="secret"
         style="color: red"
@@ -52,6 +52,7 @@ test("in-page capture removes private content before serialization", async ({
     "Private bank account",
     "98,765.43",
     "account-4815",
+    "period-2026-01-01-2026-07-27",
     "data-account-id",
     "color: red"
   ]) {

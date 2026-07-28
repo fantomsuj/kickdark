@@ -77,6 +77,14 @@ html[data-kick-night-mode="dark"] section:has([role="columnheader"]) > div:first
   background-color: var(--kick-night-surface) !important;
 }
 
+/* Shared entity toolbar: Kick renders its rows as light leaf containers. */
+html[data-kick-night-mode="dark"] .sub-navigation-portals > div > div,
+html[data-kick-night-mode="dark"] main > div > .w-100 {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
 /* Transactions: view controls and filters have their own light leaf surfaces. */
 html[data-kick-night-mode="dark"]
   body:has(section.transactions)
@@ -122,6 +130,48 @@ html[data-kick-night-mode="dark"] .view-table-row > div {
   background-color: var(--kick-night-surface) !important;
 }
 
+/* Nested row labels use their own light-theme foreground declarations. */
+html[data-kick-night-mode="dark"]
+  .view-table-row
+  :is(.name, .source, .entities, .vendor, .label, .description),
+html[data-kick-night-mode="dark"]
+  .view-table-row
+  :is(.name, .source, .entities, .vendor, .label, .description)
+  *,
+html[data-kick-night-mode="dark"]
+  main:has(header h3.font-weight-medium)
+  .view-table-row
+  > div
+  > div {
+  color: var(--kick-night-text) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  .view-table-row
+  .data-table__drill-down {
+  color: #a6d5f6 !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  main
+  .view-table-row
+  .entities
+  .object-icon__content,
+html[data-kick-night-mode="dark"]
+  main
+  .object-icon--rhombus
+  .object-icon__content {
+  color: var(--kick-night-text) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  main:has(> div > .w-100):not(:has(.view-table-row))
+  .object-icon--interaction
+  .object-icon__content {
+  color: var(--kick-night-text) !important;
+}
+
 html[data-kick-night-mode="dark"] .view-table-row:hover,
 html[data-kick-night-mode="dark"] .view-table-row[aria-selected="true"],
 html[data-kick-night-mode="dark"] nav a:hover,
@@ -151,6 +201,17 @@ html[data-kick-night-mode="dark"] .form-check,
 html[data-kick-night-mode="dark"] .form-check-label {
   color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+/* Business profile: Kick's light-theme heading and field labels set their own colors. */
+html[data-kick-night-mode="dark"] main h1 {
+  color: var(--kick-night-text) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"] main .form-group__label {
+  color: var(--kick-night-muted) !important;
   background-color: var(--kick-night-surface) !important;
 }
 
@@ -335,6 +396,49 @@ html[data-kick-night-mode="dark"] section:has(.view-table-row) + div span {
   background-color: var(--kick-night-raised) !important;
 }
 
+/* Counterparties: empty and populated tables share a sticky count footer. */
+html[data-kick-night-mode="dark"]
+  main:has(.eligible1099)
+  > section
+  > div
+  > div:first-child
+  > div:last-child,
+html[data-kick-night-mode="dark"]
+  main:has(.eligible1099)
+  > section
+  > div
+  > div:first-child
+  > div:last-child
+  span {
+  color: var(--kick-night-muted) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+/* Organization Billing: setup, plan, and promotional groups are app surfaces. */
+html[data-kick-night-mode="dark"]
+  main:has(> div > div:first-child > div:first-child button):not(
+    :has(.view-table-row)
+  )
+  > div
+  > div
+  > div {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  main:has(> div > div:first-child > div:first-child button):not(
+    :has(.view-table-row)
+  )
+  > div
+  > div
+  > div
+  :is(div, span) {
+  color: var(--kick-night-text) !important;
+}
+
 /* Accounts: the Total Balance card keeps its amount readable. */
 html[data-kick-night-mode="dark"] main > div > header:has(.amount),
 html[data-kick-night-mode="dark"] main > div > header:has(.amount) .label {
@@ -407,7 +511,6 @@ html[data-kick-night-mode="dark"]
 
 html[data-kick-night-mode="dark"]
   main
-  header
   .text-grey,
 html[data-kick-night-mode="dark"]
   main
@@ -415,6 +518,28 @@ html[data-kick-night-mode="dark"]
   > div:last-child {
   color: var(--kick-night-muted) !important;
   background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  main
+  > .flex.flex-col.w-100
+  > div:nth-child(2)
+  > a,
+html[data-kick-night-mode="dark"]
+  main
+  > .flex.flex-col.w-100
+  > div:nth-child(2)
+  > a
+  > * {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"] .has-overflow .title {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
 }
 
 html[data-kick-night-mode="dark"] .has-overflow > section,
@@ -430,49 +555,6 @@ html[data-kick-night-mode="dark"]
   color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-surface) !important;
-}
-
-/* Invoicing and Billing: status segments and integration empty states. */
-html[data-kick-night-mode="dark"] main .p-0:has(.segment) .segment,
-html[data-kick-night-mode="dark"] main .p-0:has(.segment) .segment span {
-  color: var(--kick-night-muted) !important;
-  border-color: var(--kick-night-control-border) !important;
-  background-color: var(--kick-night-raised) !important;
-}
-
-html[data-kick-night-mode="dark"]
-  main
-  .p-0:has(.segment)
-  > div
-  > div
-  > div
-  > div
-  > div,
-html[data-kick-night-mode="dark"]
-  main
-  .p-0:has(.segment)
-  > div
-  > div
-  > div
-  > div
-  > div
-  > div {
-  color: var(--kick-night-text) !important;
-  border-color: var(--kick-night-border) !important;
-  background-color: var(--kick-night-page) !important;
-}
-
-html[data-kick-night-mode="dark"]
-  main
-  .p-0:has(.segment)
-  > div
-  > div
-  > div
-  > div
-  > div
-  > div:last-child {
-  color: var(--kick-night-muted) !important;
-  background-color: var(--kick-night-page) !important;
 }
 
 /* Task drawer: contenteditable editor and detail controls avoid white panels. */

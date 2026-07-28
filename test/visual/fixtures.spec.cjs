@@ -5,14 +5,30 @@ const { test, expect } = require("@playwright/test");
 const fixtureDirectory = path.join(__dirname, "..", "fixtures");
 const fixtureNames = [
   "tasks",
+  "activity",
+  "categories",
+  "document-categories",
   "documents",
   "transactions",
   "clients",
   "accounts",
   "rules",
+  "accounting",
+  "chart-of-accounts",
+  "reconciliation",
+  "counterparties",
+  "classes",
+  "insights",
   "profit-loss",
+  "balance-sheet",
+  "general-ledger",
+  "trial-balance",
+  "expenses-by-vendor",
+  "cash-flow-statement",
   "invoicing",
   "billing",
+  "team",
+  "organization-billing",
   "tasks-new-task",
   "dialog-menu-form",
   "command-palette",
@@ -39,6 +55,9 @@ test("committed fixtures contain sanitized structure only", async () => {
     expect(html).not.toMatch(/https?:|www\.|mailto:|@\w+\.\w+/i);
     expect(html).not.toMatch(
       /class="[^"]*_[a-z0-9-]+_[a-z0-9]{5}_[0-9]+/i
+    );
+    expect(html).not.toMatch(
+      /class="[^"]*(?:\d{4}-\d{2}-\d{2}|\b\d{4,}\b)[^"]*"/i
     );
     expect(html).not.toMatch(/>[^<\s][^<]*</);
   }

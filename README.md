@@ -61,7 +61,8 @@ See [Dark-theme evidence and testing](docs/dark-theme-testing.md) for the
 privacy-safe fixture refresh procedure, selector-inventory rules, contrast
 thresholds, snapshot review, and authenticated release QA.
 
-Regenerate the bundled raster icons after changing the icon generator:
+The bundled extension icons are generated from `kickfinance_logo.jpeg`. After
+changing the source image, regenerate all Chrome sizes with:
 
 ```bash
 npm run generate:icons
