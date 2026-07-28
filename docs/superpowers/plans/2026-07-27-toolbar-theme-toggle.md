@@ -41,7 +41,7 @@
 - Consumes: `document.documentElement`, `window.localStorage`, `window.addEventListener("storage", listener)`, and `chrome.runtime.onMessage.addListener(listener)`.
 - Produces: storage key `kick-night-mode:appearance`, message `{ type: "kick-night-mode:toggle" }`, and the existing `data-kick-night-mode="dark"` root contract.
 
-- [ ] **Step 1: Replace the always-on tests with failing shared-state tests**
+- [x] **Step 1: Replace the always-on tests with failing shared-state tests**
 
 Build the VM helper with a real stateful storage fake:
 
@@ -159,13 +159,13 @@ test("re-execution restores the appearance persisted by an earlier document", ()
 
 Production mutations these tests catch: unconditional dark activation, wrong preference key, failure to persist, failure to remove the root marker, accepting malformed state, reacting to unrelated events, and losing state on reload.
 
-- [ ] **Step 2: Run the content tests and verify the new contract fails**
+- [x] **Step 2: Run the content tests and verify the new contract fails**
 
 Run: `node --test test/content.test.cjs`
 
 Expected: FAIL because the current script always writes the dark marker and does not register message or storage listeners.
 
-- [ ] **Step 3: Implement the minimal validated content runtime**
+- [x] **Step 3: Implement the minimal validated content runtime**
 
 Use a single private script scope in `src/content.js`:
 
@@ -219,13 +219,13 @@ Use a single private script scope in `src/content.js`:
 })();
 ```
 
-- [ ] **Step 4: Run the content tests and verify they pass**
+- [x] **Step 4: Run the content tests and verify they pass**
 
 Run: `node --test test/content.test.cjs`
 
 Expected: all content tests PASS with zero failures.
 
-- [ ] **Step 5: Commit the shared appearance state**
+- [x] **Step 5: Commit the shared appearance state**
 
 ```bash
 git add src/content.js test/content.test.cjs
@@ -247,7 +247,7 @@ git commit -m "Add shared Kick appearance state"
 - Consumes: the Task 1 message `{ type: "kick-night-mode:toggle" }`.
 - Produces: a toolbar `action`, background service worker `src/background.js`, and one `chrome.tabs.sendMessage(tab.id, message)` attempt per valid toolbar click.
 
-- [ ] **Step 1: Write failing background and manifest behavior tests**
+- [x] **Step 1: Write failing background and manifest behavior tests**
 
 Execute the real worker and capture its registered click listener:
 
@@ -328,13 +328,13 @@ Retain the Kick-only content-script assertions and packaged validator execution.
 
 Production mutations these tests catch: wrong tab id, wrong message type, unhandled missing receiver, sending without a numeric tab id, missing toolbar declaration, missing worker, and added permissions.
 
-- [ ] **Step 2: Run the focused tests and verify they fail**
+- [x] **Step 2: Run the focused tests and verify they fail**
 
 Run: `node --test test/background.test.cjs test/extension-contract.test.cjs`
 
 Expected: FAIL because `src/background.js` does not exist and the manifest still forbids `action` and `background`.
 
-- [ ] **Step 3: Implement the toolbar bridge**
+- [x] **Step 3: Implement the toolbar bridge**
 
 Create `src/background.js`:
 
@@ -347,7 +347,7 @@ chrome.action.onClicked.addListener((tab) => {
 });
 ```
 
-- [ ] **Step 4: Declare the action and worker**
+- [x] **Step 4: Declare the action and worker**
 
 Add to `manifest.json` without adding `permissions` or `host_permissions`:
 
@@ -368,7 +368,7 @@ Add to `manifest.json` without adding `permissions` or `host_permissions`:
 
 Change the manifest description from “always-on” to “toggleable.”
 
-- [ ] **Step 5: Update packaged-extension validation**
+- [x] **Step 5: Update packaged-extension validation**
 
 In `scripts/validate-extension.mjs`:
 
@@ -434,7 +434,7 @@ console.log("  toolbar: tab relay");
 console.log("  preference: namespaced appearance only");
 ```
 
-- [ ] **Step 6: Run the focused tests and validator**
+- [x] **Step 6: Run the focused tests and validator**
 
 Run:
 
@@ -445,7 +445,7 @@ npm run validate
 
 Expected: all focused tests PASS and validation prints `Extension validation passed`, `permissions: none`, `toolbar: tab relay`, and `preference: namespaced appearance only`.
 
-- [ ] **Step 7: Commit the toolbar and package contract**
+- [x] **Step 7: Commit the toolbar and package contract**
 
 ```bash
 git add src/background.js test/background.test.cjs manifest.json test/extension-contract.test.cjs scripts/validate-extension.mjs
@@ -463,7 +463,7 @@ git commit -m "Toggle Kick theme from the toolbar"
 - Consumes: the verified toolbar-toggle behavior from Tasks 1 and 2.
 - Produces: accurate installation, usage, privacy, project-structure, and troubleshooting guidance.
 
-- [ ] **Step 1: Update the README behavior contract**
+- [x] **Step 1: Update the README behavior contract**
 
 Make these concrete copy changes:
 
@@ -475,7 +475,7 @@ Make these concrete copy changes:
 - add `src/background.js` as the toolbar-click relay; and
 - update troubleshooting to include clicking the icon and resetting the namespaced appearance preference when needed.
 
-- [ ] **Step 2: Run the complete fresh verification suite**
+- [x] **Step 2: Run the complete fresh verification suite**
 
 Run:
 
@@ -488,7 +488,7 @@ git diff --stat origin/main...
 
 Expected: unit tests, Playwright tests, and package validation all PASS; diff check reports no whitespace errors; status shows only this feature's commits plus the user's preserved unrelated working-tree changes.
 
-- [ ] **Step 3: Review the feature diff against the approved spec**
+- [x] **Step 3: Review the feature diff against the approved spec**
 
 Run:
 
@@ -499,14 +499,14 @@ git diff origin/main... -- src/content.js src/background.js manifest.json test/c
 
 Confirm every acceptance criterion has direct test or validation evidence and no unrelated user-owned file was staged.
 
-- [ ] **Step 4: Commit the documentation**
+- [x] **Step 4: Commit the documentation**
 
 ```bash
 git add README.md
 git commit -m "Document the toolbar theme toggle"
 ```
 
-- [ ] **Step 5: Re-run final verification after the last commit**
+- [x] **Step 5: Re-run final verification after the last commit**
 
 Run:
 
