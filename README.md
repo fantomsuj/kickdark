@@ -2,7 +2,7 @@
 
 A private, carefully designed Chrome dark mode for the [Kick accounting web app](https://use.kick.co/).
 
-Kick Night Mode applies a polished dark theme whenever it is enabled, without reading, storing, or transmitting accounting data. It runs only on `use.kick.co` and requests no Chrome permissions.
+Kick Night Mode applies a polished dark theme whenever it is selected, without reading, storing, or transmitting accounting data. It runs only on `use.kick.co` and requests no Chrome permissions.
 
 ## Install in Chrome
 
@@ -12,8 +12,13 @@ Kick Night Mode applies a polished dark theme whenever it is enabled, without re
 4. Select **Load unpacked**.
 5. Choose the repository folder—the folder containing `manifest.json`.
 6. Reload any open Kick tabs.
+7. Pin Kick Night Mode from Chrome's extensions menu if you want its icon to
+   remain visible in the toolbar.
 
-Open [use.kick.co](https://use.kick.co/). Dark mode applies before first paint. To return to Kick's original appearance, disable the extension from `chrome://extensions`.
+Open [use.kick.co](https://use.kick.co/). Dark mode applies before first paint.
+Click the Kick Night Mode icon to switch between dark mode and Kick's original
+light appearance. The choice updates every open Kick tab and is preserved for
+new tabs, reloads, and browser restarts.
 
 The theme uses charcoal and deep navy surfaces designed for long accounting sessions. It protects receipts, attachments, uploaded documents, logos, avatars, images, video, canvases, SVG charts, and third-party frames from automatic recoloring. Printing resets to a light, ink-friendly presentation.
 
@@ -23,7 +28,8 @@ The theme uses charcoal and deep navy surfaces designed for long accounting sess
 The extension:
 
 - Runs only on `https://use.kick.co/*`.
-- Stores no settings.
+- Stores only the `dark` or `light` appearance choice in Kick's local browser
+  storage.
 - Does not request access to tabs, browsing history, cookies, the clipboard, or network requests.
 - Does not use analytics, remote code, remote fonts, or external assets.
 - Does not read transaction text, form values, or other accounting page content.
@@ -67,7 +73,8 @@ The validation script rejects expanded permissions, broader host matches, missin
 
 ```text
 manifest.json              Chrome Manifest V3 package definition
-src/content.js             Synchronous always-dark root activation
+src/background.js          Toolbar-click relay
+src/content.js             Synchronous preference and theme synchronization
 styles/kick-dark.css       Scoped dark theme and media safety rules
 icons/                     Bundled Chrome raster icons
 scripts/                   Deterministic icon generation and validation
@@ -84,7 +91,8 @@ Kick is an independently developed web application, so a future Kick interface u
 
 ## Troubleshooting
 
-- If the theme does not appear, confirm the extension is enabled and the page URL begins with `https://use.kick.co/`, reload the extension from `chrome://extensions`, then reload the Kick tab.
+- If the theme does not appear, confirm the extension is enabled and the page URL begins with `https://use.kick.co/`, reload the extension from `chrome://extensions`, reload the Kick tab, then click the toolbar icon to select dark mode.
+- If the saved appearance is not what you want, click the toolbar icon once; the new choice is shared with every Kick tab.
 - If a receipt or chart looks wrong, disable the extension and open an issue with a screenshot that contains no financial or personal information.
 
 Kick Night Mode is an independent project and is not affiliated with or endorsed by Kick.
