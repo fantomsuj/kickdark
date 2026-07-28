@@ -7,6 +7,8 @@ module.exports = defineConfig({
   forbidOnly: true,
   reporter: "line",
   outputDir: ".context/playwright-results",
+  snapshotPathTemplate:
+    "{testDir}/../../docs/audits/2026-07-28-kick-dark-mode/screenshots/{arg}{ext}",
   expect: {
     toHaveScreenshot: {
       animations: "disabled",

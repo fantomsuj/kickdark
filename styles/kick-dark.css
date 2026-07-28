@@ -37,7 +37,8 @@ html[data-kick-night-mode="dark"] nav.navigation-menu {
   background-color: var(--kick-night-surface) !important;
 }
 
-html[data-kick-night-mode="dark"] header {
+html[data-kick-night-mode="dark"] nav:has(nav.navigation-menu) > header,
+html[data-kick-night-mode="dark"] header:has(aside) {
   --border-color: var(--kick-night-border);
   color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
@@ -67,9 +68,13 @@ html[data-kick-night-mode="dark"]
 }
 
 html[data-kick-night-mode="dark"] .sub-navigation-portals,
-html[data-kick-night-mode="dark"] section:not(.Toastify),
-html[data-kick-night-mode="dark"] .transactions,
+html[data-kick-night-mode="dark"] .entities-navigation,
+html[data-kick-night-mode="dark"] .entity-team,
+html[data-kick-night-mode="dark"] section.transactions,
+html[data-kick-night-mode="dark"] section:has([role="columnheader"]),
+html[data-kick-night-mode="dark"] section:has(.view-table-row),
 html[data-kick-night-mode="dark"] .transactions__body,
+html[data-kick-night-mode="dark"] .reports-filter-form,
 html[data-kick-night-mode="dark"] main > article > div:first-child > div:first-child,
 html[data-kick-night-mode="dark"] section:has([role="columnheader"]) > div:first-child {
   color: var(--kick-night-text) !important;
@@ -205,17 +210,20 @@ html[data-kick-night-mode="dark"] .form-check-label {
 }
 
 /* Business profile: Kick's light-theme heading and field labels set their own colors. */
-html[data-kick-night-mode="dark"] main h1 {
+html[data-kick-night-mode="dark"] main:has(.form-group__label) h1 {
   color: var(--kick-night-text) !important;
   background-color: var(--kick-night-surface) !important;
 }
 
-html[data-kick-night-mode="dark"] main .form-group__label {
+html[data-kick-night-mode="dark"]
+  main:has(h1)
+  .form-group__label {
   color: var(--kick-night-muted) !important;
   background-color: var(--kick-night-surface) !important;
 }
 
-html[data-kick-night-mode="dark"] input,
+html[data-kick-night-mode="dark"]
+  input:not([type="checkbox"]):not([type="radio"]),
 html[data-kick-night-mode="dark"] .form-control,
 html[data-kick-night-mode="dark"] [role="combobox"] {
   color: var(--kick-night-text) !important;
@@ -231,43 +239,65 @@ html[data-kick-night-mode="dark"] .form-control::placeholder {
 }
 
 html[data-kick-night-mode="dark"] .form-check-input {
-  appearance: none;
-  width: 16px;
-  min-width: 16px;
-  height: 16px;
-  min-height: 16px;
-  padding: 0;
-  border: 2px solid var(--kick-night-control-border) !important;
-  border-radius: 4px;
-  background-color: var(--kick-night-page) !important;
+  accent-color: var(--kick-night-accent);
 }
 
-html[data-kick-night-mode="dark"] .form-check-input:checked {
-  border-color: var(--kick-night-accent) !important;
-  background-color: var(--kick-night-accent) !important;
-  box-shadow: inset 0 0 0 3px var(--kick-night-page);
-}
-
-html[data-kick-night-mode="dark"] button,
+/* Capture-backed text controls retain a bordered secondary hierarchy. */
+html[data-kick-night-mode="dark"] main button:not(:has(svg)),
+html[data-kick-night-mode="dark"]
+  .sub-navigation-portals
+  button:not(:has(svg)),
+html[data-kick-night-mode="dark"] [role="dialog"] button:not(:has(svg)),
 html[data-kick-night-mode="dark"] .btn-with-loader {
   color: var(--kick-night-text) !important;
   border: 1px solid var(--kick-night-control-border) !important;
   background-color: var(--kick-night-raised) !important;
 }
 
-html[data-kick-night-mode="dark"] button:not([disabled]):hover,
-html[data-kick-night-mode="dark"] button[aria-expanded="true"] {
+/* Captured bare icon families keep Kick's geometry and transparent rest state. */
+html[data-kick-night-mode="dark"] nav button:has(svg),
+html[data-kick-night-mode="dark"] header:has(aside) button:has(svg),
+html[data-kick-night-mode="dark"] body footer button:has(svg),
+html[data-kick-night-mode="dark"] .sub-navigation-portals button:has(svg),
+html[data-kick-night-mode="dark"] .transactions button:has(svg),
+html[data-kick-night-mode="dark"] .view-table-row button:has(svg),
+html[data-kick-night-mode="dark"] main button:has(svg),
+html[data-kick-night-mode="dark"] [role="dialog"] button:has(svg) {
   color: var(--kick-night-text) !important;
-  border-color: var(--kick-night-accent) !important;
+  border: 0 solid transparent !important;
+  background-color: transparent !important;
+}
+
+html[data-kick-night-mode="dark"] main button:not([disabled]):hover,
+html[data-kick-night-mode="dark"]
+  .sub-navigation-portals
+  button:not([disabled]):hover,
+html[data-kick-night-mode="dark"] nav button:not([disabled]):hover,
+html[data-kick-night-mode="dark"] header:has(aside) button:not([disabled]):hover,
+html[data-kick-night-mode="dark"] [role="dialog"] button:not([disabled]):hover,
+html[data-kick-night-mode="dark"] main button[aria-expanded="true"],
+html[data-kick-night-mode="dark"]
+  .sub-navigation-portals
+  button[aria-expanded="true"],
+html[data-kick-night-mode="dark"] nav button[aria-expanded="true"],
+html[data-kick-night-mode="dark"] header:has(aside) button[aria-expanded="true"],
+html[data-kick-night-mode="dark"] [role="dialog"] button[aria-expanded="true"] {
+  color: var(--kick-night-text) !important;
+  border-color: transparent !important;
   background-color: var(--kick-night-hover) !important;
 }
 
-html[data-kick-night-mode="dark"] button[aria-disabled="true"],
-html[data-kick-night-mode="dark"] button:disabled,
+html[data-kick-night-mode="dark"] main button[aria-disabled="true"],
+html[data-kick-night-mode="dark"] main button:disabled,
+html[data-kick-night-mode="dark"]
+  .sub-navigation-portals
+  button[aria-disabled="true"],
+html[data-kick-night-mode="dark"] [role="dialog"] button[aria-disabled="true"],
+html[data-kick-night-mode="dark"] [role="dialog"] button:disabled,
 html[data-kick-night-mode="dark"] [role="menuitem"][aria-disabled="true"] {
   color: var(--kick-night-muted) !important;
-  border-color: var(--kick-night-control-border) !important;
-  background-color: var(--kick-night-surface) !important;
+  border-color: transparent !important;
+  background-color: transparent !important;
 }
 
 html[data-kick-night-mode="dark"] [role="dialog"] .form-group__label {
@@ -282,6 +312,35 @@ html[data-kick-night-mode="dark"] [role="dialog"] kbd {
   color: var(--kick-night-muted) !important;
   border: 1px solid var(--kick-night-control-border) !important;
   background-color: var(--kick-night-page) !important;
+}
+
+/* Calendar overlays keep navigation, weekdays, and date states readable. */
+html[data-kick-night-mode="dark"] .react-calendar,
+html[data-kick-night-mode="dark"] .react-calendar__navigation,
+html[data-kick-night-mode="dark"] .react-calendar__viewContainer {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"] .react-calendar button,
+html[data-kick-night-mode="dark"] .react-calendar abbr,
+html[data-kick-night-mode="dark"] .react-calendar span {
+  color: var(--kick-night-text) !important;
+  border-color: transparent !important;
+  background-color: transparent !important;
+}
+
+html[data-kick-night-mode="dark"] .react-calendar button:hover,
+html[data-kick-night-mode="dark"] .react-calendar button:focus-visible,
+html[data-kick-night-mode="dark"]
+  .react-calendar
+  .react-calendar__tile--now,
+html[data-kick-night-mode="dark"]
+  .react-calendar
+  button[aria-selected="true"] {
+  color: var(--kick-night-text) !important;
+  background-color: var(--kick-night-hover) !important;
 }
 
 html[data-kick-night-mode="dark"]
@@ -319,6 +378,12 @@ html[data-kick-night-mode="dark"] [role="listbox"] {
   box-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
 }
 
+html[data-kick-night-mode="dark"] [role="dialog"] section {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
 html[data-kick-night-mode="dark"] [role="menuitem"],
 html[data-kick-night-mode="dark"] [role="option"] {
   color: var(--kick-night-text) !important;
@@ -333,12 +398,6 @@ html[data-kick-night-mode="dark"] [role="option"][aria-selected="true"] {
   background-color: var(--kick-night-hover) !important;
 }
 
-html[data-kick-night-mode="dark"] [role="status"] {
-  color: var(--kick-night-muted) !important;
-  border-color: var(--kick-night-border) !important;
-  background-color: var(--kick-night-raised) !important;
-}
-
 html[data-kick-night-mode="dark"] [role="separator"] {
   color: var(--kick-night-subtle) !important;
   border-color: var(--kick-night-border) !important;
@@ -346,7 +405,8 @@ html[data-kick-night-mode="dark"] [role="separator"] {
 }
 
 html[data-kick-night-mode="dark"] [role="tablist"],
-html[data-kick-night-mode="dark"] body footer {
+html[data-kick-night-mode="dark"] body footer,
+html[data-kick-night-mode="dark"] body footer section {
   color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-surface) !important;
@@ -387,6 +447,100 @@ html[data-kick-night-mode="dark"] .billingOwnership span {
   color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-surface) !important;
+}
+
+/* Documents: captured upload/empty-state card and its heading are app chrome. */
+html[data-kick-night-mode="dark"]
+  main
+  section:has(> aside + header):has(.btn-with-loader),
+html[data-kick-night-mode="dark"]
+  main
+  section:has(> aside + header):has(.btn-with-loader)
+  > header {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+/* Transactions: empty-state cards use a header/body/footer composition. */
+html[data-kick-night-mode="dark"]
+  main
+  section:has(> header + footer):has(footer button),
+html[data-kick-night-mode="dark"]
+  main
+  section:has(> header + footer):has(footer button)
+  > header,
+html[data-kick-night-mode="dark"]
+  main
+  section:has(> header + footer):has(footer button)
+  > footer {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  main
+  section:has(> header):has(> footer button):not(:has(.view-table-row)),
+html[data-kick-night-mode="dark"]
+  main
+  section:has(> header):has(> footer button):not(:has(.view-table-row))
+  > header,
+html[data-kick-night-mode="dark"]
+  main
+  section:has(> header):has(> footer button):not(:has(.view-table-row))
+  > footer {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+/* Reconciliation: captured empty groups contain a single status heading. */
+html[data-kick-night-mode="dark"] main section:has(> header:only-child),
+html[data-kick-night-mode="dark"]
+  main
+  section:has(> header:only-child)
+  > header {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+/* Mobile-unavailable: Kick mounts a fullscreen blocker beside hidden app UI. */
+html[data-kick-night-mode="dark"]
+  body
+  > div:first-of-type
+  > div:has(> h1 + p):has(button) {
+  color: var(--kick-night-text) !important;
+  background-color: var(--kick-night-page) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  body
+  > div:first-of-type
+  > div:has(> h1 + p):has(button)
+  > h1 {
+  color: var(--kick-night-text) !important;
+  background-color: var(--kick-night-page) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  body
+  > div:first-of-type
+  > div:has(> h1 + p):has(button)
+  > p {
+  color: var(--kick-night-muted) !important;
+  background-color: var(--kick-night-page) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  body
+  > div:first-of-type
+  > div:has(> h1 + p):has(button)
+  button {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-control-border) !important;
+  background-color: var(--kick-night-raised) !important;
 }
 
 html[data-kick-night-mode="dark"] section:has(.view-table-row) + div,
@@ -472,23 +626,31 @@ html[data-kick-night-mode="dark"]
 }
 
 /* Rules: native table markup is separate from Kick's div-based data grid. */
-html[data-kick-night-mode="dark"] main table,
-html[data-kick-night-mode="dark"] main thead,
-html[data-kick-night-mode="dark"] main tbody,
-html[data-kick-night-mode="dark"] main tr {
+html[data-kick-night-mode="dark"] .settings__content table,
+html[data-kick-night-mode="dark"] .settings__content thead,
+html[data-kick-night-mode="dark"] .settings__content tbody,
+html[data-kick-night-mode="dark"] .settings__content tr {
   color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-surface) !important;
 }
 
-html[data-kick-night-mode="dark"] main th {
+html[data-kick-night-mode="dark"] .settings__content th {
   color: var(--kick-night-muted) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-raised) !important;
 }
 
-html[data-kick-night-mode="dark"] main td,
-html[data-kick-night-mode="dark"] main td > * {
+html[data-kick-night-mode="dark"] .settings__content td {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  .settings__content
+  td
+  :is(button, a, .form-check, .object-icon) {
   color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-surface) !important;
@@ -625,13 +787,30 @@ html[data-kick-night-mode="dark"] ::-webkit-scrollbar-thumb:hover {
 
 @media print {
   html[data-kick-night-mode="dark"] {
+    --kick-night-page: #ffffff;
+    --kick-night-surface: #ffffff;
+    --kick-night-raised: #ffffff;
+    --kick-night-hover: #f3f4f6;
+    --kick-night-text: #000000;
+    --kick-night-muted: #30343a;
+    --kick-night-subtle: #4b5563;
+    --kick-night-border: #d7dce2;
+    --kick-night-border-strong: #b7bec8;
+    --kick-night-control-border: #7b8490;
+    --kick-night-accent: #145d91;
+    --kick-night-positive: #17633a;
+    --kick-night-warning: #6d4b00;
+    --kick-night-negative: #8f1d21;
     color-scheme: light !important;
     color: black !important;
     background: white !important;
   }
 
-  html[data-kick-night-mode="dark"][data-kick-night-mode="dark"] body,
-  html[data-kick-night-mode="dark"][data-kick-night-mode="dark"] body * {
+  html[data-kick-night-mode="dark"][data-kick-night-mode="dark"][data-kick-night-mode="dark"][data-kick-night-mode="dark"][data-kick-night-mode="dark"]
+    body,
+  html[data-kick-night-mode="dark"][data-kick-night-mode="dark"][data-kick-night-mode="dark"][data-kick-night-mode="dark"][data-kick-night-mode="dark"]
+    body
+    * {
     color: black !important;
     border-color: #d7dce2 !important;
     background: white !important;

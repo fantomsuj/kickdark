@@ -12,39 +12,24 @@ const captureDirectory = path.resolve(
   process.argv[2] || ".context/captures"
 );
 const fixtureDirectory = path.join(repositoryRoot, "test", "fixtures");
+const auditManifest = JSON.parse(
+  fs.readFileSync(
+    path.join(
+      repositoryRoot,
+      "docs",
+      "audits",
+      "2026-07-28-kick-dark-mode",
+      "case-manifest.json"
+    ),
+    "utf8"
+  )
+);
 const allFixtureNames = [
-  "tasks",
-  "activity",
-  "categories",
-  "document-categories",
-  "documents",
-  "transactions",
-  "clients",
-  "accounts",
-  "rules",
-  "accounting",
-  "chart-of-accounts",
-  "reconciliation",
-  "counterparties",
-  "classes",
-  "insights",
-  "profit-loss",
-  "balance-sheet",
-  "general-ledger",
-  "trial-balance",
-  "expenses-by-vendor",
-  "cash-flow-statement",
-  "invoicing",
-  "billing",
-  "team",
-  "organization-billing",
-  "tasks-new-task",
-  "dialog-menu-form",
-  "command-palette",
-  "filter-dialog",
-  "menu",
-  "form",
-  "empty-state"
+  ...new Set(
+    auditManifest.cases
+      .map((auditCase) => auditCase.fixture)
+      .filter(Boolean)
+  )
 ];
 const requestedFixtureNames = process.argv.slice(3);
 const fixtureNames =

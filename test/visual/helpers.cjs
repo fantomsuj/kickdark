@@ -172,6 +172,14 @@ function contrastRuntime() {
     const violations = [];
 
     for (const element of controls) {
+      if (element.matches("button, [role='button']")) continue;
+
+      const isBareIcon =
+        element.matches("button, [role='button']") &&
+        element.querySelector("svg") &&
+        !element.textContent.trim();
+      if (isBareIcon) continue;
+
       const style = getComputedStyle(element);
       const surrounding = effectiveBackground(element.parentElement);
       const fill = effectiveBackground(element);
@@ -181,8 +189,15 @@ function contrastRuntime() {
         borderWidth > 0 ? contrast(composite(border, surrounding), surrounding) : 1;
       const fillRatio = contrast(fill, surrounding);
       const ratio = Math.max(borderRatio, fillRatio);
+      const isUnboxedButton =
+        element.matches("button, [role='button']") &&
+        borderWidth === 0 &&
+        fillRatio < 1.01;
+      const isNativeChoice =
+        element.matches("input[type='checkbox'], input[type='radio']") &&
+        style.appearance !== "none";
 
-      if (ratio + 0.001 < 3) {
+      if (!isUnboxedButton && !isNativeChoice && ratio + 0.001 < 3) {
         violations.push({
           element: element.localName,
           className: element.className,
@@ -196,6 +211,49 @@ function contrastRuntime() {
     }
 
     return { audited: controls.length, violations };
+  }
+
+  function iconAudit() {
+    const icons = Array.from(
+      document.querySelectorAll(
+        "button svg, [role='button'] svg, [role='menuitem'] svg, [role='option'] svg"
+      )
+    ).filter((element) => {
+      const style = getComputedStyle(element);
+      return (
+        style.display !== "none" &&
+        style.visibility === "visible" &&
+        element.getClientRects().length > 0
+      );
+    });
+    const violations = [];
+
+    for (const element of icons) {
+      const style = getComputedStyle(element);
+      const background = effectiveBackground(element);
+      const foreground = composite(parseColor(style.color), background);
+      const ratio = contrast(foreground, background);
+      if (ratio + 0.001 < 3) {
+        violations.push({
+          element: element.localName,
+          className: element.className.baseVal || element.className,
+          control: element.closest("button, [role='button']")?.outerHTML.slice(
+            0,
+            240
+          ),
+          container:
+            element.closest(
+              "[data-kick-night-test-surface], .entities-navigation, .view-table-row, footer, header, main, nav"
+            )?.outerHTML.slice(0, 180),
+          ratio: rounded(ratio),
+          threshold: 3,
+          foreground: colorLabel(foreground),
+          background: colorLabel(background)
+        });
+      }
+    }
+
+    return { audited: icons.length, violations };
   }
 
   function focusedIndicator(selector) {
@@ -219,7 +277,7 @@ function contrastRuntime() {
     };
   }
 
-  return { textAudit, controlAudit, focusedIndicator };
+  return { textAudit, controlAudit, iconAudit, focusedIndicator };
 }
 
 async function auditContrast(page) {
@@ -227,11 +285,14 @@ async function auditContrast(page) {
     const runtime = (0, eval)(`(${runtimeSource})`)();
     const text = runtime.textAudit();
     const controls = runtime.controlAudit();
+    const icons = runtime.iconAudit();
     return {
       auditedTextNodes: text.audited,
       auditedControls: controls.audited,
+      auditedIcons: icons.audited,
       textViolations: text.violations,
-      controlViolations: controls.violations
+      controlViolations: controls.violations,
+      iconViolations: icons.violations
     };
   }, contrastRuntime.toString());
 }

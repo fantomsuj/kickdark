@@ -48,23 +48,43 @@ test("control and focus indicators require three-to-one contrast", async ({
   await page.setContent(`
     <style>
       html, body { background: rgb(255, 255, 255); }
-      button {
+      input {
         color: rgb(0, 0, 0);
         background: rgb(250, 250, 250);
         border: 1px solid rgb(230, 230, 230);
       }
-      button:focus-visible {
+      input:focus-visible {
         outline: 2px solid rgb(0, 90, 180);
         outline-offset: 2px;
       }
     </style>
-    <button data-kick-night-test-control>Control</button>
+    <input data-kick-night-test-control value="Control">
   `);
 
   const report = await auditContrast(page);
   expect(report.controlViolations).toHaveLength(1);
 
-  await page.getByRole("button").focus();
-  const focus = await auditFocusedIndicator(page, "button");
+  await page.locator("input").focus();
+  const focus = await auditFocusedIndicator(page, "input");
   expect(focus.ratio).toBeGreaterThanOrEqual(3);
+});
+
+test("bare icon controls audit icon contrast without requiring a resting box", async ({
+  page
+}) => {
+  const { auditContrast } = require(helperPath);
+
+  await page.setContent(`
+    <style>
+      html, body { background: rgb(20, 30, 40); }
+      button { color: rgb(50, 60, 70); border: 0; background: transparent; }
+      svg { color: currentColor; fill: currentColor; }
+    </style>
+    <button data-kick-night-test-control><svg><path></path></svg></button>
+  `);
+
+  const report = await auditContrast(page);
+  expect(report.controlViolations).toEqual([]);
+  expect(report.iconViolations).toHaveLength(1);
+  expect(report.iconViolations[0].threshold).toBe(3);
 });

@@ -1,11 +1,12 @@
 * {
   box-sizing: border-box;
+  min-width: 0;
 }
 
 html,
 body {
-  min-width: 1180px;
-  min-height: 900px;
+  width: 100%;
+  min-height: 100%;
   margin: 0;
   color: #0f1826;
   background: #ffffff;
@@ -35,7 +36,6 @@ body[data-kick-night-test-surface="application"] > div:first-of-type {
 }
 
 [data-kick-night-test-surface="page"] {
-  min-width: 850px;
   min-height: 760px;
   padding: 20px;
   color: #0f1826;
@@ -58,7 +58,7 @@ body[data-kick-night-test-surface="application"] > div:first-of-type {
 
 [data-kick-night-test-surface="row"] {
   display: grid;
-  grid-template-columns: repeat(6, minmax(90px, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   min-height: 46px;
   padding: 8px 10px;
   color: #0f1826;
@@ -66,7 +66,7 @@ body[data-kick-night-test-surface="application"] > div:first-of-type {
   background: #ffffff;
 }
 
-[data-kick-night-test-control] {
+[data-kick-night-test-control]:not([type="checkbox"]):not([type="radio"]) {
   min-width: 34px;
   min-height: 32px;
   padding: 7px 10px;
@@ -76,8 +76,17 @@ body[data-kick-night-test-surface="application"] > div:first-of-type {
   background: #ffffff;
 }
 
-button[data-kick-night-test-control] {
-  border-width: 0;
+button[data-kick-night-test-control]:has(svg):not(.btn-with-loader) {
+  border: 0 !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  min-height: 16px;
+  padding: 0;
 }
 
 [data-kick-night-test-surface="overlay"] {
@@ -342,12 +351,46 @@ main .p-0:has(.segment) > div > div > div > div > div > div:last-child {
   background: #ffffff;
 }
 
-@media (max-width: 1000px) {
-  html,
-  body {
-    min-width: 900px;
-  }
+/* Live mobile-unavailable cascade: a fullscreen light blocker wins app chrome. */
+body[data-kick-night-test-route="mobile-unavailable"] > div > div {
+  color: #0f1826;
+  background: #ffffff;
+}
 
+body[data-kick-night-test-route="mobile-unavailable"] h1 {
+  color: #000000;
+  background: #ffffff;
+}
+
+body[data-kick-night-test-route="mobile-unavailable"] p {
+  color: #f4f4f4;
+  background: #ffffff;
+}
+
+body[data-kick-night-test-route="mobile-unavailable"] button {
+  color: #ffffff;
+  background: #202536;
+}
+
+body[data-kick-night-test-route="mobile-unavailable"]
+  > div:first-of-type {
+  display: block;
+  min-height: 100vh;
+}
+
+body[data-kick-night-test-route="mobile-unavailable"]
+  > div
+  > div {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 16px;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
   body[data-kick-night-test-surface="application"] > div:first-of-type {
     grid-template-columns: 76px minmax(0, 1fr);
   }
@@ -359,5 +402,35 @@ main .p-0:has(.segment) > div > div > div > div > div > div:last-child {
 
   [data-kick-night-test-surface="page"] {
     min-width: 0;
+    padding: 12px;
+  }
+
+  [data-kick-night-test-surface="toolbar"],
+  [data-kick-night-test-surface="group"] {
+    flex-wrap: wrap;
+  }
+
+  [data-kick-night-test-surface="row"] {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 600px) {
+  body[data-kick-night-test-surface="application"] > div:first-of-type {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+
+  [data-kick-night-test-surface="sidebar"] {
+    min-width: 56px;
+    padding: 8px;
+  }
+
+  [data-kick-night-test-surface="header"] {
+    padding: 10px;
+  }
+
+  [data-kick-night-test-surface="row"] {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
