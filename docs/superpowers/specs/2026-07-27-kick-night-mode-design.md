@@ -2,25 +2,23 @@
 
 ## Goal
 
-Create a polished Chrome extension that makes Kick's web application comfortable to use at night without changing Kick's functionality or reading, transmitting, or storing accounting data.
-
-The extension targets only `https://use.kick.co/*`. It provides Dark, Light, and System appearance modes, defaults to System, and remembers the user's choice locally.
+Provide an always-on, privacy-preserving dark theme for the Kick accounting app
+without changing Kick's layout, business behavior, or protected financial media.
+The extension targets only `https://use.kick.co/*`. Disabling the extension in
+Chrome is the escape hatch.
 
 ## Product principles
 
-- **Private by construction:** no analytics, remote code, external requests, or broad browsing permissions.
-- **Financial information stays legible:** never invert receipts, uploaded documents, avatars, logos, or other media.
-- **Calm visual hierarchy:** use charcoal and deep navy surfaces rather than pure black, with clear elevation and restrained contrast.
-- **Reversible:** Light mode removes all extension styling immediately. Disabling or uninstalling the extension leaves Kick untouched.
-- **Resilient:** selectors favor semantic elements and accessible attributes, with narrowly scoped fallbacks for current Kick UI patterns.
-
-## User experience
-
-The toolbar popup contains a Kick Night Mode identity, a three-option control for System, Light, and Dark, contextual status text, and a short privacy statement.
-
-Choosing a mode updates every open Kick tab immediately through `chrome.storage` change notifications. System mode follows Chrome's `prefers-color-scheme` value and responds when it changes.
-
-The extension does nothing on non-Kick pages. The preference can still be edited when the popup is opened elsewhere.
+- **Private by construction:** no permissions, analytics, remote code, external
+  requests, storage, or page-content inspection.
+- **Dark before first paint:** a minimal `document_start` content script sets the
+  dark root attribute synchronously and unconditionally.
+- **Financial information stays legible:** receipts, uploaded documents, charts,
+  avatars, logos, and printable financial media keep their normal rendering.
+- **Calm hierarchy:** deep navy surfaces, neutral navigation, restrained
+  dividers, and blue reserved for active states, focus, and content actions.
+- **Evidence-backed resilience:** production selectors must match sanitized DOM
+  captured from authenticated Kick routes.
 
 ## Visual system
 
@@ -28,93 +26,90 @@ The extension does nothing on non-Kick pages. The preference can still be edited
 | --- | --- | --- |
 | Page | `#0F1826` | Application background |
 | Surface | `#1A2336` | Sidebar and primary panels |
-| Raised | `#202B3D` | Cards, menus, dialogs, table headers |
-| Hover | `#26344A` | Interactive hover and selected rows |
+| Raised | `#202B3D` | Cards, menus, dialogs, and headers |
+| Hover | `#26344A` | Hovered, expanded, and selected states |
 | Text | `#F4F7FB` | Primary text |
 | Muted text | `#B7C0CE` | Secondary text and metadata |
-| Border | `rgba(255, 255, 255, 0.10)` | Dividers and controls |
-| Accent | `#3793DA` | Focus, selection, and branded accents |
+| Subtle text | `#8F9CAF` | Placeholders and disabled content |
+| Divider | `rgba(255, 255, 255, 0.10)` | Nonessential separation |
+| Control border | `#718198` | Meaningful control boundaries |
+| Accent | `#3793DA` | Focus, active states, and actions |
 | Positive | `#53C28B` | Positive financial states |
 | Warning | `#F2B84B` | Warnings |
 | Negative | `#F2777A` | Errors and negative financial states |
 
-The extension preserves existing semantic transaction colors. It restyles surrounding chart surfaces and labels but does not globally filter or recolor canvas, SVG, image, video, or embedded document content.
-
 ## Architecture
 
-### Manifest
+The Manifest V3 package has no service worker, popup, action, or permissions.
+Its only runtime code is `src/content.js`, declared for
+`https://use.kick.co/*` at `document_start`. That script sets
+`data-kick-night-mode="dark"` on the document root. The statically declared
+stylesheet activates only beneath that root attribute.
 
-The Manifest V3 manifest declares only the `storage` permission, a content script limited to `https://use.kick.co/*`, locally packaged raster icons, and a popup action. It has no service worker.
+```mermaid
+flowchart LR
+    A["Kick document_start"] --> B["Set dark root attribute"]
+    B --> C["Scoped production stylesheet"]
+```
 
-### Theme core
-
-A dependency-free shared module owns the valid modes (`system`, `light`, `dark`), preference validation, and System-mode resolution. It exposes a small API usable by both Chrome scripts and Node tests.
-
-### Content script
-
-The content script reads the preference, sets `data-kick-night-mode` on the root document, listens for storage changes, and watches `prefers-color-scheme` only while System is selected. The extension stylesheet is declared statically and activates only when the root attribute resolves to `dark`.
-
-### Popup
-
-The popup reads and validates the mode, renders an accessible radio group, saves changes to `chrome.storage.local`, and reports save failures without altering the selected mode. It does not inspect or message page content.
+The content script does not read the page, store a preference, register
+listeners, or call Chrome runtime APIs.
 
 ## Styling strategy
 
-The CSS uses semantic page variables where possible, then covers major structural regions and common ARIA roles. Every rule is rooted under `html[data-kick-night-mode="dark"]`.
+Shared semantic elements establish the page, navigation, control, table, menu,
+dialog, status, and focus foundations. Authenticated route captures then support
+specific repairs for Clients, Accounts, Rules, Profit & Loss, Transactions,
+Tasks, Invoicing, and Billing.
 
-Media safety rules preserve normal rendering for images, video, canvas, SVG, receipt and attachment containers, logos, avatars, third-party iframes, and embedded document viewers. Print styles remove the extension theme.
+Every foreground override declares its intended background. Ordinary navigation
+is neutral; blue is limited to current, focused, selected, or genuine action
+states. Soft dividers separate structure while controls and focus rings retain
+the stronger 3:1 boundary.
 
-## Data flow
-
-```mermaid
-flowchart TD
-    A["Popup selection"] --> B["Chrome local storage"]
-    B --> C["Kick content script"]
-    D["System appearance"] --> C
-    C --> E["Root theme attribute"]
-    E --> F["Scoped dark stylesheet"]
-```
-
-Only the appearance string enters extension storage. No page content leaves the Kick tab or is copied into extension storage.
-
-## Error handling
-
-- Missing or malformed preference values fall back to System.
-- A storage read failure falls back to System without blocking Kick.
-- A storage write failure leaves the prior selection active and shows a concise popup error.
-- If Chrome APIs are unavailable, the popup renders a non-destructive unavailable state.
-- Kick DOM changes cannot break the underlying app; unmatched elements retain their original styling.
+Media safety rules preserve images, video, canvas, SVG, receipts, attachments,
+logos, avatars, embedded viewers, and third-party frames. Print media resets to
+Kick's light financial presentation.
 
 ## Accessibility
 
-- Popup controls use radio inputs grouped by a fieldset.
-- Keyboard focus is visible and uses the Kick blue accent.
-- Text and essential control boundaries target WCAG AA contrast.
-- Reduced-motion preferences remove nonessential transitions.
+- Normal text targets at least 4.5:1 contrast.
+- Large text, controls, meaningful boundaries, and focus indicators target at
+  least 3:1.
+- Primary, secondary, placeholder, disabled, and total-row text remain visibly
+  distinct.
+- Hover, selected, expanded, disabled, and focus-visible states are tested.
 - Status is never communicated by color alone.
 
 ## Security and privacy
 
-- No `tabs`, `activeTab`, history, cookies, clipboard, scripting, or web-request permissions.
+- No Chrome permissions or broad host access.
 - No remote scripts, fonts, images, styles, analytics, or network requests.
-- No `eval`, inline script execution, or dynamic code loading.
-- Content scripts run in Chrome's isolated world.
-- The content script reads no DOM text and registers no page input, click, or form listeners.
+- No `eval`, dynamic code loading, DOM text reads, or page input listeners.
+- Authenticated fixture capture sanitizes inside the page before serialization;
+  only structure, allowlisted stable selectors, and synthetic text markers enter
+  the repository.
 
 ## Testing
 
-Automated tests cover preference validation, System-mode resolution, root theme changes, storage and operating-system updates, popup persistence and failure handling, manifest restrictions, icon dimensions, CSS scoping, media protection, and print reset.
+Automated checks cover unconditional activation, the absence of preference and
+listener APIs, the simplified manifest, restricted Kick host access, selector
+evidence, fixture privacy, computed contrast, interaction states, media safety,
+print reset, desktop and compact snapshots, and packaged-extension validation.
 
-Manual Chrome verification covers unpacked loading, all three modes, reload persistence, multiple Kick tabs, non-Kick pages, keyboard navigation, and the principal accounting surfaces available without a production account.
+Authenticated release QA reloads the unpacked extension before revisiting Tasks,
+Transactions, Clients, Documents, Accounts, Rules, Profit & Loss, Invoicing, and
+Billing. It exercises filters, menus, drawers, horizontal tables, empty states,
+printing, and responsive widths, with zero non-exempt contrast failures or
+console errors required.
 
 ## Acceptance criteria
 
-- The extension loads in current desktop Chrome as Manifest V3.
-- It requests only `storage` and access to `https://use.kick.co/*`.
-- System is the default and follows the operating-system appearance.
-- Mode changes apply without a page reload and persist.
-- Receipts, documents, images, video, canvas, SVG, and third-party iframes are not globally inverted.
-- Printing uses Kick's original light presentation.
+- Dark mode applies synchronously on every matched Kick page.
+- The manifest requests no permissions and matches only `use.kick.co`.
+- Chrome extension controls provide the only enable/disable mechanism.
+- No white glare bands, unreadable totals, low-contrast headings, or
+  theme-caused clipping remain on audited routes.
+- Protected financial media and print rendering are unchanged.
 - No accounting data is read, stored, logged, or transmitted.
-- Automated checks pass.
-
+- Unit, visual, package-validation, and diff checks pass.

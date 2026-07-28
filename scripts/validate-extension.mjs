@@ -30,15 +30,16 @@ function pngDimensions(relativePath) {
 }
 
 assert.equal(manifest.manifest_version, 3, "manifest must use version 3");
-expectExact(manifest.permissions, ["storage"], "permissions");
+assert.equal("permissions" in manifest, false, "runtime permissions are unnecessary");
 assert.equal("host_permissions" in manifest, false, "broad host permissions are forbidden");
+assert.equal("action" in manifest, false, "a toolbar action is unnecessary");
 assert.equal("background" in manifest, false, "a background worker is unnecessary");
 assert.equal("web_accessible_resources" in manifest, false, "web-accessible resources are unnecessary");
 
 assert.equal(manifest.content_scripts.length, 1, "exactly one content script declaration is expected");
 const [contentScript] = manifest.content_scripts;
 expectExact(contentScript.matches, ["https://use.kick.co/*"], "host scope");
-expectExact(contentScript.js, ["src/theme-core.js", "src/content.js"], "content script order");
+expectExact(contentScript.js, ["src/content.js"], "content script");
 expectExact(contentScript.css, ["styles/kick-dark.css"], "content styles");
 assert.equal(contentScript.run_at, "document_start");
 assert.equal(contentScript.all_frames, false);
@@ -47,9 +48,7 @@ assert.equal(contentScript.match_about_blank, false);
 const referencedFiles = new Set([
   ...contentScript.js,
   ...contentScript.css,
-  manifest.action.default_popup,
-  ...Object.values(manifest.icons),
-  ...Object.values(manifest.action.default_icon)
+  ...Object.values(manifest.icons)
 ]);
 for (const relativePath of referencedFiles) expectFile(relativePath);
 
@@ -62,11 +61,7 @@ for (const size of expectedIconSizes) {
 
 const runtimeFiles = [
   "manifest.json",
-  "src/theme-core.js",
   "src/content.js",
-  "popup/popup.html",
-  "popup/popup.css",
-  "popup/popup.js",
   "styles/kick-dark.css"
 ];
 const remoteUrlPattern = /https?:\/\/(?!use\.kick\.co\/\*)/i;
@@ -102,6 +97,11 @@ assert.doesNotMatch(
   /addEventListener\s*\(\s*["'](?:click|input|submit|keydown|keyup)["']/,
   "the page content script must not observe user interactions"
 );
+assert.doesNotMatch(
+  contentSource,
+  /\b(?:storage|runtime|matchMedia|addEventListener|removeEventListener)\b/,
+  "the page content script must activate without preference or listener APIs"
+);
 
 const stylesheet = fs.readFileSync(
   path.join(projectRoot, "styles", "kick-dark.css"),
@@ -111,7 +111,7 @@ assert.doesNotMatch(stylesheet, /filter\s*:\s*invert\s*\(/i);
 assert.match(stylesheet, /@media\s+print/i);
 
 console.log("Extension validation passed");
-console.log("  permissions: storage only");
+console.log("  permissions: none");
 console.log("  host scope: https://use.kick.co/*");
 console.log(`  icons: ${expectedIconSizes.join(", ")}`);
 console.log("  runtime: local-only, no data transport APIs");

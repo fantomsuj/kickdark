@@ -1,5 +1,9 @@
 # Kick Night Mode Implementation Plan
 
+> **Historical:** This original preference-based implementation plan has been
+> superseded by the approved always-on polish pass. The current contract is in
+> `../specs/2026-07-27-kick-night-mode-design.md`.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build a privacy-first Chrome Manifest V3 extension that provides reliable System, Light, and Dark appearance modes for `use.kick.co`.

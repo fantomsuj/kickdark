@@ -8,6 +8,7 @@ html[data-kick-night-mode="dark"] {
   --kick-night-subtle: #8f9caf;
   --kick-night-border: rgba(255, 255, 255, 0.1);
   --kick-night-border-strong: rgba(255, 255, 255, 0.16);
+  --kick-night-control-border: #718198;
   --kick-night-accent: #3793da;
   --kick-night-positive: #53c28b;
   --kick-night-warning: #f2b84b;
@@ -17,232 +18,453 @@ html[data-kick-night-mode="dark"] {
 }
 
 html[data-kick-night-mode="dark"] body,
-html[data-kick-night-mode="dark"] #root,
-html[data-kick-night-mode="dark"] #__next {
+html[data-kick-night-mode="dark"] body > div:first-of-type,
+html[data-kick-night-mode="dark"] main {
   color: var(--kick-night-text) !important;
   background: var(--kick-night-page) !important;
 }
 
-html[data-kick-night-mode="dark"] main,
-html[data-kick-night-mode="dark"] [role="main"] {
-  color: var(--kick-night-text);
+html[data-kick-night-mode="dark"] body > div:first-of-type > div:has(main) {
+  color: var(--kick-night-text) !important;
   background-color: var(--kick-night-page) !important;
 }
 
-html[data-kick-night-mode="dark"] aside,
+html[data-kick-night-mode="dark"] body > div:first-of-type > div:has(nav.navigation-menu),
 html[data-kick-night-mode="dark"] nav,
-html[data-kick-night-mode="dark"] header,
-html[data-kick-night-mode="dark"] [class*="sidebar" i],
-html[data-kick-night-mode="dark"] [class*="navigation" i] {
-  color: var(--kick-night-text);
+html[data-kick-night-mode="dark"] nav.navigation-menu {
+  color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-surface) !important;
 }
 
-html[data-kick-night-mode="dark"] [class*="card" i],
-html[data-kick-night-mode="dark"] [class*="panel" i],
-html[data-kick-night-mode="dark"] [class*="surface" i],
-html[data-kick-night-mode="dark"] [class*="container" i][class*="white" i] {
-  color: var(--kick-night-text);
+html[data-kick-night-mode="dark"] header {
+  --border-color: var(--kick-night-border);
+  color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-surface) !important;
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.2);
 }
 
-html[data-kick-night-mode="dark"] [class*="bg-white"],
-html[data-kick-night-mode="dark"] [class*="bg-gray-50"],
-html[data-kick-night-mode="dark"] [class*="bg-slate-50"],
-html[data-kick-night-mode="dark"] [style*="background-color: white"],
-html[data-kick-night-mode="dark"] [style*="background-color: rgb(255, 255, 255)"] {
-  background-color: var(--kick-night-surface) !important;
-}
-
-html[data-kick-night-mode="dark"] h1,
-html[data-kick-night-mode="dark"] h2,
-html[data-kick-night-mode="dark"] h3,
-html[data-kick-night-mode="dark"] h4,
-html[data-kick-night-mode="dark"] h5,
-html[data-kick-night-mode="dark"] h6,
-html[data-kick-night-mode="dark"] strong {
+html[data-kick-night-mode="dark"] nav:has(nav.navigation-menu) > header button span,
+html[data-kick-night-mode="dark"] nav.navigation-menu a > span > div > div,
+html[data-kick-night-mode="dark"] header aside > div:first-child > span {
   color: var(--kick-night-text) !important;
 }
 
-html[data-kick-night-mode="dark"] p,
-html[data-kick-night-mode="dark"] label,
-html[data-kick-night-mode="dark"] [class*="description" i],
-html[data-kick-night-mode="dark"] [class*="subtitle" i],
-html[data-kick-night-mode="dark"] [class*="caption" i] {
-  border-color: var(--kick-night-border);
-}
-
-html[data-kick-night-mode="dark"] [class*="text-gray" i],
-html[data-kick-night-mode="dark"] [class*="text-slate" i],
-html[data-kick-night-mode="dark"] [class*="muted" i],
-html[data-kick-night-mode="dark"] [aria-disabled="true"] {
+html[data-kick-night-mode="dark"] .entities-navigation > div:first-child,
+html[data-kick-night-mode="dark"] .entities-navigation .text-left,
+html[data-kick-night-mode="dark"] nav.navigation-menu > div {
   color: var(--kick-night-muted) !important;
 }
 
-html[data-kick-night-mode="dark"] a {
-  color: #77bbed;
+html[data-kick-night-mode="dark"]
+  header
+  aside
+  > div:nth-child(2)
+  > button:has(> svg + div)
+  > div {
+  color: var(--kick-night-page) !important;
+  background-color: var(--kick-night-accent) !important;
 }
 
-html[data-kick-night-mode="dark"] a:hover {
-  color: #a6d5f6;
-}
-
-html[data-kick-night-mode="dark"] table {
-  color: var(--kick-night-text);
+html[data-kick-night-mode="dark"] .sub-navigation-portals,
+html[data-kick-night-mode="dark"] section:not(.Toastify),
+html[data-kick-night-mode="dark"] .transactions,
+html[data-kick-night-mode="dark"] .transactions__body,
+html[data-kick-night-mode="dark"] main > article > div:first-child > div:first-child,
+html[data-kick-night-mode="dark"] section:has([role="columnheader"]) > div:first-child {
+  color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-surface) !important;
 }
 
-html[data-kick-night-mode="dark"] thead,
-html[data-kick-night-mode="dark"] th,
+html[data-kick-night-mode="dark"] section:has([role="columnheader"]) {
+  --border-color: var(--kick-night-border);
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
 html[data-kick-night-mode="dark"] [role="columnheader"] {
   color: var(--kick-night-muted) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-raised) !important;
 }
 
-html[data-kick-night-mode="dark"] tbody,
-html[data-kick-night-mode="dark"] tr,
-html[data-kick-night-mode="dark"] td,
-html[data-kick-night-mode="dark"] [role="row"],
-html[data-kick-night-mode="dark"] [role="cell"] {
+html[data-kick-night-mode="dark"] .view-table-row {
+  color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
-  background-color: transparent;
+  background-color: var(--kick-night-surface) !important;
 }
 
-html[data-kick-night-mode="dark"] tbody tr:hover,
-html[data-kick-night-mode="dark"] [role="row"]:hover,
-html[data-kick-night-mode="dark"] [data-state="selected"] {
+html[data-kick-night-mode="dark"] .view-table-row > div {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"] .view-table-row:hover,
+html[data-kick-night-mode="dark"] .view-table-row[aria-selected="true"],
+html[data-kick-night-mode="dark"] nav a:hover,
+html[data-kick-night-mode="dark"] nav a[aria-current="page"],
+html[data-kick-night-mode="dark"] nav .active {
+  color: var(--kick-night-text) !important;
   background-color: var(--kick-night-hover) !important;
 }
 
+html[data-kick-night-mode="dark"] .view-table-row:hover > div,
+html[data-kick-night-mode="dark"] .view-table-row[aria-selected="true"] > div {
+  color: var(--kick-night-text) !important;
+  background-color: var(--kick-night-hover) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  .view-table-row
+  .actions
+  button:has(> svg + div)
+  > div {
+  color: var(--kick-night-page) !important;
+  background-color: var(--kick-night-accent) !important;
+}
+
+html[data-kick-night-mode="dark"] .form-group,
+html[data-kick-night-mode="dark"] .form-check,
+html[data-kick-night-mode="dark"] .form-check-label {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
 html[data-kick-night-mode="dark"] input,
-html[data-kick-night-mode="dark"] select,
-html[data-kick-night-mode="dark"] textarea,
-html[data-kick-night-mode="dark"] [contenteditable="true"] {
+html[data-kick-night-mode="dark"] .form-control,
+html[data-kick-night-mode="dark"] [role="combobox"] {
   color: var(--kick-night-text) !important;
   caret-color: var(--kick-night-accent);
-  border-color: var(--kick-night-border-strong) !important;
+  border-color: var(--kick-night-control-border) !important;
   background-color: var(--kick-night-page) !important;
 }
 
 html[data-kick-night-mode="dark"] input::placeholder,
-html[data-kick-night-mode="dark"] textarea::placeholder {
+html[data-kick-night-mode="dark"] .form-control::placeholder {
   color: var(--kick-night-subtle) !important;
   opacity: 1;
 }
 
-html[data-kick-night-mode="dark"] input:focus,
-html[data-kick-night-mode="dark"] select:focus,
-html[data-kick-night-mode="dark"] textarea:focus,
-html[data-kick-night-mode="dark"] button:focus-visible,
-html[data-kick-night-mode="dark"] a:focus-visible,
-html[data-kick-night-mode="dark"] [tabindex]:focus-visible {
-  outline: 2px solid var(--kick-night-accent) !important;
-  outline-offset: 2px;
+html[data-kick-night-mode="dark"] .form-check-input {
+  appearance: none;
+  width: 16px;
+  min-width: 16px;
+  height: 16px;
+  min-height: 16px;
+  padding: 0;
+  border: 2px solid var(--kick-night-control-border) !important;
+  border-radius: 4px;
+  background-color: var(--kick-night-page) !important;
+}
+
+html[data-kick-night-mode="dark"] .form-check-input:checked {
+  border-color: var(--kick-night-accent) !important;
+  background-color: var(--kick-night-accent) !important;
+  box-shadow: inset 0 0 0 3px var(--kick-night-page);
 }
 
 html[data-kick-night-mode="dark"] button,
-html[data-kick-night-mode="dark"] [role="button"] {
-  border-color: var(--kick-night-border-strong);
-}
-
-html[data-kick-night-mode="dark"] button:not([class*="primary" i]):not([class*="brand" i]),
-html[data-kick-night-mode="dark"] [role="button"]:not([class*="primary" i]):not([class*="brand" i]) {
-  color: var(--kick-night-text);
-  background-color: var(--kick-night-raised);
+html[data-kick-night-mode="dark"] .btn-with-loader {
+  color: var(--kick-night-text) !important;
+  border: 1px solid var(--kick-night-control-border) !important;
+  background-color: var(--kick-night-raised) !important;
 }
 
 html[data-kick-night-mode="dark"] button:not([disabled]):hover,
-html[data-kick-night-mode="dark"] [role="button"]:not([aria-disabled="true"]):hover {
-  border-color: rgba(55, 147, 218, 0.52);
-}
-
-html[data-kick-night-mode="dark"] [role="dialog"],
-html[data-kick-night-mode="dark"] [role="alertdialog"],
-html[data-kick-night-mode="dark"] [role="menu"],
-html[data-kick-night-mode="dark"] [role="listbox"],
-html[data-kick-night-mode="dark"] [role="tooltip"],
-html[data-kick-night-mode="dark"] [data-radix-popper-content-wrapper] > * {
+html[data-kick-night-mode="dark"] button[aria-expanded="true"] {
   color: var(--kick-night-text) !important;
-  border-color: var(--kick-night-border-strong) !important;
-  background-color: var(--kick-night-raised) !important;
-  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
+  border-color: var(--kick-night-accent) !important;
+  background-color: var(--kick-night-hover) !important;
 }
 
-html[data-kick-night-mode="dark"] [role="menuitem"]:hover,
-html[data-kick-night-mode="dark"] [role="option"]:hover,
-html[data-kick-night-mode="dark"] [role="option"][aria-selected="true"],
-html[data-kick-night-mode="dark"] [data-highlighted] {
+html[data-kick-night-mode="dark"] button[aria-disabled="true"],
+html[data-kick-night-mode="dark"] button:disabled,
+html[data-kick-night-mode="dark"] [role="menuitem"][aria-disabled="true"] {
+  color: var(--kick-night-muted) !important;
+  border-color: var(--kick-night-control-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"] [role="dialog"] .form-group__label {
+  color: var(--kick-night-muted) !important;
+}
+
+html[data-kick-night-mode="dark"] [role="dialog"] button abbr {
+  color: inherit !important;
+}
+
+html[data-kick-night-mode="dark"] nav a {
+  color: var(--kick-night-muted) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"] nav a:hover,
+html[data-kick-night-mode="dark"] nav a[aria-current="page"],
+html[data-kick-night-mode="dark"] nav a.active {
   color: var(--kick-night-text) !important;
   background-color: var(--kick-night-hover) !important;
 }
 
-html[data-kick-night-mode="dark"] [role="tablist"] {
+html[data-kick-night-mode="dark"] .icon-color-gray-900 {
+  color: var(--kick-night-text) !important;
+}
+
+html[data-kick-night-mode="dark"] .icon-color-gray-500 {
+  color: var(--kick-night-muted) !important;
+}
+
+html[data-kick-night-mode="dark"] [role="dialog"],
+html[data-kick-night-mode="dark"] [role="menu"],
+html[data-kick-night-mode="dark"] [role="listbox"] {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-control-border) !important;
+  background-color: var(--kick-night-raised) !important;
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
+}
+
+html[data-kick-night-mode="dark"] [role="menuitem"],
+html[data-kick-night-mode="dark"] [role="option"] {
+  color: var(--kick-night-text) !important;
+  border-color: transparent;
+  background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"] [role="menuitem"]:hover,
+html[data-kick-night-mode="dark"] [role="option"]:hover,
+html[data-kick-night-mode="dark"] [role="option"][aria-selected="true"] {
+  color: var(--kick-night-text) !important;
+  background-color: var(--kick-night-hover) !important;
+}
+
+html[data-kick-night-mode="dark"] [role="status"] {
+  color: var(--kick-night-muted) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"] [role="separator"] {
+  color: var(--kick-night-subtle) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-border) !important;
+}
+
+html[data-kick-night-mode="dark"] [role="tablist"],
+html[data-kick-night-mode="dark"] body footer {
+  color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
   background-color: var(--kick-night-surface) !important;
 }
 
 html[data-kick-night-mode="dark"] [role="tab"] {
   color: var(--kick-night-muted) !important;
+  border-color: var(--kick-night-control-border) !important;
+  background-color: var(--kick-night-surface) !important;
 }
 
-html[data-kick-night-mode="dark"] [role="tab"][aria-selected="true"],
-html[data-kick-night-mode="dark"] [role="tab"][data-state="active"] {
+html[data-kick-night-mode="dark"] [role="tab"][aria-selected="true"] {
   color: var(--kick-night-text) !important;
   border-color: var(--kick-night-accent) !important;
-}
-
-html[data-kick-night-mode="dark"] [class*="modal" i],
-html[data-kick-night-mode="dark"] [class*="popover" i],
-html[data-kick-night-mode="dark"] [class*="dropdown" i],
-html[data-kick-night-mode="dark"] [class*="tooltip" i] {
-  color: var(--kick-night-text);
-  border-color: var(--kick-night-border-strong) !important;
   background-color: var(--kick-night-raised) !important;
 }
 
-html[data-kick-night-mode="dark"] [class*="overlay" i],
-html[data-kick-night-mode="dark"] [data-state="open"][class*="backdrop" i] {
-  background-color: rgba(5, 10, 18, 0.7) !important;
-}
-
-html[data-kick-night-mode="dark"] [role="alert"],
-html[data-kick-night-mode="dark"] [class*="toast" i],
-html[data-kick-night-mode="dark"] [class*="notification" i] {
-  color: var(--kick-night-text);
-  border-color: var(--kick-night-border-strong) !important;
-  background-color: var(--kick-night-raised) !important;
-}
-
-html[data-kick-night-mode="dark"] [class*="skeleton" i],
-html[data-kick-night-mode="dark"] [class*="loading" i] {
-  background-color: var(--kick-night-hover) !important;
-}
-
-html[data-kick-night-mode="dark"] [class*="success" i],
-html[data-kick-night-mode="dark"] [data-tone="positive"] {
-  color: var(--kick-night-positive) !important;
-}
-
-html[data-kick-night-mode="dark"] [class*="warning" i],
-html[data-kick-night-mode="dark"] [data-tone="warning"] {
-  color: var(--kick-night-warning) !important;
-}
-
-html[data-kick-night-mode="dark"] [class*="error" i],
-html[data-kick-night-mode="dark"] [class*="danger" i],
-html[data-kick-night-mode="dark"] [data-tone="negative"] {
-  color: var(--kick-night-negative) !important;
-}
-
-html[data-kick-night-mode="dark"] hr,
-html[data-kick-night-mode="dark"] [class*="divider" i],
-html[data-kick-night-mode="dark"] [class*="border-" i] {
+/* Clients: training banner, table ownership cells, and sticky count footer. */
+html[data-kick-night-mode="dark"]
+  .sub-navigation-portals
+  > div:first-child {
+  color: var(--kick-night-text) !important;
   border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  .sub-navigation-portals
+  > div:first-child
+  a {
+  color: #a6d5f6 !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"] .billingOwnership,
+html[data-kick-night-mode="dark"] .billingOwnership > div,
+html[data-kick-night-mode="dark"] .billingOwnership span {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"] section:has(.view-table-row) + div,
+html[data-kick-night-mode="dark"] section:has(.view-table-row) + div span {
+  color: var(--kick-night-muted) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+/* Accounts: the Total Balance card keeps its amount readable. */
+html[data-kick-night-mode="dark"] main > div > header:has(.amount),
+html[data-kick-night-mode="dark"] main > div > header:has(.amount) .label {
+  color: var(--kick-night-muted) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  main
+  > div
+  > header:has(.amount)
+  .amount,
+html[data-kick-night-mode="dark"]
+  main
+  > div
+  > header:has(.amount)
+  .amount__currency,
+html[data-kick-night-mode="dark"]
+  main
+  > div
+  > header:has(.amount)
+  .amount__dollars,
+html[data-kick-night-mode="dark"]
+  main
+  > div
+  > header:has(.amount)
+  .amount__cents {
+  color: var(--kick-night-text) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+/* Rules: native table markup is separate from Kick's div-based data grid. */
+html[data-kick-night-mode="dark"] main table,
+html[data-kick-night-mode="dark"] main thead,
+html[data-kick-night-mode="dark"] main tbody,
+html[data-kick-night-mode="dark"] main tr {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"] main th {
+  color: var(--kick-night-muted) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"] main td,
+html[data-kick-night-mode="dark"] main td > * {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+/* Profit & Loss: report masthead, summary cells, totals, and footer. */
+html[data-kick-night-mode="dark"] main header:has(h3.font-weight-medium),
+html[data-kick-night-mode="dark"]
+  main
+  header:has(h3.font-weight-medium)
+  h3,
+html[data-kick-night-mode="dark"]
+  main
+  header:has(h3.font-weight-medium)
+  h5 {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  main
+  header
+  .text-grey,
+html[data-kick-night-mode="dark"]
+  main
+  div:has(> div > .has-overflow)
+  > div:last-child {
+  color: var(--kick-night-muted) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+html[data-kick-night-mode="dark"] .has-overflow > section,
+html[data-kick-night-mode="dark"] .has-overflow > section .view-table-row,
+html[data-kick-night-mode="dark"]
+  .has-overflow
+  .view-table-row
+  > div,
+html[data-kick-night-mode="dark"]
+  .has-overflow
+  .view-table-row
+  div {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
+/* Invoicing and Billing: status segments and integration empty states. */
+html[data-kick-night-mode="dark"] main .p-0:has(.segment) .segment,
+html[data-kick-night-mode="dark"] main .p-0:has(.segment) .segment span {
+  color: var(--kick-night-muted) !important;
+  border-color: var(--kick-night-control-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  main
+  .p-0:has(.segment)
+  > div
+  > div
+  > div
+  > div
+  > div,
+html[data-kick-night-mode="dark"]
+  main
+  .p-0:has(.segment)
+  > div
+  > div
+  > div
+  > div
+  > div
+  > div {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-page) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  main
+  .p-0:has(.segment)
+  > div
+  > div
+  > div
+  > div
+  > div
+  > div:last-child {
+  color: var(--kick-night-muted) !important;
+  background-color: var(--kick-night-page) !important;
+}
+
+/* Task drawer: contenteditable editor and detail controls avoid white panels. */
+html[data-kick-night-mode="dark"] [role="dialog"] header,
+html[data-kick-night-mode="dark"] [role="dialog"] .form-group {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"] [role="dialog"] [role="textbox"],
+html[data-kick-night-mode="dark"] [role="dialog"] [contenteditable="true"] {
+  color: var(--kick-night-text) !important;
+  caret-color: var(--kick-night-accent);
+  border-color: var(--kick-night-control-border) !important;
+  background-color: var(--kick-night-page) !important;
+}
+
+html[data-kick-night-mode="dark"] input:focus,
+html[data-kick-night-mode="dark"] button:focus-visible,
+html[data-kick-night-mode="dark"] a:focus-visible,
+html[data-kick-night-mode="dark"] [tabindex]:focus-visible {
+  outline: 2px solid var(--kick-night-accent) !important;
+  outline-offset: 2px;
 }
 
 html[data-kick-night-mode="dark"] img,
@@ -252,19 +474,19 @@ html[data-kick-night-mode="dark"] svg,
 html[data-kick-night-mode="dark"] iframe,
 html[data-kick-night-mode="dark"] object,
 html[data-kick-night-mode="dark"] embed,
-html[data-kick-night-mode="dark"] [class*="receipt" i],
-html[data-kick-night-mode="dark"] [class*="attachment" i],
-html[data-kick-night-mode="dark"] [class*="upload" i],
-html[data-kick-night-mode="dark"] [class*="document" i],
-html[data-kick-night-mode="dark"] [class*="avatar" i],
-html[data-kick-night-mode="dark"] [class*="logo" i] {
+html[data-kick-night-mode="dark"] [class~="receipt"],
+html[data-kick-night-mode="dark"] [class~="attachment"],
+html[data-kick-night-mode="dark"] [class~="upload"],
+html[data-kick-night-mode="dark"] [class~="document"],
+html[data-kick-night-mode="dark"] [class~="avatar"],
+html[data-kick-night-mode="dark"] [class~="logo"] {
   filter: none !important;
   mix-blend-mode: normal;
 }
 
-html[data-kick-night-mode="dark"] [class*="receipt" i],
-html[data-kick-night-mode="dark"] [class*="document-viewer" i],
-html[data-kick-night-mode="dark"] [class*="pdf" i] {
+html[data-kick-night-mode="dark"] [class~="receipt"],
+html[data-kick-night-mode="dark"] [class~="document-viewer"],
+html[data-kick-night-mode="dark"] [class~="pdf"] {
   color-scheme: light;
 }
 
@@ -294,11 +516,8 @@ html[data-kick-night-mode="dark"] ::-webkit-scrollbar-thumb:hover {
     background: white !important;
   }
 
-  html[data-kick-night-mode="dark"] body,
-  html[data-kick-night-mode="dark"] #root,
-  html[data-kick-night-mode="dark"] #__next,
-  html[data-kick-night-mode="dark"] main,
-  html[data-kick-night-mode="dark"] [role="main"] {
+  html[data-kick-night-mode="dark"][data-kick-night-mode="dark"] body,
+  html[data-kick-night-mode="dark"][data-kick-night-mode="dark"] body * {
     color: black !important;
     border-color: #d7dce2 !important;
     background: white !important;
