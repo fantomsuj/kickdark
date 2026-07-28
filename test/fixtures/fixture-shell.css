@@ -232,6 +232,15 @@ main .p-0:has(.segment) > div > div > div > div > div > div:last-child {
   background: #ffffff;
 }
 
+[data-kick-night-fixture-surface="command-palette"] kbd {
+  display: inline-flex;
+  padding: 3px 7px;
+  color: #515d71;
+  border: 1px solid #d9dde2;
+  border-radius: 5px;
+  background: #ffffff;
+}
+
 @media (max-width: 1000px) {
   html,
   body {

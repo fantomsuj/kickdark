@@ -919,6 +919,26 @@
       ]
     },
     {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"dialog\"] kbd",
+      "evidence": "captured",
+      "routes": [
+        "accounts"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"dialog\"] kbd[aria-current=\"page\"]",
+      "evidence": "captured",
+      "routes": [
+        "accounts"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
       "selector": "html[data-kick-night-mode=\"dark\"] nav a",
       "evidence": "captured",
       "routes": [

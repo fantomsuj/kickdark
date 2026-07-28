@@ -15,6 +15,7 @@ const fixtureNames = [
   "billing",
   "tasks-new-task",
   "dialog-menu-form",
+  "command-palette",
   "filter-dialog",
   "menu",
   "form",

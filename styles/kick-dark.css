@@ -217,6 +217,18 @@ html[data-kick-night-mode="dark"] [role="dialog"] button abbr {
   color: inherit !important;
 }
 
+html[data-kick-night-mode="dark"] [role="dialog"] kbd {
+  color: var(--kick-night-muted) !important;
+  border: 1px solid var(--kick-night-control-border) !important;
+  background-color: var(--kick-night-page) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  [role="dialog"]
+  kbd[aria-current="page"] {
+  color: var(--kick-night-text) !important;
+}
+
 html[data-kick-night-mode="dark"] nav a {
   color: var(--kick-night-muted) !important;
   background-color: var(--kick-night-surface) !important;

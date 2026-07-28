@@ -20,6 +20,7 @@ const fixtureNames = [
   "billing",
   "tasks-new-task",
   "dialog-menu-form",
+  "command-palette",
   "filter-dialog",
   "menu",
   "form",
@@ -235,6 +236,43 @@ test("major surfaces pair a dark background with readable foreground", async ({
   }
 });
 
+test("Command-K Home pill and shortcut keycaps use dark surfaces", async ({
+  page
+}) => {
+  await loadFixture(page, "command-palette");
+
+  const keycaps = await page.locator('[role="dialog"] kbd').evaluateAll(
+    (elements) =>
+      elements.map((element) => ({
+        current: element.getAttribute("aria-current"),
+        color: getComputedStyle(element).color,
+        background: getComputedStyle(element).backgroundColor,
+        border: getComputedStyle(element).borderTopColor
+      }))
+  );
+
+  expect(keycaps).toEqual([
+    {
+      current: "page",
+      color: "rgb(244, 247, 251)",
+      background: "rgb(15, 24, 38)",
+      border: "rgb(113, 129, 152)"
+    },
+    {
+      current: null,
+      color: "rgb(183, 192, 206)",
+      background: "rgb(15, 24, 38)",
+      border: "rgb(113, 129, 152)"
+    },
+    {
+      current: null,
+      color: "rgb(183, 192, 206)",
+      background: "rgb(15, 24, 38)",
+      border: "rgb(113, 129, 152)"
+    }
+  ]);
+});
+
 test("audited route surfaces contain no white glare bands", async ({ page }) => {
   const auditedSurfaces = {
     transactions:
@@ -251,6 +289,7 @@ test("audited route surfaces contain no white glare bands", async ({ page }) => 
       ".segment, main .p-0:has(.segment) > div > div > div > div > div",
     "tasks-new-task":
       '[role="dialog"], [role="dialog"] [role="textbox"]',
+    "command-palette": '[role="dialog"] kbd',
     "filter-dialog": '[role="dialog"]'
   };
 

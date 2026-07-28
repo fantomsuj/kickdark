@@ -178,6 +178,10 @@ test("selector evidence covers every audited route and interactive state", () =>
         route: "documents",
         surface: "dialog-menu-form"
       },
+      "command-palette": {
+        route: "accounts",
+        surface: "command-palette"
+      },
       "filter-dialog": {
         route: "transactions-filter",
         surface: "overlay"

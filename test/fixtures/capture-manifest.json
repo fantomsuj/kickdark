@@ -961,6 +961,26 @@
         "svg"
       ]
     },
+    "command-palette": {
+      "route": "accounts",
+      "surface": "command-palette",
+      "selectorCandidates": [
+        "[aria-current=\"page\"]",
+        "[aria-selected=\"false\"]",
+        "[aria-selected=\"true\"]",
+        "[role=\"dialog\"]",
+        "[role=\"listbox\"]",
+        "[role=\"option\"]",
+        "[tabindex=\"-1\"]",
+        "[type=\"button\"]",
+        "[type=\"text\"]",
+        "button",
+        "div",
+        "input",
+        "kbd",
+        "span"
+      ]
+    },
     "filter-dialog": {
       "route": "transactions-filter",
       "surface": "overlay",
