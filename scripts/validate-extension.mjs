@@ -32,8 +32,24 @@ function pngDimensions(relativePath) {
 assert.equal(manifest.manifest_version, 3, "manifest must use version 3");
 assert.equal("permissions" in manifest, false, "runtime permissions are unnecessary");
 assert.equal("host_permissions" in manifest, false, "broad host permissions are forbidden");
-assert.equal("action" in manifest, false, "a toolbar action is unnecessary");
-assert.equal("background" in manifest, false, "a background worker is unnecessary");
+expectExact(
+  manifest.action,
+  {
+    default_title: "Toggle Kick Night Mode",
+    default_icon: {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "toolbar action"
+);
+expectExact(
+  manifest.background,
+  { service_worker: "src/background.js" },
+  "background worker"
+);
 assert.equal("web_accessible_resources" in manifest, false, "web-accessible resources are unnecessary");
 
 assert.equal(manifest.content_scripts.length, 1, "exactly one content script declaration is expected");
@@ -48,6 +64,8 @@ assert.equal(contentScript.match_about_blank, false);
 const referencedFiles = new Set([
   ...contentScript.js,
   ...contentScript.css,
+  manifest.background.service_worker,
+  ...Object.values(manifest.action.default_icon),
   ...Object.values(manifest.icons)
 ]);
 for (const relativePath of referencedFiles) expectFile(relativePath);
@@ -61,6 +79,7 @@ for (const size of expectedIconSizes) {
 
 const runtimeFiles = [
   "manifest.json",
+  "src/background.js",
   "src/content.js",
   "styles/kick-dark.css"
 ];
@@ -99,8 +118,8 @@ assert.doesNotMatch(
 );
 assert.doesNotMatch(
   contentSource,
-  /\b(?:storage|runtime|matchMedia|addEventListener|removeEventListener)\b/,
-  "the page content script must activate without preference or listener APIs"
+  /\b(?:chrome\.storage|indexedDB)\b/,
+  "appearance state must not require extension storage or a database"
 );
 
 const stylesheet = fs.readFileSync(
@@ -114,4 +133,6 @@ console.log("Extension validation passed");
 console.log("  permissions: none");
 console.log("  host scope: https://use.kick.co/*");
 console.log(`  icons: ${expectedIconSizes.join(", ")}`);
+console.log("  toolbar: tab relay");
+console.log("  preference: namespaced appearance only");
 console.log("  runtime: local-only, no data transport APIs");
