@@ -1,0 +1,1952 @@
+{
+  "version": 1,
+  "policy": "Selectors are mapped to sanitized authenticated fixtures. Test markers are evidence only and are never production selectors.",
+  "selectors": [
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"]",
+      "evidence": "documented-exception",
+      "exception": "root",
+      "routes": [],
+      "surfaces": [
+        "root"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] body",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "application",
+        "body"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] body > div:first-of-type",
+      "evidence": "documented-exception",
+      "exception": "root",
+      "routes": [],
+      "surfaces": [
+        "root"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] body > div:first-of-type > div:has(main)",
+      "evidence": "documented-exception",
+      "exception": "root",
+      "routes": [],
+      "surfaces": [
+        "root"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] body > div:first-of-type > div:has(nav.navigation-menu)",
+      "evidence": "documented-exception",
+      "exception": "root",
+      "routes": [],
+      "surfaces": [
+        "root"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav.navigation-menu",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] header",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav:has(nav.navigation-menu) > header button span",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav.navigation-menu a > span > div > div",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] header aside > div:first-child > span",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .entities-navigation > div:first-child",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .entities-navigation .text-left",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav.navigation-menu > div",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] header aside > div:nth-child(2) > button:has(> svg + div) > div",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .sub-navigation-portals",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "clients",
+        "invoicing",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] section:not(.Toastify)",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .transactions",
+      "evidence": "captured",
+      "routes": [
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .transactions__body",
+      "evidence": "captured",
+      "routes": [
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main > article > div:first-child > div:first-child",
+      "evidence": "captured",
+      "routes": [
+        "clients",
+        "documents"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] section:has([role=\"columnheader\"]) > div:first-child",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] section:has([role=\"columnheader\"])",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"columnheader\"]",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "clients",
+        "profit-loss",
+        "tasks",
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row > div",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "clients",
+        "profit-loss",
+        "tasks",
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row:hover",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "clients",
+        "profit-loss",
+        "tasks",
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row[aria-selected=\"true\"]",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "clients",
+        "profit-loss",
+        "tasks",
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav a:hover",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav a[aria-current=\"page\"]",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav .active",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row:hover > div",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "clients",
+        "profit-loss",
+        "tasks",
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row[aria-selected=\"true\"] > div",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "clients",
+        "profit-loss",
+        "tasks",
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .view-table-row .actions button:has(> svg + div) > div",
+      "evidence": "captured",
+      "routes": [
+        "tasks",
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .form-group",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "form",
+        "group",
+        "overlay",
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .form-check",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "documents",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .form-check-label",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "documents",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] input",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "form",
+        "group",
+        "overlay",
+        "page",
+        "row",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .form-control",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "form",
+        "group",
+        "overlay",
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"combobox\"]",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "overlay",
+        "page",
+        "row",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] input::placeholder",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "form",
+        "group",
+        "overlay",
+        "page",
+        "row",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .form-control::placeholder",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "form",
+        "group",
+        "overlay",
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .form-check-input",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "documents",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .form-check-input:checked",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "documents",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] button",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "application",
+        "group",
+        "header",
+        "overlay",
+        "page",
+        "row",
+        "sidebar",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .btn-with-loader",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "documents",
+        "invoicing"
+      ],
+      "surfaces": [
+        "group",
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] button:not([disabled]):hover",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "application",
+        "group",
+        "header",
+        "overlay",
+        "page",
+        "row",
+        "sidebar",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] button[aria-expanded=\"true\"]",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "application",
+        "group",
+        "header",
+        "overlay",
+        "page",
+        "row",
+        "sidebar",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] button[aria-disabled=\"true\"]",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "application",
+        "group",
+        "header",
+        "overlay",
+        "page",
+        "row",
+        "sidebar",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] button:disabled",
+      "evidence": "captured",
+      "routes": [
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"menuitem\"][aria-disabled=\"true\"]",
+      "evidence": "captured",
+      "routes": [
+        "documents"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"dialog\"] .form-group__label",
+      "evidence": "captured",
+      "routes": [
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"dialog\"] button abbr",
+      "evidence": "captured",
+      "routes": [
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav a",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav a:hover",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav a[aria-current=\"page\"]",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] nav a.active",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .icon-color-gray-900",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "header",
+        "page",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .icon-color-gray-500",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "row",
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"dialog\"]",
+      "evidence": "captured",
+      "routes": [
+        "documents",
+        "tasks-new-task",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"menu\"]",
+      "evidence": "captured",
+      "routes": [
+        "documents"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"listbox\"]",
+      "evidence": "captured",
+      "routes": [
+        "documents",
+        "profit-loss"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"menuitem\"]",
+      "evidence": "captured",
+      "routes": [
+        "documents"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"option\"]",
+      "evidence": "captured",
+      "routes": [
+        "documents",
+        "profit-loss"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"menuitem\"]:hover",
+      "evidence": "captured",
+      "routes": [
+        "documents"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"option\"]:hover",
+      "evidence": "captured",
+      "routes": [
+        "documents",
+        "profit-loss"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"option\"][aria-selected=\"true\"]",
+      "evidence": "captured",
+      "routes": [
+        "documents",
+        "profit-loss"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"status\"]",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "header",
+        "overlay",
+        "page",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"separator\"]",
+      "evidence": "captured",
+      "routes": [
+        "documents"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"tablist\"]",
+      "evidence": "captured",
+      "routes": [
+        "rules"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] body footer",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "application",
+        "group",
+        "sidebar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"tab\"]",
+      "evidence": "captured",
+      "routes": [
+        "rules"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"tab\"][aria-selected=\"true\"]",
+      "evidence": "captured",
+      "routes": [
+        "rules"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .sub-navigation-portals > div:first-child",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "clients",
+        "invoicing",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .sub-navigation-portals > div:first-child a",
+      "evidence": "captured",
+      "routes": [
+        "clients"
+      ],
+      "surfaces": [
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .billingOwnership",
+      "evidence": "captured",
+      "routes": [
+        "clients"
+      ],
+      "surfaces": [
+        "group",
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .billingOwnership > div",
+      "evidence": "captured",
+      "routes": [
+        "clients"
+      ],
+      "surfaces": [
+        "group",
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .billingOwnership span",
+      "evidence": "captured",
+      "routes": [
+        "clients"
+      ],
+      "surfaces": [
+        "group",
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] section:has(.view-table-row) + div",
+      "evidence": "captured",
+      "routes": [
+        "clients"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] section:has(.view-table-row) + div span",
+      "evidence": "captured",
+      "routes": [
+        "clients"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main > div > header:has(.amount)",
+      "evidence": "captured",
+      "routes": [
+        "accounts"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main > div > header:has(.amount) .label",
+      "evidence": "captured",
+      "routes": [
+        "accounts"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main > div > header:has(.amount) .amount",
+      "evidence": "captured",
+      "routes": [
+        "accounts"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main > div > header:has(.amount) .amount__currency",
+      "evidence": "captured",
+      "routes": [
+        "accounts"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main > div > header:has(.amount) .amount__dollars",
+      "evidence": "captured",
+      "routes": [
+        "accounts"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main > div > header:has(.amount) .amount__cents",
+      "evidence": "captured",
+      "routes": [
+        "accounts"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main table",
+      "evidence": "captured",
+      "routes": [
+        "rules"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main thead",
+      "evidence": "captured",
+      "routes": [
+        "rules"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main tbody",
+      "evidence": "captured",
+      "routes": [
+        "rules"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main tr",
+      "evidence": "captured",
+      "routes": [
+        "rules"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main th",
+      "evidence": "captured",
+      "routes": [
+        "rules"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main td",
+      "evidence": "captured",
+      "routes": [
+        "rules"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main td > *",
+      "evidence": "captured",
+      "routes": [
+        "rules"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main header:has(h3.font-weight-medium)",
+      "evidence": "captured",
+      "routes": [
+        "profit-loss"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main header:has(h3.font-weight-medium) h3",
+      "evidence": "captured",
+      "routes": [
+        "profit-loss"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main header:has(h3.font-weight-medium) h5",
+      "evidence": "captured",
+      "routes": [
+        "profit-loss"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main header .text-grey",
+      "evidence": "captured",
+      "routes": [
+        "profit-loss"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main div:has(> div > .has-overflow) > div:last-child",
+      "evidence": "captured",
+      "routes": [
+        "profit-loss"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .has-overflow > section",
+      "evidence": "captured",
+      "routes": [
+        "documents",
+        "profit-loss"
+      ],
+      "surfaces": [
+        "group"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .has-overflow > section .view-table-row",
+      "evidence": "captured",
+      "routes": [
+        "profit-loss"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .has-overflow .view-table-row > div",
+      "evidence": "captured",
+      "routes": [
+        "profit-loss"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] .has-overflow .view-table-row div",
+      "evidence": "captured",
+      "routes": [
+        "profit-loss"
+      ],
+      "surfaces": [
+        "row"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main .p-0:has(.segment) .segment",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "invoicing"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main .p-0:has(.segment) .segment span",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "invoicing"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main .p-0:has(.segment) > div > div > div > div > div",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "invoicing"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main .p-0:has(.segment) > div > div > div > div > div > div",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "invoicing"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] main .p-0:has(.segment) > div > div > div > div > div > div:last-child",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "invoicing"
+      ],
+      "surfaces": [
+        "page"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"dialog\"] header",
+      "evidence": "captured",
+      "routes": [
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "header"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"dialog\"] .form-group",
+      "evidence": "captured",
+      "routes": [
+        "tasks-new-task",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"dialog\"] [role=\"textbox\"]",
+      "evidence": "captured",
+      "routes": [
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [role=\"dialog\"] [contenteditable=\"true\"]",
+      "evidence": "captured",
+      "routes": [
+        "tasks-new-task"
+      ],
+      "surfaces": [
+        "overlay"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] input:focus",
+      "evidence": "captured",
+      "routes": [
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "form",
+        "group",
+        "overlay",
+        "page",
+        "row",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] button:focus-visible",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "application",
+        "group",
+        "header",
+        "overlay",
+        "page",
+        "row",
+        "sidebar",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] a:focus-visible",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "sidebar",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [tabindex]:focus-visible",
+      "evidence": "captured",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "application",
+        "group",
+        "header",
+        "overlay",
+        "page",
+        "row",
+        "sidebar",
+        "toolbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] img",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] video",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] canvas",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] svg",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] iframe",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] object",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] embed",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [class~=\"receipt\"]",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [class~=\"attachment\"]",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [class~=\"upload\"]",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [class~=\"document\"]",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [class~=\"avatar\"]",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [class~=\"logo\"]",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [class~=\"receipt\"]",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [class~=\"document-viewer\"]",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] [class~=\"pdf\"]",
+      "evidence": "documented-exception",
+      "exception": "protected-media",
+      "routes": [],
+      "surfaces": [
+        "protected-media"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] ::-webkit-scrollbar",
+      "evidence": "documented-exception",
+      "exception": "scrollbar",
+      "routes": [],
+      "surfaces": [
+        "scrollbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] ::-webkit-scrollbar-track",
+      "evidence": "documented-exception",
+      "exception": "scrollbar",
+      "routes": [],
+      "surfaces": [
+        "scrollbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] ::-webkit-scrollbar-thumb",
+      "evidence": "documented-exception",
+      "exception": "scrollbar",
+      "routes": [],
+      "surfaces": [
+        "scrollbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"] ::-webkit-scrollbar-thumb:hover",
+      "evidence": "documented-exception",
+      "exception": "scrollbar",
+      "routes": [],
+      "surfaces": [
+        "scrollbar"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"]",
+      "evidence": "documented-exception",
+      "exception": "print",
+      "routes": [],
+      "surfaces": [
+        "print"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"][data-kick-night-mode=\"dark\"] body",
+      "evidence": "documented-exception",
+      "exception": "print",
+      "routes": [],
+      "surfaces": [
+        "print"
+      ]
+    },
+    {
+      "selector": "html[data-kick-night-mode=\"dark\"][data-kick-night-mode=\"dark\"] body *",
+      "evidence": "documented-exception",
+      "exception": "print",
+      "routes": [],
+      "surfaces": [
+        "print"
+      ]
+    }
+  ],
+  "variables": {
+    "--border-color": {
+      "evidence": "authenticated-cssom",
+      "purpose": "Kick table and organization-header border contract",
+      "routes": [
+        "accounts",
+        "billing",
+        "clients",
+        "documents",
+        "invoicing",
+        "profit-loss",
+        "rules",
+        "tasks",
+        "tasks-new-task",
+        "transactions",
+        "transactions-filter"
+      ],
+      "surfaces": [
+        "group",
+        "header"
+      ],
+      "exclusions": [
+        "financial-state color",
+        "media",
+        "document rendering"
+      ]
+    }
+  }
+}

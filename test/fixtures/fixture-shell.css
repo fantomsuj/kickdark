@@ -1,0 +1,244 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 1180px;
+  min-height: 900px;
+  margin: 0;
+  color: #0f1826;
+  background: #ffffff;
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body[data-kick-night-test-surface="application"] > div:first-of-type {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  min-height: 900px;
+}
+
+[data-kick-night-test-surface="sidebar"] {
+  min-width: 220px;
+  padding: 12px;
+  color: #0f1826;
+  border-right: 1px solid #d9dde2;
+  background: #ffffff;
+}
+
+[data-kick-night-test-surface="header"] {
+  min-height: 52px;
+  padding: 12px 18px;
+  color: #0f1826;
+  border-bottom: 1px solid #d9dde2;
+  background: #ffffff;
+}
+
+[data-kick-night-test-surface="page"] {
+  min-width: 850px;
+  min-height: 760px;
+  padding: 20px;
+  color: #0f1826;
+  background: #ffffff;
+}
+
+[data-kick-night-test-surface="toolbar"],
+[data-kick-night-test-surface="group"] {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 52px;
+  margin-bottom: 12px;
+  padding: 12px;
+  color: #0f1826;
+  border: 1px solid #d9dde2;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+[data-kick-night-test-surface="row"] {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(90px, 1fr));
+  min-height: 46px;
+  padding: 8px 10px;
+  color: #0f1826;
+  border-bottom: 1px solid #d9dde2;
+  background: #ffffff;
+}
+
+[data-kick-night-test-control] {
+  min-width: 34px;
+  min-height: 32px;
+  padding: 7px 10px;
+  color: #0f1826;
+  border: 1px solid #b7bcc5;
+  border-radius: 7px;
+  background: #ffffff;
+}
+
+button[data-kick-night-test-control] {
+  border-width: 0;
+}
+
+[data-kick-night-test-surface="overlay"] {
+  display: block;
+  width: min(520px, calc(100vw - 48px));
+  margin: 60px auto;
+  padding: 14px;
+  color: #0f1826;
+  border: 1px solid #d9dde2;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 18px 54px rgba(15, 24, 38, 0.16);
+}
+
+[role="menuitem"],
+[role="option"] {
+  display: block;
+  width: 100%;
+  min-height: 34px;
+  padding: 8px 10px;
+}
+
+[data-kick-night-test-text] {
+  min-width: 4ch;
+}
+
+svg,
+img,
+canvas,
+video {
+  width: 18px;
+  height: 18px;
+}
+
+/*
+ * Minimal captured Kick light-theme cascade. These rules deliberately recreate
+ * the verified foreground/background survivors that the production dark theme
+ * must defeat; fixture-only markers remain layout and assertion hooks only.
+ */
+nav:has(nav.navigation-menu) > header button span,
+nav.navigation-menu a > span > div > div,
+header aside > div:first-child > span {
+  color: #0f1826;
+}
+
+.entities-navigation > div:first-child,
+nav.navigation-menu > div {
+  color: #515d71;
+}
+
+header
+  aside
+  > div:nth-child(2)
+  > button:has(> svg + div)
+  > div {
+  color: #f4f7fb;
+  background: #f2faff;
+}
+
+main > article > div:first-child > div:first-child,
+section:has([role="columnheader"]) > div:first-child {
+  background: #ffffff;
+}
+
+.view-table-row > div {
+  background: #ffffff;
+}
+
+.view-table-row .actions button:has(> svg + div) > div {
+  color: #f4f7fb;
+  background: #f2faff;
+}
+
+[role="dialog"] .form-group__label,
+[role="dialog"] button abbr {
+  color: #515d71;
+}
+
+/*
+ * Authenticated route-specific survivors. These model the Kick declarations
+ * that previously won on routes missing from the visual suite.
+ */
+.sub-navigation-portals > div:first-child {
+  color: #0f1826;
+  background: #ffffff;
+}
+
+.billingOwnership,
+.billingOwnership > div {
+  color: #f4f7fb;
+  background: #ffffff;
+}
+
+main > div > header .label {
+  color: #515d71 !important;
+}
+
+main > div > header .amount__currency,
+main > div > header .amount__dollars,
+main > div > header .amount__cents {
+  color: #0f1826 !important;
+}
+
+main table th {
+  color: #515d71;
+}
+
+main table td {
+  color: #f4f7fb;
+  background: #ffffff;
+}
+
+main header:has(h3.font-weight-medium) h3,
+main header:has(h3.font-weight-medium) h5 {
+  color: #000000;
+}
+
+main header .text-grey,
+main div:has(> div > .has-overflow) > div:last-child {
+  color: #515d71;
+}
+
+.has-overflow .view-table-row * {
+  color: #0f1826;
+}
+
+main .segment,
+main .segment span {
+  color: #a86534;
+  background: #fae9d9;
+}
+
+main .p-0:has(.segment) > div > div > div > div > div > div:first-child {
+  color: #0f1826;
+}
+
+main .p-0:has(.segment) > div > div > div > div > div > div:last-child {
+  color: #515d71;
+}
+
+[role="dialog"] [role="textbox"] {
+  color: #0f1826;
+  background: #ffffff;
+}
+
+@media (max-width: 1000px) {
+  html,
+  body {
+    min-width: 900px;
+  }
+
+  body[data-kick-night-test-surface="application"] > div:first-of-type {
+    grid-template-columns: 76px minmax(0, 1fr);
+  }
+
+  [data-kick-night-test-surface="sidebar"] {
+    min-width: 76px;
+    overflow: hidden;
+  }
+
+  [data-kick-night-test-surface="page"] {
+    min-width: 0;
+  }
+}

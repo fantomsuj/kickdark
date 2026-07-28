@@ -4,12 +4,18 @@
   "private": true,
   "description": "A privacy-first dark mode for the Kick accounting web app.",
   "scripts": {
-    "test": "node --test",
+    "test": "npm run test:unit && npm run test:visual",
+    "test:unit": "node --test test/*.test.cjs",
+    "test:visual": "playwright test",
     "validate": "node scripts/validate-extension.mjs",
+    "fixtures:build": "node scripts/build-sanitized-fixtures.mjs .context/captures",
     "generate:icons": "node scripts/generate-icons.mjs",
     "check": "npm test && npm run validate"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.0"
   }
 }

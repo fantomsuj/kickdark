@@ -2,7 +2,7 @@
 
 A private, carefully designed Chrome dark mode for the [Kick accounting web app](https://use.kick.co/).
 
-Kick Night Mode adds System, Light, and Dark appearance settings without reading, storing, or transmitting accounting data. It runs only on `use.kick.co` and requests only Chrome's local `storage` permission.
+Kick Night Mode applies a polished dark theme whenever it is enabled, without reading, storing, or transmitting accounting data. It runs only on `use.kick.co` and requests no Chrome permissions.
 
 ## Install in Chrome
 
@@ -11,40 +11,49 @@ Kick Night Mode adds System, Light, and Dark appearance settings without reading
 3. Turn on **Developer mode** in the upper-right corner.
 4. Select **Load unpacked**.
 5. Choose the repository folder—the folder containing `manifest.json`.
-6. Pin **Kick Night Mode** from Chrome's Extensions menu.
+6. Reload any open Kick tabs.
 
-Open [use.kick.co](https://use.kick.co/) and choose **System**, **Light**, or **Dark** from the toolbar popup. Existing Kick tabs update immediately; reload the extension from `chrome://extensions` after changing its source files.
+Open [use.kick.co](https://use.kick.co/). Dark mode applies before first paint. To return to Kick's original appearance, disable the extension from `chrome://extensions`.
 
-## Appearance modes
+The theme uses charcoal and deep navy surfaces designed for long accounting sessions. It protects receipts, attachments, uploaded documents, logos, avatars, images, video, canvases, SVG charts, and third-party frames from automatic recoloring. Printing resets to a light, ink-friendly presentation.
 
-- **System** follows the computer's light or dark appearance and is the default.
-- **Light** restores Kick's original presentation.
-- **Dark** uses charcoal and deep navy surfaces designed for long nighttime sessions.
-
-The dark theme protects receipts, attachments, uploaded documents, logos, avatars, images, video, canvases, SVG charts, and third-party frames from automatic color inversion. Printing resets to a light, ink-friendly presentation.
 
 ## Privacy and security
 
 The extension:
 
 - Runs only on `https://use.kick.co/*`.
-- Stores one local setting: `kickNightModePreference`.
+- Stores no settings.
 - Does not request access to tabs, browsing history, cookies, the clipboard, or network requests.
 - Does not use analytics, remote code, remote fonts, or external assets.
 - Does not read transaction text, form values, or other accounting page content.
 - Does not observe clicks, typing, form submissions, or other page interactions.
 
-You can audit the complete runtime in `manifest.json`, `src/`, `popup/`, and `styles/`.
+You can audit the complete runtime in `manifest.json`, `src/`, and `styles/`.
 
 ## Development
 
-The extension uses plain HTML, CSS, and JavaScript and has no runtime or development dependencies. Node.js 20 or newer is required for tests and validation.
+The extension runtime uses plain HTML, CSS, and JavaScript with no runtime
+dependencies. Node.js 20 or newer and the exact locked Playwright development
+dependency are required for tests and validation.
 
 ```bash
+npm install
+npx playwright install chromium
+npm run test:unit
+npm run test:visual
 npm test
-npm run validate
 npm run check
 ```
+
+`npm test` runs the unit and rendered-browser suites. `npm run check` runs both
+suites plus packaged-extension validation. The rendered suite loads sanitized
+Kick fixtures, enforces selector evidence and WCAG contrast contracts, exercises
+interaction states, verifies the print reset, and compares reviewed screenshots.
+
+See [Dark-theme evidence and testing](docs/dark-theme-testing.md) for the
+privacy-safe fixture refresh procedure, selector-inventory rules, contrast
+thresholds, snapshot review, and authenticated release QA.
 
 Regenerate the bundled raster icons after changing the icon generator:
 
@@ -58,13 +67,14 @@ The validation script rejects expanded permissions, broader host matches, missin
 
 ```text
 manifest.json              Chrome Manifest V3 package definition
-src/theme-core.js          Appearance validation and resolution
-src/content.js             Kick page theme controller
-popup/                     Toolbar popup UI and controller
+src/content.js             Synchronous always-dark root activation
 styles/kick-dark.css       Scoped dark theme and media safety rules
 icons/                     Bundled Chrome raster icons
 scripts/                   Deterministic icon generation and validation
+test/fixtures/             Sanitized Kick structures and selector inventory
+test/visual/               Rendered contrast, state, print, and snapshot tests
 test/                      Node behavior and package-contract tests
+docs/dark-theme-testing.md Fixture refresh and authenticated QA guide
 docs/superpowers/          Product design and implementation plan
 ```
 
@@ -74,8 +84,7 @@ Kick is an independently developed web application, so a future Kick interface u
 
 ## Troubleshooting
 
-- If the theme does not appear, confirm the extension is enabled and the page URL begins with `https://use.kick.co/`, then reload the Kick tab.
-- If the popup reports a storage error, reload the extension from `chrome://extensions`.
-- If a receipt or chart looks wrong, switch to Light mode and open an issue with a screenshot that contains no financial or personal information.
+- If the theme does not appear, confirm the extension is enabled and the page URL begins with `https://use.kick.co/`, reload the extension from `chrome://extensions`, then reload the Kick tab.
+- If a receipt or chart looks wrong, disable the extension and open an issue with a screenshot that contains no financial or personal information.
 
 Kick Night Mode is an independent project and is not affiliated with or endorsed by Kick.

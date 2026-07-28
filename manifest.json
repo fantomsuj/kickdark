@@ -2,23 +2,12 @@
   "manifest_version": 3,
   "name": "Kick Night Mode",
   "version": "0.1.0",
-  "description": "A private, carefully designed dark mode for the Kick accounting web app.",
-  "permissions": [
-    "storage"
-  ],
+  "description": "An always-on, private dark mode for the Kick accounting web app.",
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",
     "48": "icons/icon-48.png",
     "128": "icons/icon-128.png"
-  },
-  "action": {
-    "default_title": "Kick Night Mode",
-    "default_popup": "popup/popup.html",
-    "default_icon": {
-      "16": "icons/icon-16.png",
-      "32": "icons/icon-32.png"
-    }
   },
   "content_scripts": [
     {
@@ -29,15 +18,11 @@
         "styles/kick-dark.css"
       ],
       "js": [
-        "src/theme-core.js",
         "src/content.js"
       ],
       "run_at": "document_start",
       "all_frames": false,
       "match_about_blank": false
     }
-  ],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
-  }
+  ]
 }
