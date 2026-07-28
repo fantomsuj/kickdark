@@ -165,6 +165,15 @@ section:has([role="columnheader"]) > div:first-child {
   background: #ffffff;
 }
 
+body:has(.transactions)
+  .sub-navigation-portals
+  > div:first-child
+  > div:first-child,
+.transactions > div:first-child > div:first-child {
+  color: #0f1826;
+  background: #ffffff;
+}
+
 .billingOwnership,
 .billingOwnership > div {
   color: #f4f7fb;

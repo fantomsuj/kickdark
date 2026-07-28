@@ -237,6 +237,8 @@ test("major surfaces pair a dark background with readable foreground", async ({
 
 test("audited route surfaces contain no white glare bands", async ({ page }) => {
   const auditedSurfaces = {
+    transactions:
+      ".sub-navigation-portals > div:first-child > div:first-child, .transactions > div:first-child > div:first-child",
     clients:
       ".sub-navigation-portals > div:first-child, .billingOwnership, .billingOwnership > div",
     accounts: ".balance",

@@ -77,6 +77,26 @@ html[data-kick-night-mode="dark"] section:has([role="columnheader"]) > div:first
   background-color: var(--kick-night-surface) !important;
 }
 
+/* Transactions: view controls and filters have their own light leaf surfaces. */
+html[data-kick-night-mode="dark"]
+  body:has(section.transactions)
+  .sub-navigation-portals
+  > div:first-child
+  > div:first-child {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-raised) !important;
+}
+
+html[data-kick-night-mode="dark"]
+  .transactions
+  > div:first-child
+  > div:first-child {
+  color: var(--kick-night-text) !important;
+  border-color: var(--kick-night-border) !important;
+  background-color: var(--kick-night-surface) !important;
+}
+
 html[data-kick-night-mode="dark"] section:has([role="columnheader"]) {
   --border-color: var(--kick-night-border);
   color: var(--kick-night-text) !important;
