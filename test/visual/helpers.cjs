@@ -189,8 +189,7 @@ function contrastRuntime() {
       const ratio = Math.max(borderRatio, fillRatio);
       const isUnboxedButton =
         element.matches("button, [role='button']") &&
-        borderWidth === 0 &&
-        fillRatio < 1.01;
+        borderRatio < 1.01;
       const isNativeChoice =
         element.matches("input[type='checkbox'], input[type='radio']") &&
         style.appearance !== "none";
