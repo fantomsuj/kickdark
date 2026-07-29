@@ -92,6 +92,28 @@ test("boxed text buttons require three-to-one boundary contrast", async ({
   expect(report.controlViolations[0].threshold).toBe(3);
 });
 
+test("borderless text buttons rely on label contrast instead of a resting boundary", async ({
+  page
+}) => {
+  const { auditContrast } = require(helperPath);
+
+  await page.setContent(`
+    <style>
+      html, body { background: rgb(26, 35, 54); }
+      button {
+        color: rgb(244, 247, 251);
+        background: rgb(15, 24, 38);
+        border: 1px solid transparent;
+      }
+    </style>
+    <button data-kick-night-test-control>View details</button>
+  `);
+
+  const report = await auditContrast(page);
+  expect(report.textViolations).toEqual([]);
+  expect(report.controlViolations).toEqual([]);
+});
+
 test("bare icon controls audit icon contrast without requiring a resting box", async ({
   page
 }) => {
