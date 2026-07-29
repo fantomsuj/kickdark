@@ -69,6 +69,29 @@ test("control and focus indicators require three-to-one contrast", async ({
   expect(focus.ratio).toBeGreaterThanOrEqual(3);
 });
 
+test("boxed text buttons require three-to-one boundary contrast", async ({
+  page
+}) => {
+  const { auditContrast } = require(helperPath);
+
+  await page.setContent(`
+    <style>
+      html, body { background: rgb(255, 255, 255); }
+      button {
+        color: rgb(0, 0, 0);
+        background: rgb(250, 250, 250);
+        border: 1px solid rgb(230, 230, 230);
+      }
+    </style>
+    <button data-kick-night-test-control>Save changes</button>
+  `);
+
+  const report = await auditContrast(page);
+  expect(report.controlViolations).toHaveLength(1);
+  expect(report.controlViolations[0].element).toBe("button");
+  expect(report.controlViolations[0].threshold).toBe(3);
+});
+
 test("bare icon controls audit icon contrast without requiring a resting box", async ({
   page
 }) => {
