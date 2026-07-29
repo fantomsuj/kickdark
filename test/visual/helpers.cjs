@@ -172,8 +172,6 @@ function contrastRuntime() {
     const violations = [];
 
     for (const element of controls) {
-      if (element.matches("button, [role='button']")) continue;
-
       const isBareIcon =
         element.matches("button, [role='button']") &&
         element.querySelector("svg") &&
