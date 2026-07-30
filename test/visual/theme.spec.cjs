@@ -7,41 +7,7 @@ const {
   loadFixture,
   productionStylesheetPath
 } = require("./helpers.cjs");
-
-const fixtureNames = [
-  "tasks",
-  "activity",
-  "categories",
-  "document-categories",
-  "documents",
-  "transactions",
-  "clients",
-  "accounts",
-  "rules",
-  "accounting",
-  "chart-of-accounts",
-  "reconciliation",
-  "counterparties",
-  "classes",
-  "insights",
-  "profit-loss",
-  "balance-sheet",
-  "general-ledger",
-  "trial-balance",
-  "expenses-by-vendor",
-  "cash-flow-statement",
-  "invoicing",
-  "billing",
-  "team",
-  "organization-billing",
-  "tasks-new-task",
-  "dialog-menu-form",
-  "command-palette",
-  "filter-dialog",
-  "menu",
-  "form",
-  "empty-state"
-];
+const { fixtureCases, fixtureNames } = require("./audit-cases.cjs");
 const fixtureDirectory = path.join(__dirname, "..", "fixtures");
 
 function splitSelectors(selectorList) {
@@ -211,6 +177,10 @@ for (const fixtureName of fixtureNames) {
       report.controlViolations,
       JSON.stringify(report.controlViolations, null, 2)
     ).toEqual([]);
+    expect(
+      report.iconViolations,
+      JSON.stringify(report.iconViolations, null, 2)
+    ).toEqual([]);
   });
 }
 
@@ -241,7 +211,7 @@ test("major surfaces pair a dark background with readable foreground", async ({
                 `${
                   element.getAttribute("data-kick-night-test-surface") ||
                   element.localName
-                }: ${style.backgroundColor}`
+                }: ${style.backgroundColor} ${element.outerHTML.slice(0, 220)}`
               ]
             : [];
         })
@@ -402,6 +372,159 @@ test("production CSS never depends on fixture-only markers", () => {
   expect(stylesheet).not.toMatch(/data-kick-night-(?:test|fixture)/);
 });
 
+test("unclassified controls and structural containers keep Kick geometry and hierarchy", async ({
+  page
+}) => {
+  const productionCss = fs.readFileSync(productionStylesheetPath, "utf8");
+  await page.setContent(`
+    <html data-kick-night-mode="dark">
+      <body>
+        <section style="color: rgb(21, 31, 41); background: rgb(241, 242, 243)">
+          <button style="color: rgb(31, 41, 51); border: 0px none rgb(31, 41, 51); background: transparent">
+            <svg></svg>
+          </button>
+          <div role="status" style="color: rgb(41, 51, 61); background: transparent"></div>
+          <table><tbody><tr><td><span style="color: rgb(51, 61, 71); background: transparent"></span></td></tr></tbody></table>
+          <input class="form-check-input" type="checkbox" style="width: 21px; height: 19px">
+        </section>
+      </body>
+    </html>
+  `);
+  await page.addStyleTag({ content: productionCss });
+
+  const styles = await page.locator("section, button, [role='status'], td > span, input")
+    .evaluateAll((elements) =>
+      elements.map((element) => {
+        const style = getComputedStyle(element);
+        return {
+          tag: element.localName,
+          role: element.getAttribute("role"),
+          color: style.color,
+          background: style.backgroundColor,
+          borderWidth: style.borderTopWidth,
+          ...(element.matches("input")
+            ? {
+                width: style.width,
+                height: style.height,
+                color: undefined,
+                background: undefined,
+                borderWidth: undefined
+              }
+            : {})
+        };
+      })
+    );
+
+  expect(styles).toEqual([
+    {
+      tag: "section",
+      role: null,
+      color: "rgb(21, 31, 41)",
+      background: "rgb(241, 242, 243)",
+      borderWidth: "0px"
+    },
+    {
+      tag: "button",
+      role: null,
+      color: "rgb(31, 41, 51)",
+      background: "rgba(0, 0, 0, 0)",
+      borderWidth: "0px"
+    },
+    {
+      tag: "div",
+      role: "status",
+      color: "rgb(41, 51, 61)",
+      background: "rgba(0, 0, 0, 0)",
+      borderWidth: "0px"
+    },
+    {
+      tag: "span",
+      role: null,
+      color: "rgb(51, 61, 71)",
+      background: "rgba(0, 0, 0, 0)",
+      borderWidth: "0px"
+    },
+    {
+      tag: "input",
+      role: null,
+      color: undefined,
+      background: undefined,
+      borderWidth: undefined,
+      width: "21px",
+      height: "19px"
+    }
+  ]);
+});
+
+test("bare icon controls stay borderless and transparent at rest", async ({
+  page
+}) => {
+  await loadFixture(page, "tasks");
+  const styles = await page
+    .locator("button[data-kick-night-test-control]:has(svg)")
+    .evaluateAll((elements) =>
+      elements
+        .filter((element) => !element.textContent.trim())
+        .map((element) => {
+          const style = getComputedStyle(element);
+          return {
+            color: style.color,
+            background: style.backgroundColor,
+            borderWidth: style.borderTopWidth
+          };
+        })
+    );
+
+  expect(styles.length).toBeGreaterThan(0);
+  expect(styles).toEqual(
+    styles.map(() => ({
+      color: "rgb(244, 247, 251)",
+      background: "rgba(0, 0, 0, 0)",
+      borderWidth: "0px"
+    }))
+  );
+});
+
+test("task checkbox geometry is identical in light and dark modes", async ({
+  page
+}) => {
+  await loadFixture(page, "tasks");
+  const checkbox = page.locator(".form-check-input").first();
+  const dark = await checkbox.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return { width: rect.width, height: rect.height };
+  });
+  await page.locator("html").evaluate((element) => {
+    element.removeAttribute("data-kick-night-mode");
+  });
+  const light = await checkbox.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return { width: rect.width, height: rect.height };
+  });
+
+  expect(Math.abs(dark.width - light.width)).toBeLessThanOrEqual(1);
+  expect(Math.abs(dark.height - light.height)).toBeLessThanOrEqual(1);
+});
+
+for (const viewport of [
+  { name: "mobile", width: 375, height: 812 },
+  { name: "tablet", width: 768, height: 1024 },
+  { name: "compact", width: 1024, height: 900 },
+  { name: "desktop", width: 1440, height: 900 }
+]) {
+  test(`${viewport.name} fixture shell has no horizontal overflow`, async ({
+    page
+  }) => {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    await loadFixture(page, "tasks");
+    const dimensions = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      scroll: document.documentElement.scrollWidth
+    }));
+    expect(dimensions.scroll).toBeLessThanOrEqual(dimensions.viewport);
+  });
+}
+
 test("print media resets the rendered dark fixture to light", async ({ page }) => {
   await loadFixture(page, "tasks");
   await page.emulateMedia({ media: "print" });
@@ -446,28 +569,71 @@ test("print media resets the rendered dark fixture to light", async ({ page }) =
   ).toEqual([]);
 });
 
-for (const fixtureName of fixtureNames) {
-  test(`${fixtureName} matches the reviewed sanitized snapshot`, async ({
-    page
-  }) => {
-    await loadFixture(page, fixtureName);
-    await expect(page).toHaveScreenshot(`sanitized-${fixtureName}.png`, {
-      fullPage: true,
-      timeout: 15000
-    });
-  });
-
-  test(`${fixtureName} matches the reviewed compact snapshot`, async ({
-    page
-  }) => {
-    await page.setViewportSize({ width: 900, height: 900 });
-    await loadFixture(page, fixtureName);
-    await expect(page).toHaveScreenshot(
-      `sanitized-${fixtureName}-compact.png`,
-      {
-        fullPage: true,
-        timeout: 15000
-      }
+async function focusedSnapshotTarget(page, fixtureName) {
+  if (fixtureName === "mobile-unavailable") {
+    return page.locator(
+      "body > div:first-of-type > div:has(> h1 + p):has(button)"
     );
-  });
+  }
+
+  const captureRoot = page.locator("[data-kick-night-fixture-surface]");
+  const captureRootCount = await captureRoot.count();
+  if (captureRootCount === 1) {
+    const tag = await captureRoot.evaluate((element) => element.localName);
+    if (tag !== "html" && tag !== "body") return captureRoot;
+  }
+
+  const topLevelDialog = page.locator(
+    "[role='dialog']:not([role='dialog'] [role='dialog'])"
+  );
+  if ((await topLevelDialog.count()) === 1) return topLevelDialog;
+
+  const topLevelMain = page.locator("main:not(main main)");
+  if ((await topLevelMain.count()) === 1) return topLevelMain;
+
+  return page.locator("body");
+}
+
+for (const auditCase of fixtureCases) {
+  const viewportPairs =
+    auditCase.viewportClass === "mobile"
+      ? [
+          { label: null, width: 375, height: 812 },
+          { label: "768", width: 768, height: 1024 }
+        ]
+      : [
+          { label: null, width: 1440, height: 900 },
+          { label: "1024", width: 1024, height: 900 }
+        ];
+
+  for (const viewport of viewportPairs) {
+    for (const theme of ["light", "dark"]) {
+      test(`${auditCase.id} ${viewport.width}px ${theme} matches reviewed focused evidence`, async ({
+        page
+      }) => {
+        await page.setViewportSize({
+          width: viewport.width,
+          height: viewport.height
+        });
+        await loadFixture(page, auditCase.fixture);
+        if (theme === "light") {
+          await page.locator("html").evaluate((element) => {
+            element.removeAttribute("data-kick-night-mode");
+          });
+        }
+
+        const evidenceName = path.basename(auditCase.evidence[theme]);
+        const snapshotName = viewport.label
+          ? evidenceName.replace(
+              `-${theme}.png`,
+              `-${viewport.label}-${theme}.png`
+            )
+          : evidenceName;
+        const target = await focusedSnapshotTarget(page, auditCase.fixture);
+        await expect(target).toHaveScreenshot(snapshotName, {
+          timeout: 15000
+        });
+      });
+    }
+  }
 }

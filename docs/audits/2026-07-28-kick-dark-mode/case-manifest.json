@@ -1,0 +1,570 @@
+{
+  "version": 1,
+  "capturedAt": "2026-07-28",
+  "policy": "Only app content from the designated dummy tenant may be committed. Browser chrome, URLs, identifiers, raw DOM, cookies, storage, and capture metadata are excluded.",
+  "viewports": {
+    "desktop": [
+      "1440x900",
+      "1024x900"
+    ],
+    "tablet": [
+      "768x1024"
+    ],
+    "mobile": [
+      "375x812"
+    ]
+  },
+  "cases": [
+    {
+      "id": "tasks-default",
+      "fixture": "tasks",
+      "route": "tasks",
+      "surface": "task-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "task-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/tasks-default-light.png",
+        "dark": "screenshots/tasks-default-dark.png"
+      }
+    },
+    {
+      "id": "activity-default",
+      "fixture": "activity",
+      "route": "activity",
+      "surface": "activity-list",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "table-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/activity-default-light.png",
+        "dark": "screenshots/activity-default-dark.png"
+      }
+    },
+    {
+      "id": "categories-default",
+      "fixture": "categories",
+      "route": "categories",
+      "surface": "category-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "table-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/categories-default-light.png",
+        "dark": "screenshots/categories-default-dark.png"
+      }
+    },
+    {
+      "id": "document-categories-default",
+      "fixture": "document-categories",
+      "route": "document-categories",
+      "surface": "category-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "table-controls",
+      "protectedElements": [
+        "documents"
+      ],
+      "evidence": {
+        "light": "screenshots/document-categories-default-light.png",
+        "dark": "screenshots/document-categories-default-dark.png"
+      }
+    },
+    {
+      "id": "documents-default",
+      "fixture": "documents",
+      "route": "documents",
+      "surface": "document-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "document-controls",
+      "protectedElements": [
+        "documents",
+        "uploads",
+        "images"
+      ],
+      "evidence": {
+        "light": "screenshots/documents-default-light.png",
+        "dark": "screenshots/documents-default-dark.png"
+      }
+    },
+    {
+      "id": "transactions-default",
+      "fixture": "transactions",
+      "route": "transactions",
+      "surface": "transaction-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "transaction-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/transactions-default-light.png",
+        "dark": "screenshots/transactions-default-dark.png"
+      }
+    },
+    {
+      "id": "clients-default",
+      "fixture": "clients",
+      "route": "clients",
+      "surface": "client-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "client-controls",
+      "protectedElements": [
+        "logos",
+        "avatars"
+      ],
+      "evidence": {
+        "light": "screenshots/clients-default-light.png",
+        "dark": "screenshots/clients-default-dark.png"
+      }
+    },
+    {
+      "id": "accounts-default",
+      "fixture": "accounts",
+      "route": "accounts",
+      "surface": "account-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "account-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/accounts-default-light.png",
+        "dark": "screenshots/accounts-default-dark.png"
+      }
+    },
+    {
+      "id": "rules-default",
+      "fixture": "rules",
+      "route": "rules",
+      "surface": "rules-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "table-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/rules-default-light.png",
+        "dark": "screenshots/rules-default-dark.png"
+      }
+    },
+    {
+      "id": "accounting-default",
+      "fixture": "accounting",
+      "route": "accounting",
+      "surface": "accounting-index",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "navigation-controls",
+      "protectedElements": [
+        "charts"
+      ],
+      "evidence": {
+        "light": "screenshots/accounting-default-light.png",
+        "dark": "screenshots/accounting-default-dark.png"
+      }
+    },
+    {
+      "id": "chart-of-accounts-default",
+      "fixture": "chart-of-accounts",
+      "route": "chart-of-accounts",
+      "surface": "account-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "table-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/chart-of-accounts-default-light.png",
+        "dark": "screenshots/chart-of-accounts-default-dark.png"
+      }
+    },
+    {
+      "id": "reconciliation-default",
+      "fixture": "reconciliation",
+      "route": "reconciliation",
+      "surface": "reconciliation-workspace",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "reconciliation-controls",
+      "protectedElements": [
+        "documents"
+      ],
+      "evidence": {
+        "light": "screenshots/reconciliation-default-light.png",
+        "dark": "screenshots/reconciliation-default-dark.png"
+      }
+    },
+    {
+      "id": "counterparties-default",
+      "fixture": "counterparties",
+      "route": "counterparties",
+      "surface": "counterparty-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "table-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/counterparties-default-light.png",
+        "dark": "screenshots/counterparties-default-dark.png"
+      }
+    },
+    {
+      "id": "classes-default",
+      "fixture": "classes",
+      "route": "classes",
+      "surface": "classes-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "table-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/classes-default-light.png",
+        "dark": "screenshots/classes-default-dark.png"
+      }
+    },
+    {
+      "id": "insights-default",
+      "fixture": "insights",
+      "route": "insights",
+      "surface": "insights-dashboard",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "dashboard-controls",
+      "protectedElements": [
+        "charts",
+        "svg"
+      ],
+      "evidence": {
+        "light": "screenshots/insights-default-light.png",
+        "dark": "screenshots/insights-default-dark.png"
+      }
+    },
+    {
+      "id": "profit-loss-default",
+      "fixture": "profit-loss",
+      "route": "profit-loss",
+      "surface": "report",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "report-controls",
+      "protectedElements": [
+        "charts",
+        "print"
+      ],
+      "evidence": {
+        "light": "screenshots/profit-loss-default-light.png",
+        "dark": "screenshots/profit-loss-default-dark.png"
+      }
+    },
+    {
+      "id": "balance-sheet-default",
+      "fixture": "balance-sheet",
+      "route": "balance-sheet",
+      "surface": "report",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "report-controls",
+      "protectedElements": [
+        "charts",
+        "print"
+      ],
+      "evidence": {
+        "light": "screenshots/balance-sheet-default-light.png",
+        "dark": "screenshots/balance-sheet-default-dark.png"
+      }
+    },
+    {
+      "id": "general-ledger-default",
+      "fixture": "general-ledger",
+      "route": "general-ledger",
+      "surface": "report",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "report-controls",
+      "protectedElements": [
+        "print"
+      ],
+      "evidence": {
+        "light": "screenshots/general-ledger-default-light.png",
+        "dark": "screenshots/general-ledger-default-dark.png"
+      }
+    },
+    {
+      "id": "trial-balance-default",
+      "fixture": "trial-balance",
+      "route": "trial-balance",
+      "surface": "report",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "report-controls",
+      "protectedElements": [
+        "print"
+      ],
+      "evidence": {
+        "light": "screenshots/trial-balance-default-light.png",
+        "dark": "screenshots/trial-balance-default-dark.png"
+      }
+    },
+    {
+      "id": "expenses-by-vendor-default",
+      "fixture": "expenses-by-vendor",
+      "route": "expenses-by-vendor",
+      "surface": "report",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "report-controls",
+      "protectedElements": [
+        "print"
+      ],
+      "evidence": {
+        "light": "screenshots/expenses-by-vendor-default-light.png",
+        "dark": "screenshots/expenses-by-vendor-default-dark.png"
+      }
+    },
+    {
+      "id": "cash-flow-statement-default",
+      "fixture": "cash-flow-statement",
+      "route": "cash-flow-statement",
+      "surface": "report",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "report-controls",
+      "protectedElements": [
+        "print"
+      ],
+      "evidence": {
+        "light": "screenshots/cash-flow-statement-default-light.png",
+        "dark": "screenshots/cash-flow-statement-default-dark.png"
+      }
+    },
+    {
+      "id": "invoicing-empty",
+      "fixture": "invoicing",
+      "route": "invoicing",
+      "surface": "empty-state",
+      "state": "empty",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "empty-state-controls",
+      "protectedElements": [
+        "illustrations"
+      ],
+      "evidence": {
+        "light": "screenshots/invoicing-empty-light.png",
+        "dark": "screenshots/invoicing-empty-dark.png"
+      }
+    },
+    {
+      "id": "billing-empty",
+      "fixture": "billing",
+      "route": "billing",
+      "surface": "empty-state",
+      "state": "empty",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "billing-controls",
+      "protectedElements": [
+        "illustrations"
+      ],
+      "evidence": {
+        "light": "screenshots/billing-empty-light.png",
+        "dark": "screenshots/billing-empty-dark.png"
+      }
+    },
+    {
+      "id": "team-default",
+      "fixture": "team",
+      "route": "team",
+      "surface": "team-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "team-controls",
+      "protectedElements": [
+        "avatars"
+      ],
+      "evidence": {
+        "light": "screenshots/team-default-light.png",
+        "dark": "screenshots/team-default-dark.png"
+      }
+    },
+    {
+      "id": "organization-billing-default",
+      "fixture": "organization-billing",
+      "route": "organization-billing",
+      "surface": "billing-settings",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "billing-controls",
+      "protectedElements": [
+        "logos"
+      ],
+      "evidence": {
+        "light": "screenshots/organization-billing-default-light.png",
+        "dark": "screenshots/organization-billing-default-dark.png"
+      }
+    },
+    {
+      "id": "tasks-new-task-default",
+      "fixture": "tasks-new-task",
+      "route": "tasks",
+      "surface": "task-drawer",
+      "state": "expanded",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "dialog-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/tasks-new-task-default-light.png",
+        "dark": "screenshots/tasks-new-task-default-dark.png"
+      }
+    },
+    {
+      "id": "dialog-menu-form-default",
+      "fixture": "dialog-menu-form",
+      "route": "documents",
+      "surface": "dialog-menu-form",
+      "state": "expanded",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "dialog-controls",
+      "protectedElements": [
+        "documents"
+      ],
+      "evidence": {
+        "light": "screenshots/dialog-menu-form-default-light.png",
+        "dark": "screenshots/dialog-menu-form-default-dark.png"
+      }
+    },
+    {
+      "id": "command-palette-default",
+      "fixture": "command-palette",
+      "route": "accounts",
+      "surface": "command-palette",
+      "state": "expanded",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "palette-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/command-palette-default-light.png",
+        "dark": "screenshots/command-palette-default-dark.png"
+      }
+    },
+    {
+      "id": "filter-dialog-default",
+      "fixture": "filter-dialog",
+      "route": "transactions",
+      "surface": "filter-dialog",
+      "state": "expanded",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "dialog-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/filter-dialog-default-light.png",
+        "dark": "screenshots/filter-dialog-default-dark.png"
+      }
+    },
+    {
+      "id": "menu-default",
+      "fixture": "menu",
+      "route": "documents",
+      "surface": "menu",
+      "state": "expanded",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "menu-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/menu-default-light.png",
+        "dark": "screenshots/menu-default-dark.png"
+      }
+    },
+    {
+      "id": "form-validation",
+      "fixture": "form",
+      "route": "profile",
+      "surface": "form",
+      "state": "validation-error",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "form-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/form-validation-light.png",
+        "dark": "screenshots/form-validation-dark.png"
+      }
+    },
+    {
+      "id": "empty-state-default",
+      "fixture": "empty-state",
+      "route": "documents",
+      "surface": "empty-state",
+      "state": "empty",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "empty-state-controls",
+      "protectedElements": [
+        "illustrations"
+      ],
+      "evidence": {
+        "light": "screenshots/empty-state-default-light.png",
+        "dark": "screenshots/empty-state-default-dark.png"
+      }
+    },
+    {
+      "id": "firm-profile-default",
+      "route": "firm-profile",
+      "surface": "profile-form",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "form-controls",
+      "protectedElements": [
+        "logos"
+      ],
+      "evidence": {
+        "light": "screenshots/firm-profile-default-light.png",
+        "dark": "screenshots/firm-profile-default-dark.png"
+      }
+    },
+    {
+      "id": "task-groups-default",
+      "route": "task-groups",
+      "surface": "task-groups-table",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "task-controls",
+      "protectedElements": [],
+      "evidence": {
+        "light": "screenshots/task-groups-default-light.png",
+        "dark": "screenshots/task-groups-default-dark.png"
+      }
+    },
+    {
+      "id": "onboarding-default",
+      "route": "onboarding",
+      "surface": "onboarding",
+      "state": "default",
+      "viewportClass": "desktop",
+      "expectedControlFamily": "onboarding-controls",
+      "protectedElements": [
+        "illustrations",
+        "logos"
+      ],
+      "evidence": {
+        "light": "screenshots/onboarding-default-light.png",
+        "dark": "screenshots/onboarding-default-dark.png"
+      }
+    },
+    {
+      "id": "mobile-unavailable-default",
+      "fixture": "mobile-unavailable",
+      "route": "mobile-unavailable",
+      "surface": "mobile-fallback",
+      "state": "default",
+      "viewportClass": "mobile",
+      "expectedControlFamily": "mobile-fallback-controls",
+      "protectedElements": [
+        "logos",
+        "illustrations"
+      ],
+      "evidence": {
+        "light": "screenshots/mobile-unavailable-default-light.png",
+        "dark": "screenshots/mobile-unavailable-default-dark.png"
+      }
+    }
+  ]
+}
